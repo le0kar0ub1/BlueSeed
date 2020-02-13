@@ -8,35 +8,31 @@ BUILDIR	:=	build
 
 LDFLAGS	:=	-L./$(BUILDIR)/mylib -lmy
 
-TARGET_ARCH	:= riscv64 riscv32 riscv128 x86 x64
+TARGET_ARCH	:= riscv32 riscv64 riscv128
 
 EXTENSION_SRC	:=	.c
 EXTENSION_OBJ	:=	.o
 
-ROOT_SRC_DIR	= src/
-ROOT_INC_DIR	= inc/
+ROOT_SRC_DIR	= src
+ROOT_INC_DIR	= inc
 
-INCLUDE_DIR := $(addprefix -I$(ROOT_INC_DIR),	\
-							/					\
-							basics/				\
-							def/				\
-							datastructure/		\
-							assembly/			\
-							opt/				\
-							$(addprefix arch/,			\
-										/				\
-										$(TARGET_ARCH)	\
-										)				\
-							)
+INCLUDE_DIR :=	$(addprefix -I$(ROOT_INC_DIR)/,				\
+						.									\
+						basics								\
+						def									\
+						datastructure						\
+						assembly							\
+						opt									\
+						arch								\
+						$(addprefix arch/, $(TARGET_ARCH))	\
+				)
 
-SOURCE_DIR	:=	$(addprefix $(ROOT_SRC_DIR),	\
-							/					\
-							opt/				\
-							$(addprefix arch/,			\
-										/				\
-										$(TARGET_ARCH)	\
-										)				\
-							)
+SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
+				$(addprefix $(ROOT_SRC_DIR)/,					\
+							opt									\
+							arch								\
+							$(addprefix arch/,	$(TARGET_ARCH))	\
+				)
 
 CFLAGS		:=	$(INCLUDE_DIR)						\
 				-Wall								\
@@ -64,20 +60,28 @@ CFLAGS		:=	$(INCLUDE_DIR)						\
 				-Wpointer-arith						\
 				# -Werror
 
+CFLAGS		+=	'-D PROJECT_NAME="$(BINARY)"'			\
+				'-D SUPPORTED_ARCH="$(TARGET_ARCH)"'	\
+
 CFLAGSDEBUG	:= -D DEBUG -g3
 
 RM		:=	rm -rf
 
-SRC_C   :=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR)))
+SRC_C 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR)))
 
-OBJ 	:= 	$(patsubst $(ROOT_SRC_DIR)%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(SRC_C))
+OBJ 	:= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(SRC_C))
 
-.PHONY: all fclean run disassemble debug clean
+.PHONY: all fclean debug clean
 
-all:	$(BINARY)
+all:	mylib	$(BINARY)
 
 disassemble: $(BINARY)
 	@objdump --no-show-raw-insn -d -Mintel $(BINARY) | source-highlight -s asm -f esc256 | less -eRiMX
+
+debug ?= 0
+ifeq ($(debug), 1)
+    CFLAGS += $(CFLAGSDEBUG)
+endif
 
 re:	fclean all
 
@@ -93,13 +97,14 @@ $(BINARY):	$(OBJ)
 clean:
 	@$(RM) $(BUILDIR)
 
-fclean:
-	@$(RM) $(BUILDIR) $(BINARY) vgcore.*
+fclean:	clean
+	@$(RM) $(BINARY) vgcore.*
 
-$(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)%$(EXTENSION_SRC)
+$(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@-echo -e "     CC      $@"
 
 run:
-	@./$(BINARY) --target=riscv64 sample/sample.bin
+	@make --no-print-directory debug=1
+	@./$(BINARY) --target=riscv64 #sample/sample.bin

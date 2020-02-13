@@ -8,12 +8,11 @@
 /* START */
 void help(void);
 int main(int, char **);
-void architecture_target(struct opt *);
+void arch_entry_point(struct opt *);
 
 /* OPT */
 struct opt *mgetopt(char **);
-char *opt_target_arch(char *);
-
+int opt_target_arch(char *);
 
 
 #endif

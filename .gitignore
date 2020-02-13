@@ -1,5 +1,6 @@
 ### Personnal ###
 tools/
+sample/
 inc/assembly
 .vscode
 build/

@@ -1,21 +1,17 @@
 #include "builtin.h"
 #include "opt.h"
 
-char *opt_target_arch(char *arch)
+int opt_target_arch(char *arch)
 {
     arch += strlen(TARGET_ARCH_PREFIX);
-    if (!strcmp(arch, TARGET_ARCH_x86))
-        return (strdup(TARGET_ARCH_x86));
-    else if (!strcmp(arch, TARGET_ARCH_x64))
-        return (strdup(TARGET_ARCH_x64));
-    else if (!strcmp(arch, TARGET_ARCH_RISCV32))
-        return (strdup(TARGET_ARCH_RISCV32));
+    if (!strcmp(arch, TARGET_ARCH_RISCV32))
+        return (TARGET_ARCH_RISCV32_IDX);
     else if (!strcmp(arch, TARGET_ARCH_RISCV64))
-        return (strdup(TARGET_ARCH_RISCV64));
+        return (TARGET_ARCH_RISCV64_IDX);
     else if (!strcmp(arch, TARGET_ARCH_RISCV128))
-        return (strdup(TARGET_ARCH_RISCV128));
+        return (TARGET_ARCH_RISCV128_IDX);
     RAISE(ERR_ARCH_MSG, ERR_ARCH_NUM);
-    return (NULL);
+    return (TARGET_ARCH_DEFAULT_IDX);
 }
 
 struct opt *mgetopt(char **av)
@@ -32,6 +28,6 @@ struct opt *mgetopt(char **av)
             RAISE(ERR_BADARG_MSG, ERR_BADARG_NUM);
     }
     if (!op->arch)
-        op->arch = strdup(TARGET_ARCH_DEFAULT);
-    return (NULL);
+        op->arch = TARGET_ARCH_DEFAULT_IDX;
+    return (op);
 }
