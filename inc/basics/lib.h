@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define matoi(x) my_getnbr(x)
 #define len(x) my_strlen(x)

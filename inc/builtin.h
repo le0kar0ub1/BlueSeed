@@ -17,6 +17,9 @@
 #include "bitfield.h"
 #include "fatalAssert.h"
 #include "config.h"
+#include "error.h"
+#include "prototypes.h"
 
+#define DEBUG (printf("DEBUG\n"));
 
 #endif

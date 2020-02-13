@@ -12,7 +12,7 @@
 #include "lib.h"
 #include "fatalAssert.h"
 
-#define decto(x, y) while (x --> 0)
+#define decto(x) while (x --> 0)
 #define incto(x, y) while (x ++< y)
 
 #define swap(x,y) (x ^= y ^= x ^= y)
