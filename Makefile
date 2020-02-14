@@ -1,3 +1,6 @@
+ROOT_TOOLCHAIN	:= 	mktoolchain
+MKTOOLCHAIN		:=	mktoolchain
+
 CC		:=	gcc
 
 NASM	:=	nasm
@@ -109,3 +112,6 @@ $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 run:
 	@make --no-print-directory debug=1
 	@./$(BINARY) --target=riscv64 #sample/sample.bin
+
+install:
+	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)

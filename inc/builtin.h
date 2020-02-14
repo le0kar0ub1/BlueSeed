@@ -20,6 +20,4 @@
 #include "error.h"
 #include "prototypes.h"
 
-#define DEBUG (printf("DEBUG\n"));
-
 #endif

@@ -2,7 +2,7 @@
 
 void help(void)
 {
-    printf("%s is a multi-arch emulator\n", PROJECT_NAME);
+    printf("%s is a cross-plateform RISCV processor emulator\n", PROJECT_NAME);
     printf("USAGE:\n");
     printf("    ./%s --target=$ARCH $TOEXEC\n", PROJECT_NAME);
     printf("Supported arch:\n    %s\n", SUPPORTED_ARCH);
