@@ -5,29 +5,37 @@ CC		:=	gcc
 
 NASM	:=	nasm
 
-PROJECT	:=	blueSeed
+PROJECT	:=	BlueSeed
+BINARY	:=	BlueSeed_$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)-0.1.0.bin
 
 BUILDIR	:=	build
 
-LDFLAGS	:=	-L./$(BUILDIR)/mylib -lmy
+LDFLAGS	:=
 
 TARGET_ARCH	:= riscv32 riscv64 riscv128
+TARGET_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 EXTENSION_SRC	:=	.c
 EXTENSION_OBJ	:=	.o
 
 ROOT_SRC_DIR	= src
 ROOT_INC_DIR	= inc
+ROOT_ARC_DIR	= arch
 
 INCLUDE_DIR :=	$(addprefix -I$(ROOT_INC_DIR)/,				\
 						.									\
-						basics								\
 						def									\
-						datastructure						\
+						control								\
 						assembly							\
 						opt									\
-						arch								\
-						$(addprefix arch/, $(TARGET_ARCH))	\
+				)
+
+INCLUDE_DIR	+= $(addprefix -I$(ROOT_ARC_DIR)/,		\
+						.							\
+						$(TARGET_ARCH)				\
+						$(addprefix isa/,			\
+									$(TARGET_IS)	\
+						)							\
 				)
 
 SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
@@ -65,6 +73,7 @@ CFLAGS		:=	$(INCLUDE_DIR)						\
 
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D SUPPORTED_ARCH="$(TARGET_ARCH)"'	\
+				'-D INSTRUCTION_SET="$(TARGET_IS)"'
 
 CFLAGSDEBUG	:= -D DEBUG -g3
 
@@ -76,7 +85,12 @@ OBJ 	:= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_O
 
 .PHONY: all fclean debug clean
 
-all:	mylib	$(PROJECT)
+all:	$(PROJECT)
+
+buildheader:
+	@echo -e "\n *"
+	@echo -e "*  Building $(BINARY)"
+	@echo -e " *\n"
 
 disassemble: $(PROJECT)
 	@objdump --no-show-raw-insn -d -Mintel $(PROJECT) | source-highlight -s asm -f esc256 | less -eRiMX
@@ -88,12 +102,7 @@ endif
 
 re:	fclean all
 
-mylib:
-	@echo -e "BUILDING LIB"
-	@make -C lib/ --no-print-directory
-	@echo -e "\nBUILDING PROJECT"
-
-$(PROJECT):	$(OBJ)
+$(PROJECT):	buildheader $(OBJ)
 	@$(CC) -o $(PROJECT) $(OBJ) $(LDFLAGS)
 	@-echo -e " LINKED      $@"
 

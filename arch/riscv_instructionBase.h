@@ -3,7 +3,7 @@
 
 #include "builtin.h"
 
-struct rv32i_opcode_Rtype
+struct opcode_Rtype
 {
     uint opcode : 7;
     uint rd     : 5;
@@ -13,7 +13,7 @@ struct rv32i_opcode_Rtype
     uint funct7 : 7;
 } __packed;
 
-struct rv32i_opcode_Itype
+struct opcode_Itype
 {
     uint opcode : 7;
     uint rd     : 5;
@@ -22,7 +22,7 @@ struct rv32i_opcode_Itype
     uint imm    : 12; // 0 : 11
 } __packed;
 
-struct rv32i_opcode_Stype
+struct opcode_Stype
 {
     uint opcode : 7;
     uint imm1   : 5; // 0 : 4
@@ -32,7 +32,7 @@ struct rv32i_opcode_Stype
     uint imm2   : 7; // 11 : 5
 } __packed;
 
-struct rv32i_opcode_SBtype
+struct opcode_SBtype
 {
     uint opcode : 7;
     uint imm1   : 5; // 4 : 1 | 11
@@ -42,18 +42,32 @@ struct rv32i_opcode_SBtype
     uint imm2   : 7; // 12 | 10 : 5
 } __packed;
 
-struct rv32i_opcode_Utype
+struct opcode_Utype
 {
     uint opcode : 7;
     uint rd     : 5;
     uint imm    : 19; // 31 : 12
 } __packed;
 
-struct rv32i_opcode_UJtype
+struct opcode_UJtype
 {
     uint opcode : 7;
     uint rd     : 5;
     uint imm    : 19; // 20 | 10 : 1 | 11 | 19 : 12
+} __packed;
+
+
+
+/* 64 EXTENSION */
+struct opcode_R4type
+{
+    uint opcode : 7;
+    uint rd     : 5;
+    uint funct3 : 3;
+    uint rs1    : 5;
+    uint rs2    : 5;
+    uint funct2 : 3;
+    uint rs3    : 4;
 } __packed;
 
 #endif

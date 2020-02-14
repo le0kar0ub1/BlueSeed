@@ -2,6 +2,9 @@
 #define _OPT_H_
 
 #include "keyword.h"
+#include <sys/stat.h>
+#include <fcntl.h>
+
 
 /* target architecture */
 #define TARGET_ARCH_PREFIX   "--target="

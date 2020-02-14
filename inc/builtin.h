@@ -9,9 +9,15 @@
 // #pragma startup set() // call before main
 // #pragma exit unset()  // call after main
 
+/* STANDARD HEADERS */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <unistd.h>
+
 /* PERSONNAL HEADERS */
 #include "macro.h"
-#include "lib.h"
 #include "typedef.h"
 #include "keyword.h"
 #include "bitfield.h"

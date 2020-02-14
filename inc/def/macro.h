@@ -8,11 +8,12 @@
 #ifndef CMP_H_
 #define CMP_H_
 
-#include "stdbool.h"
-#include "lib.h"
+#include <stdlib.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <math.h>
 #include "fatalAssert.h"
 #include "typedef.h"
-#include "math.h"
 
 #define decto(x) while (x --> 0)
 #define incto(x, y) while (x ++< y)
@@ -22,6 +23,8 @@
 #define arrsize(x) (sizeof(x) / sizeof(*x))
 
 #define asmv __asm__ volatile /* fire asm instruction */
+
+#define len(x) strlen(x)
 
 /* ALIGN ON A POWER OF 2 */
 #define ROUND_POWERUP(x) (pow(2, (int)log2(x)) * 2)
@@ -105,9 +108,5 @@ static inline void critical(int val, int must)
     if (val != must)
         exit(0);
 }
-
-#define retl my_putchar(0xA)
-
-#define space my_putchar(0x20);
 
 #endif
