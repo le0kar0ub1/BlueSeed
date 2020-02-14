@@ -29,31 +29,31 @@ _BlueSeed has been built with a toolchain builder_
 - [X] toolchain
   - [X] cross-plateform build
   - [X] build system independant
-- [] instruction set
-  - [] RV32I Base Instruction Set
-  - [] RV64I Base Instruction Set
-  - [] RV32M Standard Extension
-  - [] RV64M Standard Extension
-  - [] RV32A Standard Extension
-  - [] RV64A Standard Extension
-  - [] RV32F Standard Extension
-  - [] RV64F Standard Extension
-  - [] RV32D Standard Extension
-  - [] RV64D Standard Extension
-- [] target arch allowed
-  - [] riscv32
-  - [] riscv64
-  - [] riscv128 
-- [] runtime command
-  - [] break
-  - [] dump
-- [] memory scheluder
+- [ ] instruction set
+  - [ ] RV32I Base Instruction Set
+  - [ ] RV64I Base Instruction Set
+  - [ ] RV32M Standard Extension
+  - [ ] RV64M Standard Extension
+  - [ ] RV32A Standard Extension
+  - [ ] RV64A Standard Extension
+  - [ ] RV32F Standard Extension
+  - [ ] RV64F Standard Extension
+  - [ ] RV32D Standard Extension
+  - [ ] RV64D Standard Extension
+- [ ] target arch allowed
+  - [ ] riscv32
+  - [ ] riscv64
+  - [ ] riscv128 
+- [ ] runtime command
+  - [ ] break
+  - [ ] dump
+- [ ] memory scheluder
 
 _Will be implemented ?_
-- [] component interaction/emulation
-- [] self interface
-  - [] syscall
-  - [] ...
+- [ ] component interaction/emulation
+- [ ] self interface
+  - [ ] syscall
+  - [ ] ...
 
 ## EPILOGUE
 
