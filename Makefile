@@ -5,7 +5,7 @@ CC		:=	gcc
 
 NASM	:=	nasm
 
-BINARY	:=	blueSeed
+PROJECT	:=	blueSeed
 
 BUILDIR	:=	build
 
@@ -46,7 +46,6 @@ CFLAGS		:=	$(INCLUDE_DIR)						\
 				--std=gnu11							\
 				-Wuninitialized						\
 				-Wno-missing-braces					\
-				-ffreestanding						\
 				-Wcast-align						\
 				-Wwrite-strings						\
 				-static					 			\
@@ -64,7 +63,7 @@ CFLAGS		:=	$(INCLUDE_DIR)						\
 				-lm									\
 				# -Werror
 
-CFLAGS		+=	'-D PROJECT_NAME="$(BINARY)"'			\
+CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D SUPPORTED_ARCH="$(TARGET_ARCH)"'	\
 
 CFLAGSDEBUG	:= -D DEBUG -g3
@@ -77,10 +76,10 @@ OBJ 	:= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_O
 
 .PHONY: all fclean debug clean
 
-all:	mylib	$(BINARY)
+all:	mylib	$(PROJECT)
 
-disassemble: $(BINARY)
-	@objdump --no-show-raw-insn -d -Mintel $(BINARY) | source-highlight -s asm -f esc256 | less -eRiMX
+disassemble: $(PROJECT)
+	@objdump --no-show-raw-insn -d -Mintel $(PROJECT) | source-highlight -s asm -f esc256 | less -eRiMX
 
 debug ?= 0
 ifeq ($(debug), 1)
@@ -94,15 +93,15 @@ mylib:
 	@make -C lib/ --no-print-directory
 	@echo -e "\nBUILDING PROJECT"
 
-$(BINARY):	$(OBJ)
-	@$(CC) -o $(BINARY) $(OBJ) $(LDFLAGS)
+$(PROJECT):	$(OBJ)
+	@$(CC) -o $(PROJECT) $(OBJ) $(LDFLAGS)
 	@-echo -e " LINKED      $@"
 
 clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(BINARY) vgcore.*
+	@$(RM) $(PROJECT) vgcore.*
 
 $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
@@ -111,7 +110,7 @@ $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 
 run:
 	@make --no-print-directory debug=1
-	@./$(BINARY) --target=riscv64 #sample/sample.bin
+	@./$(PROJECT) --target=riscv64 sample/sample.bin
 
-install:
+toolchain:
 	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)

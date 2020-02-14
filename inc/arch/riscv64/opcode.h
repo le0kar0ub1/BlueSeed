@@ -4,21 +4,18 @@
 #include "builtin.h"
 #include "math.h"
 
-static inline uint opcode_checkPrefix(uint64 op, uint64 prefix)
-{
+#define END_SCD_OPCODE -1
 
-}
-
-struct opcodeMiddleChecker
+struct opcodeHandler 
 {
-    
+    int opscd[50];
+    void (*handler[50])(uint);
 };
 
-
-struct opcodePrefixChecker
+struct opcodePrefix
 {
-    uint8 prefix[10];
-    struct opcodeMiddleChecker *check[10];
+    uint8 const prefix[50];
+    struct opcodeHandler op[50];
 };
 
 #define BEQ_MASK                    "0b?????????????????000?????1100011"

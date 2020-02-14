@@ -15,8 +15,8 @@ fi
 export SCRIPT="$SOURCE/mktoolchain"
 
 if [ -z "$TARGET" ]; then
-	printf "[\e[34;1mINFO\e[0m] TARGET unset, no default\n"
-	exit
+	TARGET=$(lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+	printf "[\e[34;1mINFO\e[0m] TARGET unset, default %s\n" $TARGET
 else
 	printf "[\e[34;1mINFO\e[0m] TARGET set to %s\n" $TARGET
 fi
@@ -34,7 +34,6 @@ cleanup() {
 	if [ $? != 0 ]; then
 		rm -rf $PREFIX
 	fi
-
 	rm -rf $WORKSPACE
 }
 
