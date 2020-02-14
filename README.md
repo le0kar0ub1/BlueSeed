@@ -40,7 +40,13 @@ _BlueSeed has been built with a toolchain builder_
   - [ ] RV64F Standard Extension
   - [ ] RV32D Standard Extension
   - [ ] RV64D Standard Extension
-- [ ] target arch allowed
+- [ ] emulation
+  - [ ] elf loader
+  - [ ] virtual processor
+  - [ ] program exec
+  - [ ] syscall host interface
+  - [ ] threading (unlikely)
+- [ ] target arch
   - [ ] riscv32
   - [ ] riscv64
   - [ ] riscv128 
