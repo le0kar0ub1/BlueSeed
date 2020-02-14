@@ -5,6 +5,5 @@
 
 void entry_riscv32(char const *);
 void entry_riscv64(char const *);
-void entry_riscv128(char const *);
 
 #endif

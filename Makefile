@@ -5,14 +5,15 @@ CC		:=	gcc
 
 NASM	:=	nasm
 
-PROJECT	:=	BlueSeed
-BINARY	:=	BlueSeed_$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)-0.1.0.bin
+PROJECT			:=	BlueSeed
+ARCH_HOST		:=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+VERSION			:=	0.1.0
+BIN_EXTENSION	:=	bin
+BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION).$(BIN_EXTENSION)
 
 BUILDIR	:=	build
 
-LDFLAGS	:=
-
-TARGET_ARCH	:= riscv32 riscv64 riscv128
+TARGET_ARCH	:= riscv32 riscv64
 TARGET_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 EXTENSION_SRC	:=	.c
@@ -44,6 +45,11 @@ SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 							arch								\
 							$(addprefix arch/,	$(TARGET_ARCH))	\
 				)
+
+LDFLAGS	:=	--entry=main	\
+			--trace			\
+			--cref			\
+			--print-map
 
 CFLAGS		:=	$(INCLUDE_DIR)						\
 				-Wall								\
@@ -85,15 +91,15 @@ OBJ 	:= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_O
 
 .PHONY: all fclean debug clean
 
-all:	$(PROJECT)
+all:	$(BINARY)
 
 buildheader:
 	@echo -e "\n *"
 	@echo -e "*  Building $(BINARY)"
 	@echo -e " *\n"
 
-disassemble: $(PROJECT)
-	@objdump --no-show-raw-insn -d -Mintel $(PROJECT) | source-highlight -s asm -f esc256 | less -eRiMX
+disassemble: $(BINARY)
+	@objdump --no-show-raw-insn -d -Mintel $(BINARY) | source-highlight -s asm -f esc256 | less -eRiMX
 
 debug ?= 0
 ifeq ($(debug), 1)
@@ -102,15 +108,15 @@ endif
 
 re:	fclean all
 
-$(PROJECT):	buildheader $(OBJ)
-	@$(CC) -o $(PROJECT) $(OBJ) $(LDFLAGS)
+$(BINARY):	buildheader $(OBJ)
+	@$(CC) -o $(BINARY) $(OBJ) $(LDFLAGS)
 	@-echo -e " LINKED      $@"
 
 clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(PROJECT) vgcore.*
+	@$(RM) $(BINARY) vgcore.*
 
 $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
@@ -119,7 +125,7 @@ $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 
 run:
 	@make --no-print-directory debug=1
-	@./$(PROJECT) --target=riscv64 sample/sample.bin
+	@./$(BINARY) --target=riscv64 sample/sample.bin
 
 toolchain:
 	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)
