@@ -12,7 +12,7 @@ void help(void)
 int main(int ac, char **av)
 {
     if (ac < 1)
-        RAISE(ERR_INP_MSG, ERR_INP_NUM);
+        RAISE(ERR_INP_NUM);
     if (!strcmp(av[1], "-h") || !strcmp(av[1], "--help"))
         help();
     struct opt *opt = mgetopt(av);

@@ -10,7 +10,7 @@ int opt_target_arch(char *arch)
         return (TARGET_ARCH_RISCV64_IDX);
     else if (!strcmp(arch, TARGET_ARCH_RISCV128))
         return (TARGET_ARCH_RISCV128_IDX);
-    RAISE(ERR_ARCH_MSG, ERR_ARCH_NUM);
+    RAISE(ERR_ARCH_NUM);
     return (TARGET_ARCH_DEFAULT_IDX);
 }
 
@@ -25,7 +25,7 @@ struct opt *mgetopt(char **av)
         else if (!op->exec && open(av[inc], O_RDONLY) != -1)
             op->exec = av[inc];
         else
-            RAISE(ERR_BADARG_MSG, ERR_BADARG_NUM);
+            RAISE(ERR_BADARG_NUM);
     }
     if (!op->arch)
         op->arch = TARGET_ARCH_DEFAULT_IDX;

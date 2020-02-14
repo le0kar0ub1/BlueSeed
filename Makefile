@@ -58,6 +58,7 @@ CFLAGS		:=	$(INCLUDE_DIR)						\
 				-Wmissing-prototypes				\
 				-Wstrict-prototypes					\
 				-Wpointer-arith						\
+				-lm									\
 				# -Werror
 
 CFLAGS		+=	'-D PROJECT_NAME="$(BINARY)"'			\

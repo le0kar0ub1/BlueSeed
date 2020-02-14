@@ -11,6 +11,8 @@
 #include "stdbool.h"
 #include "lib.h"
 #include "fatalAssert.h"
+#include "typedef.h"
+#include "math.h"
 
 #define decto(x) while (x --> 0)
 #define incto(x, y) while (x ++< y)
@@ -20,6 +22,20 @@
 #define arrsize(x) (sizeof(x) / sizeof(*x))
 
 #define asmv __asm__ volatile /* fire asm instruction */
+
+/* ALIGN ON A POWER OF 2 */
+#define ROUND_POWERUP(x) (pow(2, (int)log2(x)) * 2)
+static inline bool isTwoPower(uint64 x)
+{
+    return ((x & (x - 1)) == 0);
+}
+
+static inline uint64 ROUND_POWER2(uint64 to)
+{
+    if (isTwoPower(to))
+        return (to);
+    return (ROUND_POWERUP(to));
+}
 
 static inline bool is_num(char c)
 {
