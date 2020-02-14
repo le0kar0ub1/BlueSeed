@@ -3,17 +3,17 @@
 
 #include "builtin.h"
 
-struct opcode_Rtype
+struct rv32i_opcode_Rtype
 {
     uint opcode : 7;
     uint rd     : 5;
     uint funct3 : 3;
     uint rs1    : 5;
     uint rs2    : 5;
-    uint funct7 : 7
+    uint funct7 : 7;
 } __packed;
 
-struct opcode_Itype
+struct rv32i_opcode_Itype
 {
     uint opcode : 7;
     uint rd     : 5;
@@ -22,7 +22,7 @@ struct opcode_Itype
     uint imm    : 12; // 0 : 11
 } __packed;
 
-struct opcode_Stype
+struct rv32i_opcode_Stype
 {
     uint opcode : 7;
     uint imm1   : 5; // 0 : 4
@@ -32,7 +32,7 @@ struct opcode_Stype
     uint imm2   : 7; // 11 : 5
 } __packed;
 
-struct opcode_SBtype
+struct rv32i_opcode_SBtype
 {
     uint opcode : 7;
     uint imm1   : 5; // 4 : 1 | 11
@@ -42,14 +42,14 @@ struct opcode_SBtype
     uint imm2   : 7; // 12 | 10 : 5
 } __packed;
 
-struct opcode_Utype
+struct rv32i_opcode_Utype
 {
     uint opcode : 7;
     uint rd     : 5;
     uint imm    : 19; // 31 : 12
 } __packed;
 
-struct opcode_UJtype
+struct rv32i_opcode_UJtype
 {
     uint opcode : 7;
     uint rd     : 5;
