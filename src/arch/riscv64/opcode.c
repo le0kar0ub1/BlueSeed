@@ -33,7 +33,7 @@ static struct opcodePrefix prefix =
 
                 0b0101111, /* LOAD/STORE W/D */
 
-                0b1110011,
+                0b1110011, /* JMP & like */
                },
     .op     = {
             {
@@ -91,6 +91,34 @@ static struct opcodePrefix prefix =
             {
                 .opscd   = {0b010,     0b010,     0b011,     0b011,     END_SCD_OPCODE},
                 .handler = {instr_lrw, instr_scw, instr_lrd, instr_scd, NULL}
-            }
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE},
+                .handler = {instr_ecall,    NULL}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE}, 
+                .handler = {instr_ebreak,   END_SCD_OPCODE}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE},
+                .handler = {instr_uret,     NULL}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE},
+                .handler = {instr_mret,     NULL}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE},
+                .handler = {instr_dret,     NULL}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE,   END_SCD_OPCODE},
+                .handler = {instr_sfence_vma, NULL}
+            },
+            {
+                .opscd   = {END_SCD_OPCODE, END_SCD_OPCODE},
+                .handler = {instr_wfi,     NULL}
+            },
     }
 };
