@@ -33,11 +33,13 @@ export INCLUDE_DIR =	$(addprefix -I$(realpath $(ROOT_INC_DIR))/,				\
 									control										\
 									assembly									\
 									opt											\
+									loader										\
 						)
 
 INCLUDE_DIR	+= $(addprefix -I$(ROOT_ARC_DIR)/,		\
 						.							\
 						$(ALLOWED_ARCH)				\
+						$(ARCH_SHARED)				\
 						$(addprefix isa/,			\
 									$(HANDLE_IS)	\
 						)							\
@@ -47,6 +49,8 @@ SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 				$(addprefix $(ROOT_SRC_DIR)/,					\
 							opt									\
 							arch								\
+							control								\
+							loader								\
 				)
 
 LDFLAGS	:=	--trace
@@ -86,9 +90,9 @@ CFLAGSDEBUG	:= -D DEBUG -g3
 RM			:=	rm -rf
 
 
-ROOT_SOURCE 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR)))
+ROOT_SOURCE 	=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR)))
 
-ROOT_OBJECT 	:= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(ROOT_SOURCE))
+ROOT_OBJECT 	= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(ROOT_SOURCE))
 
 .SECONDEXPANSION:
 TARGET_BUILT_OBJECT	= 	$(wildcard $(addprefix $(BUILDIR)/$(ROOT_ARC_DIR)/$(TARGET)/,		\
@@ -129,15 +133,15 @@ endif
 
 re:	fclean all
 
-$(BINARY):	$(.SECONDEXPANSION) $(ROOT_OBJECT)
-	@$(CC) -o $(BINARY) $(ROOT_OBJECT) $(TARGET_BUILT_OBJECT) $(LDFLAGS)
-	@-echo -e " LINKED      $@"
-
 clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
 	@$(RM) $(BINARY) vgcore.*
+
+$(BINARY):	$(.SECONDEXPANSION) $(ROOT_OBJECT)
+	@$(CC) -o $(BINARY) $(ROOT_OBJECT) $(TARGET_BUILT_OBJECT) $(LDFLAGS)
+	@-echo -e " LINKED      $@"
 
 $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
@@ -145,7 +149,12 @@ $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 	@-echo -e "     CC      $(shell echo $@ | cut -f $(shell echo "$(shell echo $(REALPATH_PROJECT) | tr -cd '/' | wc -c)" + 2 | bc)- -d /)"
 
 run:
-	@./$(BINARY) sample/sample.bin
+ifeq ($(EXEC),)
+	@echo "You must specify a binary to exec"
+	@exit 1
+else
+	@./$(BINARY) $(EXEC)
+endif
 
 toolchain:
 	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)

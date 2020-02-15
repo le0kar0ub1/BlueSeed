@@ -12,16 +12,16 @@
 
 _BlueSeed have a toolchain builder_
 
-`make toolchain`
+`make toolchain TARGET=$HOST_ARCH`| `./mktoolchain/mktoolchain $HOST_ARCH`
 
 ## BUILD
 
-`make`
+`make`TARGET=$TARGET_ARCH
 
 
 ## RUN
 
-`make run`
+`make run EXEC=$BINARY`| `./BlueSeed $BINARY`
 
 
 ## ROADMAP
@@ -43,19 +43,18 @@ _BlueSeed have a toolchain builder_
 - [ ] target arch
   - [ ] riscv32
   - [ ] riscv64
-  - [ ] riscv128 
 - [ ] emulation
   - [ ] elf loader
   - [ ] virtual processor
   - [ ] program exec
   - [ ] syscall host interface
   - [ ] threading (unlikely)
+
+_Will be implemented ?_
 - [ ] runtime command
   - [ ] break
   - [ ] dump
 - [ ] memory scheluder
-
-_Will be implemented ?_
 - [ ] component interaction/emulation
 - [ ] self interface
   - [ ] syscall

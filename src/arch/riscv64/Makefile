@@ -4,6 +4,7 @@
 
 SOURCE_DIR_RISCV64		:=	core 	\
 							.
+
 PREFIX_BUILD_RISCV64	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
 
 SRC_RISCV64 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR_RISCV64)))
