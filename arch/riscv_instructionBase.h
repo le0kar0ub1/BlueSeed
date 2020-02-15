@@ -3,6 +3,8 @@
 
 #include "builtin.h"
 
+#define OPCODE_TYPE_MAX 0x7
+
 struct opcode_Rtype
 {
     uint opcode : 7;
@@ -32,7 +34,7 @@ struct opcode_Stype
     uint imm2   : 7; // 11 : 5
 } __packed;
 
-struct opcode_SBtype
+struct opcode_Btype
 {
     uint opcode : 7;
     uint imm1   : 5; // 4 : 1 | 11
@@ -49,7 +51,7 @@ struct opcode_Utype
     uint imm    : 19; // 31 : 12
 } __packed;
 
-struct opcode_UJtype
+struct opcode_Jtype
 {
     uint opcode : 7;
     uint rd     : 5;

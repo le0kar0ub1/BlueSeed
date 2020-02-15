@@ -16,7 +16,7 @@ export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION).$(BIN_EXTENSION)
 export BUILDIR	:=	$(realpath .)/build
 
 export ALLOWED_ARCH	:= riscv32 riscv64
-export TARGET_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
+export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 export EXTENSION_SRC	:=	.c
 export EXTENSION_OBJ	:=	.o
@@ -39,7 +39,7 @@ INCLUDE_DIR	+= $(addprefix -I$(ROOT_ARC_DIR)/,		\
 						.							\
 						$(ALLOWED_ARCH)				\
 						$(addprefix isa/,			\
-									$(TARGET_IS)	\
+									$(HANDLE_IS)	\
 						)							\
 				)
 
@@ -79,7 +79,7 @@ export  CFLAGS	=	$(INCLUDE_DIR)					\
 
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D SUPPORTED_ARCH="$(ALLOWED_ARCH)"'	\
-				'-D INSTRUCTION_SET="$(TARGET_IS)"'
+				'-D INSTRUCTION_SET="$(HANDLE_IS)"'
 
 CFLAGSDEBUG	:= -D DEBUG -g3
 

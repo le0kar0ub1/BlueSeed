@@ -4,24 +4,24 @@
 
 ## DEPENDENCIES
 
-- *gcc*  for x86_64-elf target (dev under 9.2.1)
-- *nasm*                       (dev under 2.14.02)
-- *make*                       (dev under 4.3)
+- `gcc`  for x86_64-elf target (dev under 9.2.1)
+- `nasm`                       (dev under 2.14.02)
+- `make`                       (dev under 4.3)
 
 ## INSTALL
 
-_BlueSeed has been built with a toolchain builder_
+_BlueSeed have a toolchain builder_
 
-*make toolchain*
+`make toolchain`
 
 ## BUILD
 
-*make*
+`make`
 
 
 ## RUN
 
-*make run*
+`make run`
 
 
 ## ROADMAP
@@ -40,16 +40,16 @@ _BlueSeed has been built with a toolchain builder_
   - [ ] RV64F Standard Extension
   - [ ] RV32D Standard Extension
   - [ ] RV64D Standard Extension
+- [ ] target arch
+  - [ ] riscv32
+  - [ ] riscv64
+  - [ ] riscv128 
 - [ ] emulation
   - [ ] elf loader
   - [ ] virtual processor
   - [ ] program exec
   - [ ] syscall host interface
   - [ ] threading (unlikely)
-- [ ] target arch
-  - [ ] riscv32
-  - [ ] riscv64
-  - [ ] riscv128 
 - [ ] runtime command
   - [ ] break
   - [ ] dump
