@@ -1,6 +1,7 @@
 #include "builtin.h"
+#include "archEntry.h"
 
-void entry_riscv64(char const *exec)
+void arch_entry_point(char const *exec)
 {
-
+    printf("%s\n", exec);
 }

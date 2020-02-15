@@ -17,13 +17,13 @@
 #include <unistd.h>
 
 /* PERSONNAL HEADERS */
-#include "macro.h"
-#include "typedef.h"
-#include "keyword.h"
-#include "bitfield.h"
-#include "fatalAssert.h"
-#include "config.h"
-#include "error.h"
+#include "def/macro.h"
+#include "def/typedef.h"
+#include "def/keyword.h"
+#include "def/bitfield.h"
+#include "def/fatalAssert.h"
+#include "control/config.h"
+#include "control/error.h"
 #include "prototypes.h"
 
 #endif

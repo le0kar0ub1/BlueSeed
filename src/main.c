@@ -1,4 +1,5 @@
 #include "builtin.h"
+#include "archEntry.h"
 
 void help(void)
 {
@@ -11,11 +12,11 @@ void help(void)
 
 int main(int ac, char **av)
 {
-    if (ac < 1)
+    if (ac < 2)
         RAISE(ERR_INP_NUM);
     if (!strcmp(av[1], "-h") || !strcmp(av[1], "--help"))
         help();
     struct opt *opt = mgetopt(av);
-    arch_entry_point(opt);
+    arch_entry_point(opt->exec);
     return (0);
 }

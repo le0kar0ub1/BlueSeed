@@ -1,6 +1,6 @@
 #include "builtin.h"
 
-void entry_riscv32(char const *exec)
+void arch_entry_point(char const *exec)
 {
 
 }
