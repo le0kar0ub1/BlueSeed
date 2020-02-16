@@ -1,5 +1,6 @@
 #include "builtin.h"
 #include "hookpoint.h"
+#include "loader/elf/loader.h"
 
 void help(void)
 {
@@ -17,6 +18,7 @@ int main(int ac, char **av)
     if (!strcmp(av[1], "-h") || !strcmp(av[1], "--help"))
         help();
     struct opt *opt = mgetopt(av);
+    elf_loader(opt->exec);
     /* JUMP ON THE ENTRY POINT OF THE TARGETED ARCH */
     arch_hookpoint(opt->exec);
     return (0);

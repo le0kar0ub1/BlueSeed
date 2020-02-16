@@ -48,13 +48,13 @@ INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\
 SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 				$(addprefix $(ROOT_SRC_DIR)/,					\
 							opt									\
-							arch								\
 							control								\
 							loader								\
 				)
 
 LDFLAGS	:=	--trace
 
+# Cleaner as possible
 export  CFLAGS	=	$(INCLUDE_DIR)					\
 					-Wall								\
 					-Wextra				 				\
@@ -81,16 +81,26 @@ export  CFLAGS	=	$(INCLUDE_DIR)					\
 					-lm									\
 					# -Werror
 
+# Compile-time Macro
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D SUPPORTED_ARCH="$(ALLOWED_ARCH)"'	\
-				'-D INSTRUCTION_SET="$(HANDLE_IS)"'
+				'-D INSTRUCTION_SET="$(HANDLE_IS)"'		\
+				'-D TARGETED_ARCH="$(TARGET)"'
+
+# System target adressing size
+ifeq ($(TARGET), riscv64)
+	CFLAGS +=	-D SYSTEMSZ=64
+else
+	CFLAGS +=	-D SYSTEMSZ=32
+endif
 
 CFLAGSDEBUG	:= -D DEBUG -g3
 
 RM			:=	rm -rf
 
 
-ROOT_SOURCE 	=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR)))
+ROOT_SOURCE 	=	$(wildcard $(ROOT_SRC_DIR)/*$(EXTENSION_SRC)					\
+								$(addsuffix /**/*$(EXTENSION_SRC), $(SOURCE_DIR)))
 
 ROOT_OBJECT 	= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(ROOT_SOURCE))
 
@@ -114,14 +124,14 @@ subBuild:
 	@make -C $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR) --no-print-directory
 
 projectHeader:
-	@echo "$(INCLUDE_DIR)"
+	@echo "$(ROOT_SOURCE)"
 	@exit 0
 ifeq ($(TARGET),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mNo TARGET architecture given, processus stopped\e[0m\n"
 	@exit 1
 else
 	@echo -e "\n *"
-	@echo -e "*  Building $(BINARY) $(TARGET) target"
+	@echo -e "*  Building $(BINARY)"
 	@echo -e " *\n"
 endif
 

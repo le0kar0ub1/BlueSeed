@@ -5,7 +5,9 @@ char const *ERROR[100] =
     "Invalid Input",
     "Invalid target architecture",
     "Invalid argument",
-    "Invalid opcode"
+    "Invalid opcode",
+    "Invalid ELF header",
+    "Exec Format Error"
 };
 
 void RAISE(int errorcode)
