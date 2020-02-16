@@ -1,3 +1,8 @@
+ #
+# Root Makefile who set project var & call sub-build
+ #
+
+# Toolchain Builder
 ROOT_TOOLCHAIN	:= 	mktoolchain
 MKTOOLCHAIN		:=	mktoolchain
 
@@ -45,14 +50,7 @@ INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\
 						)										\
 				)
 
-SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
-				$(addprefix $(ROOT_SRC_DIR)/,					\
-							opt									\
-							control								\
-							loader								\
-				)
-
-LDFLAGS	:=	--trace
+export	LDFLAGS	=	--trace
 
 # Cleaner as possible
 export  CFLAGS	=	$(INCLUDE_DIR)					\
@@ -94,54 +92,29 @@ else
 	CFLAGS +=	-D SYSTEMSZ=32
 endif
 
-CFLAGSDEBUG	:= -D DEBUG -g3
-
-RM			:=	rm -rf
-
-
-ROOT_SOURCE 	=	$(wildcard $(ROOT_SRC_DIR)/*$(EXTENSION_SRC)					\
-								$(addsuffix /**/*$(EXTENSION_SRC), $(SOURCE_DIR)))
-
-ROOT_OBJECT 	= 	$(patsubst $(ROOT_SRC_DIR)/%$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(ROOT_SOURCE))
-
-.SECONDEXPANSION:
-TARGET_BUILT_OBJECT	= 	$(wildcard $(addprefix $(BUILDIR)/$(ROOT_ARC_DIR)/$(TARGET)/,		\
-											*$(EXTENSION_OBJ)								\
-											**/*$(EXTENSION_OBJ)							\
-									)														\
-						)																	\
-						$(wildcard $(addprefix $(BUILDIR)/$(ROOT_ARC_DIR)/$(ARCH_SHARED)/,	\
-											*$(EXTENSION_OBJ)								\
-											**/*$(EXTENSION_OBJ)							\
-									)														\
-						)	
-
-.PHONY: all fclean debug clean
-
-all:	projectHeader	$(ROOT_OBJECT)	subBuild	$(BINARY)
-
-subBuild:
-	@make -C $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR) --no-print-directory
-
-projectHeader:
-	@echo "$(ROOT_SOURCE)"
-	@exit 0
-ifeq ($(TARGET),)
-	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mNo TARGET architecture given, processus stopped\e[0m\n"
-	@exit 1
-else
-	@echo -e "\n *"
-	@echo -e "*  Building $(BINARY)"
-	@echo -e " *\n"
-endif
-
-disassemble: $(BINARY)
-	@objdump --no-show-raw-insn -d -Mintel $(BINARY) | source-highlight -s asm -f esc256 | less -eRiMX
+export 	CFLAGSDEBUG	= 	-D DEBUG \
+						-g3
 
 debug ?= 0
 ifeq ($(debug), 1)
     CFLAGS += $(CFLAGSDEBUG)
 endif
+
+export	RM	=	rm -rf
+
+.SECONDEXPANSION:
+# Barbarian method
+TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
+
+.PHONY: all fclean debug clean
+
+all:	build	$(BINARY)
+
+build:
+	@make -C $(ROOT_SRC_DIR) --no-print-directory
+
+disassemble: $(BINARY)
+	@objdump --no-show-raw-insn -d -Mintel $(BINARY) | source-highlight -s asm -f esc256 | less -eRiMX
 
 re:	fclean all
 
@@ -151,14 +124,9 @@ clean:
 fclean:	clean
 	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* vgcore.*
 
-$(BINARY):	$(.SECONDEXPANSION) $(ROOT_OBJECT)
-	@$(CC) -o $(BINARY) $(ROOT_OBJECT) $(TARGET_BUILT_OBJECT) $(LDFLAGS)
+$(BINARY):	$(.SECONDEXPANSION)
+	@$(CC) -o $(BINARY) $(TARGET_BUILT_OBJECT) $(LDFLAGS)
 	@-echo -e " LINKED      $@"
-
-$(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
-	@mkdir -p $(shell dirname $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@-echo -e "     CC      $(shell echo $@ | cut -f $(shell echo "$(shell echo $(REALPATH_PROJECT) | tr -cd '/' | wc -c)" + 2 | bc)- -d /)"
 
 run:
 ifeq ($(EXEC),)

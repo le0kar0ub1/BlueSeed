@@ -2,18 +2,18 @@
 # Makefile Compiling object which are arch independant & calling the targeted ARCH
  #
 
-SOURCE_DIR_SHARED	:=	$(ARCH_SHARED)							\
+SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)							\
 						$(ARCH_SHARED)/riscvhandler				\
 
-PREFIX_BUILD_SHARED	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
+SHARED_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
 
-SRC_SHARED 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR_SHARED)))
+SHARED_SOURCE 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SHARED_SOURCE_DIR)))
 
-OBJ_SHARED 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(PREFIX_BUILD_SHARED)/%$(EXTENSION_OBJ), $(SRC_SHARED))
+SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUILD)/%$(EXTENSION_OBJ), $(SHARED_SOURCE))
 
 .PHONY: all
 
-all:	$(OBJ_SHARED)	target_building
+all:	$(SHARED_OBJECT)	target_building
 
 target_building:
 ifneq ($(filter $(TARGET),$(ALLOWED_ARCH)),)
@@ -24,7 +24,7 @@ else
 	@exit 1
 endif
 
-$(BUILDIR)/$(PREFIX_BUILD_SHARED)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
+$(BUILDIR)/$(SHARED_PREFIX_BUILD)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@-echo -e "     CC      $(shell echo $@ | cut -f $(shell echo "$(shell echo $(REALPATH_PROJECT) | tr -cd '/' | wc -c)" + 2 | bc)- -d /)"

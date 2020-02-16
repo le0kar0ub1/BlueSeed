@@ -2,20 +2,20 @@
 # Makefile Compiling object for RISCV64 target
  #
 
-SOURCE_DIR_RISCV64		:=	core 	\
+RISCV64_SOURCE_DIR		:=	core 	\
 							.
 
-PREFIX_BUILD_RISCV64	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
+RISCV64_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
 
-SRC_RISCV64 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SOURCE_DIR_RISCV64)))
+RISCV64_SOURCE 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(RISCV64_SOURCE_DIR)))
 
-OBJ_RISCV64 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(PREFIX_BUILD_RISCV64)/%$(EXTENSION_OBJ), $(SRC_RISCV64))
+RISCV64_OBJETC 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(RISCV64_PREFIX_BUILD)/%$(EXTENSION_OBJ), $(RISCV64_SOURCE))
 
 .PHONY: all
 
-all:	$(OBJ_RISCV64)
+all:	$(RISCV64_OBJETC)
 
-$(BUILDIR)/$(PREFIX_BUILD_RISCV64)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
+$(BUILDIR)/$(RISCV64_PREFIX_BUILD)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@-echo -e "     CC      $(shell echo $@ | cut -f $(shell echo "$(shell echo $(REALPATH_PROJECT) | tr -cd '/' | wc -c)" + 2 | bc)- -d /)"
