@@ -12,16 +12,16 @@
 
 _BlueSeed have a toolchain builder_
 
-`make toolchain TARGET=$HOST_ARCH`| `./mktoolchain/mktoolchain $HOST_ARCH`
+`make toolchain TARGET=$HOST_ARCH` | `./mktoolchain/mktoolchain $HOST_ARCH`
 
 ## BUILD
 
-`make`TARGET=$TARGET_ARCH
+`make TARGET=$TARGET_ARCH`
 
 
 ## RUN
 
-`make run EXEC=$BINARY`| `./BlueSeed $BINARY`
+`make run EXEC=$BINARY` | `./BlueSeed $BINARY`
 
 
 ## ROADMAP

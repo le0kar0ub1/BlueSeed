@@ -12,5 +12,4 @@ int main(int, char **);
 /* OPT */
 struct opt *mgetopt(char **);
 
-
 #endif

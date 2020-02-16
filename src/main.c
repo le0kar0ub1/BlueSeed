@@ -1,5 +1,5 @@
 #include "builtin.h"
-#include "arch_entry.h"
+#include "hookpoint.h"
 
 void help(void)
 {
@@ -18,6 +18,6 @@ int main(int ac, char **av)
         help();
     struct opt *opt = mgetopt(av);
     /* JUMP ON THE ENTRY POINT OF THE TARGETED ARCH */
-    arch_entry_point(opt->exec);
+    arch_hookpoint(opt->exec);
     return (0);
 }

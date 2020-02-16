@@ -1,0 +1,11 @@
+#ifndef _RV32A_INSTRUCTION_H_
+#define _RV32A_INSTRUCTION_H_
+
+#define RV32A_OPCODE 0b0101111
+
+#define LR_W_MASK   "00010??00000?????010?????0101111"
+#define LR_W_OPCODE 0b0101111
+#define SC_W_MASK   "00011????????????010?????0101111"
+#define SC_W_OPCODE 0b0101111
+
+#endif

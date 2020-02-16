@@ -11,7 +11,7 @@ export REALPATH_PROJECT	:=	$(realpath .)
 export ARCH_HOST		:=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
-export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION).$(BIN_EXTENSION)
+export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
 
 export BUILDIR	:=	$(realpath .)/build
 
@@ -36,13 +36,13 @@ export INCLUDE_DIR =	$(addprefix -I$(realpath $(ROOT_INC_DIR))/,				\
 									loader										\
 						)
 
-INCLUDE_DIR	+= $(addprefix -I$(ROOT_ARC_DIR)/,		\
-						.							\
-						$(ALLOWED_ARCH)				\
-						$(ARCH_SHARED)				\
-						$(addprefix isa/,			\
-									$(HANDLE_IS)	\
-						)							\
+INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\
+						/										\
+						$(TARGET)								\
+						$(ARCH_SHARED)							\
+						$(addprefix isa/,						\
+									$(HANDLE_IS)				\
+						)										\
 				)
 
 SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
@@ -114,6 +114,8 @@ subBuild:
 	@make -C $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR) --no-print-directory
 
 projectHeader:
+	@echo "$(INCLUDE_DIR)"
+	@exit 0
 ifeq ($(TARGET),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mNo TARGET architecture given, processus stopped\e[0m\n"
 	@exit 1
@@ -137,7 +139,7 @@ clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(BINARY) vgcore.*
+	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* vgcore.*
 
 $(BINARY):	$(.SECONDEXPANSION) $(ROOT_OBJECT)
 	@$(CC) -o $(BINARY) $(ROOT_OBJECT) $(TARGET_BUILT_OBJECT) $(LDFLAGS)
@@ -150,7 +152,7 @@ $(BUILDIR)/%$(EXTENSION_OBJ): $(ROOT_SRC_DIR)/%$(EXTENSION_SRC)
 
 run:
 ifeq ($(EXEC),)
-	@echo "You must specify a binary to exec"
+	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mYou must specify a binary to exec\e[0m\n"
 	@exit 1
 else
 	@./$(BINARY) $(EXEC)

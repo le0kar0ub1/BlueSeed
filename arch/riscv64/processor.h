@@ -4,44 +4,8 @@
 #include "typedef.h"
 #include "keyword.h"
 
-struct riscv64_processor {
-    uintptr x0;  /* UN-USABLE REGISTER (raise exception else)*/
-    uintptr x1;  /* Adress return */
-    uintptr x2;  /* Stack pointer */
-    uintptr x3;  /* Global pointer */
-    uintptr x4;  /* thread pointer */
-    uintptr x5;  /* temporary register - Alternate link register */
-    uintptr x6;  /* temporary register */
-    uintptr x7;  /* temporary register */
-    uintptr x8;  /* frame pointer */
-    uintptr x9;  /* saved register */
-    uintptr x10; /* function arguments */
-    uintptr x11; /* function arguments */
-    uintptr x12; /* function arguments */
-    uintptr x13; /* function arguments */
-    uintptr x14; /* function arguments */
-    uintptr x15; /* function arguments */
-    uintptr x16; /* function arguments */
-    uintptr x17; /* function arguments */
-    uintptr x18; /* saved register */
-    uintptr x19; /* saved register */
-    uintptr x20; /* saved register */
-    uintptr x21; /* saved register */
-    uintptr x22; /* saved register */
-    uintptr x23; /* saved register */
-    uintptr x24; /* saved register */
-    uintptr x25; /* saved register */
-    uintptr x26; /* saved register */
-    uintptr x27; /* saved register */
-    uintptr x28; /* temporary register */
-    uintptr x29; /* temporary register */
-    uintptr x30; /* temporary register */
-    uintptr x31; /* temporary register */
-    uintptr pc;  /* PROGRAM COUNTER */
-} __packed;
-
 struct riscv64_abiprocessor {
-    uintptr zero; /* UN-USABLE REGISTER (raise exception else)*/
+    uintptr zero; /* zero-hardwired */
     uintptr ra;   /* Adress return */
     uintptr sp;   /* Stack pointer */
     uintptr gp;   /* Global pointer */
@@ -120,6 +84,42 @@ struct riscv64_abiprocessor {
 
 
     uintptr pc;   /* PROGRAM COUNTER */
+} __packed;
+
+struct riscv64_processor {
+    uintptr x0;  /* UN-USABLE REGISTER (raise exception else)*/
+    uintptr x1;  /* Adress return */
+    uintptr x2;  /* Stack pointer */
+    uintptr x3;  /* Global pointer */
+    uintptr x4;  /* thread pointer */
+    uintptr x5;  /* temporary register - Alternate link register */
+    uintptr x6;  /* temporary register */
+    uintptr x7;  /* temporary register */
+    uintptr x8;  /* frame pointer */
+    uintptr x9;  /* saved register */
+    uintptr x10; /* function arguments */
+    uintptr x11; /* function arguments */
+    uintptr x12; /* function arguments */
+    uintptr x13; /* function arguments */
+    uintptr x14; /* function arguments */
+    uintptr x15; /* function arguments */
+    uintptr x16; /* function arguments */
+    uintptr x17; /* function arguments */
+    uintptr x18; /* saved register */
+    uintptr x19; /* saved register */
+    uintptr x20; /* saved register */
+    uintptr x21; /* saved register */
+    uintptr x22; /* saved register */
+    uintptr x23; /* saved register */
+    uintptr x24; /* saved register */
+    uintptr x25; /* saved register */
+    uintptr x26; /* saved register */
+    uintptr x27; /* saved register */
+    uintptr x28; /* temporary register */
+    uintptr x29; /* temporary register */
+    uintptr x30; /* temporary register */
+    uintptr x31; /* temporary register */
+    uintptr pc;  /* PROGRAM COUNTER */
 } __packed;
 
 #endif
