@@ -22,6 +22,7 @@
 #include "def/keyword.h"
 #include "def/bitfield.h"
 #include "def/fatalAssert.h"
+#include "def/operator.h"
 #include "control/config.h"
 #include "control/error.h"
 #include "prototypes.h"

@@ -11,11 +11,29 @@ void *load_file(char const *exec)
     if (!S_ISREG(st.st_mode))
         RAISE(ERR_INP_NUM);
     void *mapped = mmap(NULL, st.st_size, PROT_READ, MAP_SHARED, fd, 0);
+    void *cpy = malloc(st.st_size);
+    if (!cpy || !mapped)
+        RAISE(ERR_OUTOFMEM_NUM);
+    cpy = memcpy(cpy, mapped, st.st_size);
     close(fd);
-    return (mapped);
+    return (cpy);
 }
 
-bool file_header_checkup(void *mapped)
+bool file_header_checkup(archElf_Ehdr *ehdr)
 {
+    if (ehdr->e_ident[EI_MAG0] != ELFMAG0 || ehdr->e_ident[EI_MAG1] != ELFMAG1
+|| ehdr->e_ident[EI_MAG2] != ELFMAG2 || ehdr->e_ident[EI_MAG3] != ELFMAG3)
+        return (false);
+    /* ELF32 == 1 & ELF64 == 2 */
+    if (ehdr->e_ident[EI_CLASS] != SYSTEMSZ / 32)
+        return (false);
+    if (ehdr->e_ident[EI_DATA] == ELFDATANONE)
+        return (false);
+    if (ehdr->e_ident[EI_VERSION] != EV_CURRENT)
+        return (false);
+    if (ehdr->e_type != ET_EXEC)
+        return (false);
+    if (ehdr->e_machine != EM_RISCV)
+        return (false);
     return (true);
 }

@@ -53,7 +53,7 @@ INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\
 export	LDFLAGS	=	--trace
 
 # Cleaner as possible
-export  CFLAGS	=	$(INCLUDE_DIR)					\
+export  CFLAGS	=	$(INCLUDE_DIR)						\
 					-Wall								\
 					-Wextra				 				\
 					-Wnested-externs					\
@@ -92,6 +92,7 @@ else
 	CFLAGS +=	-D SYSTEMSZ=32
 endif
 
+# Debug mode
 export 	CFLAGSDEBUG	= 	-D DEBUG \
 						-g3
 
@@ -103,10 +104,10 @@ endif
 export	RM	=	rm -rf
 
 .SECONDEXPANSION:
-# Barbarian method
+# Savage method
 TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
-.PHONY: all fclean debug clean
+.PHONY: all build fclean debug clean
 
 all:	build	$(BINARY)
 
@@ -129,12 +130,16 @@ $(BINARY):	$(.SECONDEXPANSION)
 	@-echo -e " LINKED      $@"
 
 run:
+# Savage method
 ifeq ($(EXEC),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mYou must specify a binary to exec\e[0m\n"
 	@exit 1
 else
-	@./$(BINARY) $(EXEC)
+	@./$(PROJECT)_$(ARCH_HOST)-$(VERSION)* $(EXEC) --verbose
 endif
+
+help:
+	@echo -e "make TARGET=riscvx"
 
 toolchain:
 	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)

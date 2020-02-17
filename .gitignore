@@ -1,5 +1,6 @@
 ### Personnal ###
 tools/
+dev.sh
 sample/
 inc/assembly
 .vscode

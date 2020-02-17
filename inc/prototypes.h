@@ -12,4 +12,6 @@ int main(int, char **);
 /* OPT */
 struct opt *mgetopt(char **);
 
+void verbose_log(char const *, ...);
+
 #endif

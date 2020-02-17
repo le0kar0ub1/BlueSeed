@@ -11,18 +11,13 @@ SHARED_SOURCE 	:=	$(wildcard $(addsuffix /*$(EXTENSION_SRC), $(SHARED_SOURCE_DIR
 
 SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUILD)/%$(EXTENSION_OBJ), $(SHARED_SOURCE))
 
-.PHONY: all
+.PHONY: all	target_building
 
 all:	$(SHARED_OBJECT)	target_building
 
 target_building:
-ifneq ($(filter $(TARGET),$(ALLOWED_ARCH)),)
 	@echo -e "\nBuilding the given target..."
 	@make -C $(TARGET) --no-print-directory
-else
-	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mThe given TARGET isn't allowed ($(ALLOWED_ARCH))\e[0m\n"
-	@exit 1
-endif
 
 $(BUILDIR)/$(SHARED_PREFIX_BUILD)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)

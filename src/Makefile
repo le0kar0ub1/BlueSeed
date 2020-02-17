@@ -7,6 +7,8 @@ ROOT_SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 								opt									\
 								control								\
 								loader								\
+								runtimeTools						\
+								sheduler							\
 					)
 
 ROOT_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
@@ -19,13 +21,16 @@ ROOT_SOURCE 	=	$(wildcard ./*$(EXTENSION_SRC)										\
 ROOT_OBJECT 	= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/%$(EXTENSION_OBJ), $(ROOT_SOURCE))
 
 
-.PHONY: all fclean debug clean
+.PHONY: all	subBuild
 
 all:	projectHeader	$(ROOT_OBJECT)	subBuild
 
 projectHeader:
 ifeq ($(TARGET),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mNo TARGET architecture given, processus stopped\e[0m\n"
+	@exit 1
+else ifeq ($(filter $(TARGET),$(ALLOWED_ARCH)),)
+	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mThe given TARGET isn't allowed ($(ALLOWED_ARCH))\e[0m\n"
 	@exit 1
 else
 	@echo -e "\n *"

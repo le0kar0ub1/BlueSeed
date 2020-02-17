@@ -43,8 +43,14 @@
     typedef Elf32_Dyn         archElf_Dyn;
 #endif
 
-void elf_loader(char const *file);
-void *load_file(char const *exec);
-// bool file_header_checkup(ELF);
+struct elf_loader
+{
+    void *map;
+    uint filesize;
+} __packed;
+
+void elf_loader(char const *);
+void *load_file(char const *);
+bool file_header_checkup(archElf_Ehdr *);
 
 #endif

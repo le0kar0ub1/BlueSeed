@@ -11,6 +11,7 @@ void RAISE(int errorcode);
 #define ERR_OPCODE_NUM       4
 #define ERR_ELF_HEADER_NUM   5
 #define ERR_EXEC_FMT_NUM     6
+#define ERR_OUTOFMEM_NUM     7
 // #define ERR_ _NUM
 // #define ERR_ _NUM
 // #define ERR_ _NUM

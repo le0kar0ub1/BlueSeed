@@ -1,12 +1,12 @@
-# BlueSeed, the RISC-V emulator
+# BlueSeed Project
 
-*_BlueSeed is a cross-plateform (in-build) RISC-V emulator_*
+*_BlueSeed is a `BASIC` multi-plateform RISC-V emulator_*
 
 ## DEPENDENCIES
 
-- `gcc`  for x86_64-elf target (dev under 9.2.1)
-- `nasm`                       (dev under 2.14.02)
-- `make`                       (dev under 4.3)
+- `gcc` (dev under 9.2.1)
+- `nasm` (dev under 2.14.02)
+- `make` (dev under 4.3)
 
 ## INSTALL
 
@@ -26,20 +26,20 @@ _BlueSeed have a toolchain builder_
 
 ## ROADMAP
 
-- [X] toolchain
-  - [X] cross-plateform build
-  - [X] build system independant
+- [ ] toolchain
+  - [ ] cross-plateform build
+  - [ ] build system independant
 - [ ] instruction set
   - [ ] RV32I Base Instruction Set
   - [ ] RV64I Base Instruction Set
-  - [ ] RV32M Standard Extension
-  - [ ] RV64M Standard Extension
-  - [ ] RV32A Standard Extension
-  - [ ] RV64A Standard Extension
-  - [ ] RV32F Standard Extension
-  - [ ] RV64F Standard Extension
-  - [ ] RV32D Standard Extension
-  - [ ] RV64D Standard Extension
+  - [ ] RV32M Standard Extension ?
+  - [ ] RV64M Standard Extension ?
+  - [ ] RV32A Standard Extension ?
+  - [ ] RV64A Standard Extension ?
+  - [ ] RV32F Standard Extension ?
+  - [ ] RV64F Standard Extension ?
+  - [ ] RV32D Standard Extension ?
+  - [ ] RV64D Standard Extension ?
 - [ ] target arch
   - [ ] riscv32
   - [ ] riscv64
@@ -48,18 +48,16 @@ _BlueSeed have a toolchain builder_
   - [ ] virtual processor
   - [ ] program exec
   - [ ] syscall host interface
-  - [ ] threading (unlikely)
 
-_Will be implemented ?_
-- [ ] runtime command
-  - [ ] break
-  - [ ] dump
-- [ ] memory scheluder
-- [ ] component interaction/emulation
-- [ ] self interface
-  - [ ] syscall
-  - [ ] ...
+## SPECIFITY
+
+_The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)_
+
+_Software interrupt are based on [RV8 project](https://rv8.io/syscalls.html)_
+
 
 ## EPILOGUE
 
 _BlueSeed is in developpment_
+
+[RISCV official spec](https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf)
