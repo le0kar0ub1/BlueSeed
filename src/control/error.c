@@ -10,7 +10,8 @@ char const *errorMsg[100] =
     "Invalid opcode",
     "Invalid ELF header",
     "Exec Format Error",
-    "Out of memory"
+    "Out of memory",
+    "Unknow symbol reference"
 };
 
 void RAISE(int errorcode)

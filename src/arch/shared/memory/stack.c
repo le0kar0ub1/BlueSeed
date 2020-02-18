@@ -1,16 +1,9 @@
 #include "shared/memory/stack.h"
 #include "env/env.h"
 
-hostaddr_t stackbase;
-hostaddr_t stackptr;
+extern struct stack *stack;
 
-void stack_init(void)
+hostaddr_t stack_get_stackptr(void)
 {
-    stackbase = vmalloc(STACK_BASE_SIZE);
-    stackptr = stackbase;
-}
-
-void stack_destroy(void)
-{
-    free(stackbase);
+    return (stack->stackptr);
 }

@@ -29,5 +29,7 @@ hostaddr_t virtToHost(virtaddr_t);
 virtaddr_t hostToVirt(hostaddr_t);
 
 void free_environement(struct env *env);
+void exit_environnement(void);
+void init_environnement(void);
 
 #endif

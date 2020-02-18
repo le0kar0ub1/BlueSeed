@@ -25,9 +25,13 @@ int main(int ac, char **av)
     verbose_log("Parsing arguments...\n");
     /* ELF LOADER */
     environnement = elf_loader(opt->exec);
+    /* AFTER-LOADING ENVIRONNEMMENT SETUP */
+    init_environnement();
     /* JUMP ON THE ENTRY POINT OF THE TARGETED ARCH */
     verbose_log("Arch hookpoint entry...\n");
     arch_hookpoint();
+    /* ENVIRONNEMENT CLEANUP */
+    exit_environnement();
     free_environement(environnement);
     return (0);
 }

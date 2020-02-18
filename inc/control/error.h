@@ -10,8 +10,8 @@ void RAISE(int errorcode);
 #define ERR_ELF_HEADER_NUM   5
 #define ERR_EXEC_FMT_NUM     6
 #define ERR_OUTOFMEM_NUM     7
-// #define ERR_ _NUM
-// #define ERR_ _NUM
+
+#define ERR_UNKNOW_SYM_NUM   8
 // #define ERR_ _NUM
 
 #endif

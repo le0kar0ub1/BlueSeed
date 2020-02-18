@@ -6,6 +6,7 @@ SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)						\
 						$(addprefix $(ARCH_SHARED)/,		\
 								riscvhandler				\
 								opcode_dichotomy			\
+								runtime						\
 								memory						\
 						)
 
