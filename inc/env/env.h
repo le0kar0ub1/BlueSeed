@@ -25,7 +25,9 @@ struct env
     struct virtual_env virtual;
 } __packed;
 
-hostaddr_t virtToHost(virtaddr_t, struct env *);
-virtaddr_t hostToVirt(hostaddr_t, struct env *);
+hostaddr_t virtToHost(virtaddr_t);
+virtaddr_t hostToVirt(hostaddr_t);
+
+void free_environement(struct env *env);
 
 #endif

@@ -28,5 +28,6 @@ int main(int ac, char **av)
     /* JUMP ON THE ENTRY POINT OF THE TARGETED ARCH */
     verbose_log("Arch hookpoint entry...\n");
     arch_hookpoint();
+    free_environement(environnement);
     return (0);
 }

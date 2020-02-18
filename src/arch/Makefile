@@ -2,8 +2,12 @@
 # Makefile Compiling object which are arch independant & calling the targeted ARCH
  #
 
-SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)							\
-						$(ARCH_SHARED)/riscvhandler				\
+SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)						\
+						$(addprefix $(ARCH_SHARED)/,		\
+								riscvhandler				\
+								opcode_dichotomy			\
+								memory						\
+						)
 
 SHARED_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
 
@@ -13,7 +17,11 @@ SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUIL
 
 .PHONY: all	target_building
 
-all:	$(SHARED_OBJECT)	target_building
+all:	shared_building		$(SHARED_OBJECT)	target_building
+
+shared_building:
+	@echo -e "\n\nBuilding shared arch object...\n"
+	@echo ""
 
 target_building:
 	@echo -e "\n\nBuilding $(TARGET) specific target...\n"
