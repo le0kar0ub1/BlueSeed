@@ -16,4 +16,6 @@ void RAISE(int errorcode);
 
 #define ERR_SEGFAULT_NUM     10
 
+#define ERR_SYSCALL_NUM      11
+
 #endif

@@ -13,7 +13,8 @@ char const *errorMsg[100] =
     "Out of memory",
     "Unknow symbol reference",
     "Unknow section reference",
-    "Segmentation fault (core dumped)"
+    "Segmentation fault (core dumped)",
+    "Unhandle system call"
 };
 
 void RAISE(int errorcode)
