@@ -1,4 +1,6 @@
 #include "control/error.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 char const *errorMsg[100] = 
 {

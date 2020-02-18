@@ -90,13 +90,6 @@ static inline void pexit(char const *s)
     exit(84);
 }
 
-static inline void *vmalloc(size_t size)
-{
-    void *ptr = malloc(size);
-    fatalAssert(ptr);
-    return (ptr);
-}
-
 static inline void criticalPtr(void *ptr)
 {
     if (!ptr)

@@ -39,6 +39,7 @@ export INCLUDE_DIR =	$(addprefix -I$(realpath $(ROOT_INC_DIR))/,				\
 									assembly									\
 									opt											\
 									loader										\
+									env											\
 						)
 
 INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\

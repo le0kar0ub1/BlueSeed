@@ -1,8 +1,9 @@
 #include "loader/elf/loader.h"
 #include "sys/mman.h"
 
-void *load_file(char const *exec)
+struct env *load_file(char const *exec)
 {
+    struct env *loader = vmalloc(sizeof(struct env));
     struct stat st;
     int fd = open(exec, O_RDONLY);
 
@@ -11,13 +12,23 @@ void *load_file(char const *exec)
     if (!S_ISREG(st.st_mode))
         RAISE(ERR_INP_NUM);
     void *mapped = mmap(NULL, st.st_size, PROT_READ, MAP_SHARED, fd, 0);
-    void *cpy = malloc(st.st_size);
-    if (!cpy || !mapped)
+    loader->host.link = vmalloc(st.st_size);
+    loader->host.loadsize = st.st_size;
+    if (!mapped)
         RAISE(ERR_OUTOFMEM_NUM);
-    cpy = memcpy(cpy, mapped, st.st_size);
+    memcpy(loader->host.link, mapped, st.st_size);
     close(fd);
-    return (cpy);
+    return (loader);
 }
+
+void virtual_loading(struct env *loader)
+{
+    archElf_Ehdr *ehdr = loader->host.link;
+    archElf_Phdr *phdr = ADD_TO_PTR(ehdr, ehdr->e_phoff);
+    loader->virtual.link = (virtaddr_t)phdr->p_paddr;
+    loader->virtual.entry = (virtaddr_t)ehdr->e_entry;
+}
+
 
 bool file_header_checkup(archElf_Ehdr *ehdr)
 {

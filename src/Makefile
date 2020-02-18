@@ -8,7 +8,7 @@ ROOT_SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 								control								\
 								loader								\
 								runtimeTools						\
-								sheduler							\
+								env									\
 					)
 
 ROOT_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)

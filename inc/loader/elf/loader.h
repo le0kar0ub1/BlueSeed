@@ -3,6 +3,7 @@
 
 #include "elf.h"
 #include "builtin.h"
+#include "env/env.h"
 
 /* Compile-time macro */
 #if SYSTEMSZ == 64
@@ -43,14 +44,9 @@
     typedef Elf32_Dyn         archElf_Dyn;
 #endif
 
-struct elf_loader
-{
-    void *map;
-    uint filesize;
-} __packed;
-
 void elf_loader(char const *);
-void *load_file(char const *);
+struct env *load_file(char const *);
 bool file_header_checkup(archElf_Ehdr *);
+void virtual_loading(struct env *);
 
 #endif

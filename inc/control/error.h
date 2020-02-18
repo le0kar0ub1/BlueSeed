@@ -1,8 +1,6 @@
 #ifndef _ERROR_H__
 #define _ERROR_H__
 
-#include "builtin.h"
-
 void RAISE(int errorcode);
 
 #define ERR_INP_NUM          1
