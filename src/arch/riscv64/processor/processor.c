@@ -1,5 +1,5 @@
 #include "builtin.h"
-#include "riscv64/processor/processor.h"
+#include "processor/processor.h"
 #include "shared/memory/stack.h"
 
 extern struct env *environnement;

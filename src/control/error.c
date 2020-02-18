@@ -11,7 +11,8 @@ char const *errorMsg[100] =
     "Invalid ELF header",
     "Exec Format Error",
     "Out of memory",
-    "Unknow symbol reference"
+    "Unknow symbol reference",
+    "Unknow section reference"
 };
 
 void RAISE(int errorcode)

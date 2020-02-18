@@ -12,6 +12,6 @@ void RAISE(int errorcode);
 #define ERR_OUTOFMEM_NUM     7
 
 #define ERR_UNKNOW_SYM_NUM   8
-// #define ERR_ _NUM
+#define ERR_UNKNOW_SEC_NUM   9
 
 #endif

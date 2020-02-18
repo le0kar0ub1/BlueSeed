@@ -2,7 +2,7 @@
 #include "hookpoint.h"
 #include "env/env.h"
 #include "shared/memory/stack.h"
-#include "riscv64/processor/processor.h"
+#include "processor/processor.h"
 #include "shared/runtime/elftool.h"
 
 void init_environnement(void)
