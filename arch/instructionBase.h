@@ -1,9 +1,8 @@
 #ifndef _INSTRUCTION_H_
 #define _INSTRUCTION_H_
 
-#include "builtin.h"
-
-#define OPCODE_TYPE_MAX 0x7
+#include "def/typedef.h"
+#include "def/keyword.h"
 
 struct opcode_Rtype
 {

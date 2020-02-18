@@ -2,12 +2,19 @@
 # Makefile Compiling object which are arch independant & calling the targeted ARCH
  #
 
-SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)						\
-						$(addprefix $(ARCH_SHARED)/,		\
-								riscvhandler				\
-								opcode_dichotomy			\
-								runtime						\
-								memory						\
+SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)									\
+						$(addprefix $(ARCH_SHARED)/,					\
+								riscvhandler							\
+								runtime									\
+								memory									\
+								$(addprefix opcode_dichotomy/,			\
+											i_type						\
+											b_type						\
+											j_type						\
+											r_type						\
+											s_type						\
+											u_type						\
+								)										\
 						)
 
 SHARED_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)

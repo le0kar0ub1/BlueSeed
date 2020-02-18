@@ -10,7 +10,7 @@ uint8 extractCode(void)
 {
     virtaddr_t vpc = (virtaddr_t)processor_get_pc();
     /* If running out of RX data then fault */
-    if (vpc > environnement->virtual.end || vpc < environnement->virtual.entry)
+    if (vpc >= environnement->virtual.end || vpc < environnement->virtual.entry)
         RAISE(ERR_SEGFAULT_NUM);
     uint8 *loc = (uint8 *)virtToHost(vpc);
     processor_set_pc((reg_t)ADD_TO_PTR(vpc, 0x1));
@@ -26,31 +26,31 @@ extractor8_t extractCodeB(void)
 extractor16_t extractCodeW(void)
 {
     extractor16_t extract;
-    extract =  (extractor16_t)extractCode() << 8;
-    extract += (extractor16_t)extractCode() << 0;
+    extract =  (extractor16_t)extractCode() << 0;
+    extract += (extractor16_t)extractCode() << 8;
     return (extract);
 }
 
 extractor32_t extractCodeD(void)
 {
     extractor32_t extract;
-    extract =  (extractor32_t)extractCode() << 24;
-    extract += (extractor32_t)extractCode() << 16;
+    extract =  (extractor32_t)extractCode() << 0;
     extract += (extractor32_t)extractCode() << 8;
-    extract += (extractor32_t)extractCode() << 0;
+    extract += (extractor32_t)extractCode() << 16;
+    extract += (extractor32_t)extractCode() << 24;
     return (extract);
 }
 
 extractor64_t extractCodeQ(void)
 {
     extractor64_t extract;
-    extract  = (extractor64_t)extractCode() << 56;
-    extract += (extractor64_t)extractCode() << 48;
-    extract += (extractor64_t)extractCode() << 40;
-    extract += (extractor64_t)extractCode() << 32;
-    extract += (extractor64_t)extractCode() << 24;
-    extract += (extractor64_t)extractCode() << 16;
+    extract  = (extractor64_t)extractCode() << 0;
     extract += (extractor64_t)extractCode() << 8;
-    extract += (extractor64_t)extractCode() << 0;
+    extract += (extractor64_t)extractCode() << 16;
+    extract += (extractor64_t)extractCode() << 24;
+    extract += (extractor64_t)extractCode() << 32;
+    extract += (extractor64_t)extractCode() << 40;
+    extract += (extractor64_t)extractCode() << 48;
+    extract += (extractor64_t)extractCode() << 56;
     return (extract);
 }
