@@ -14,4 +14,6 @@ void RAISE(int errorcode);
 #define ERR_UNKNOW_SYM_NUM   8
 #define ERR_UNKNOW_SEC_NUM   9
 
+#define ERR_SEGFAULT_NUM     10
+
 #endif

@@ -3,8 +3,8 @@
 
 #include "def/typedef.h"
 #include "keyword.h"
-#include "riscv64/processor/get_register.h"
-#include "riscv64/processor/set_register.h"
+#include "get_register.h"
+#include "set_register.h"
 
 typedef uintptr reg_t;
 

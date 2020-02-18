@@ -6,7 +6,6 @@ extern struct env *environnement;
 
 struct abiprocessor *processor;
 
-
 void processor_init(void)
 {
     processor = (struct abiprocessor *)vmalloc(sizeof(struct abiprocessor));
@@ -14,7 +13,7 @@ void processor_init(void)
     /* INIT stack pointer */
     processor_set_sp((reg_t)stack_get_stackptr());
     /* INIT program counter */
-    processor_set_pc((reg_t)environnement->virtual.link);
+    processor_set_pc((reg_t)environnement->virtual.entry);
 }
 
 void processor_destroy(void)

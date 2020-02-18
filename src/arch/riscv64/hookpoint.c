@@ -3,6 +3,7 @@
 #include "env/env.h"
 #include "shared/memory/stack.h"
 #include "processor/processor.h"
+#include "shared/runtime/extractor.h"
 
 extern struct env *environnement;
 

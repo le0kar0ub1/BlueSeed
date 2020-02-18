@@ -12,7 +12,8 @@ char const *errorMsg[100] =
     "Exec Format Error",
     "Out of memory",
     "Unknow symbol reference",
-    "Unknow section reference"
+    "Unknow section reference",
+    "Segmentation fault (core dumped)"
 };
 
 void RAISE(int errorcode)

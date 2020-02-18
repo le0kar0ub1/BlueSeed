@@ -31,7 +31,7 @@ void virtual_loading(struct env *loader)
     char *shdrtab = (char *)(ADD_TO_PTR(ehdr, shdr[ehdr->e_shstrndx].sh_offset));
     for (uint i = 0; i < ehdr->e_shnum; i++)
         if (!strcmp(".text", (char *)&(shdrtab[shdr[i].sh_name]))) {
-            loader->virtual.end = (virtaddr_t)shdr[i].sh_size;
+            loader->virtual.end = (virtaddr_t)ADD_TO_PTR(loader->virtual.entry, shdr[i].sh_size);
             return;
         }
     RAISE(ERR_EXEC_FMT_NUM);
