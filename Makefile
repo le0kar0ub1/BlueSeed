@@ -9,8 +9,6 @@ MKTOOLCHAIN		:=	mktoolchain
 # TODO: gcc cross-compiler
 export CC		:=	gcc
 
-export NASM		:=	nasm
-
 export PROJECT			:=	BlueSeed
 export REALPATH_PROJECT	:=	$(realpath .)
 export ARCH_HOST		:=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
@@ -25,6 +23,7 @@ export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 export EXTENSION_SRC	:=	.c
 export EXTENSION_OBJ	:=	.o
+export EXTENSION_ASM	:= .S
 
 export ROOT_SRC_DIR	:= src
 export ROOT_INC_DIR	:= inc

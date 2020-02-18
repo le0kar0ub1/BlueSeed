@@ -1,5 +1,6 @@
 #include "builtin.h"
 #include "syscall/syscall.h"
+#include "processor/processor.h"
 
 static struct syscallHandler syscallMapped =
 {
@@ -11,24 +12,37 @@ static struct syscallHandler syscallMapped =
 };
 
 /* HANDLER BY NUMBER OF ARGUMENT */
-void exec_syscall(uint syscall)
+void exec_syscall(uint unused __unused)
 {
+    uint syscall = (uint)processor_get_a7();
     for (uint i = 0; syscallMapped.riscv[i] != -1; i++)
-        if (syscallMapped.riscv[i] == syscall) {
+        if (syscallMapped.riscv[i] == (int)syscall) {
             switch (syscallMapped.args[i]) {
                 case 0:
+                    exec_syscall_arg0(syscallMapped.x86_64[i]);
                     break;
                 case 1:
+                    exec_syscall_arg1(processor_get_a0(), syscallMapped.x86_64[i]);
                     break;
                 case 2:
+                    exec_syscall_arg2(processor_get_a0(), processor_get_a1(), syscallMapped.x86_64[i]);
                     break;
                 case 3:
+                    exec_syscall_arg3(processor_get_a0(), processor_get_a1(), 
+                        processor_get_a2(), syscallMapped.x86_64[i]);
                     break;
                 case 4:
+                    exec_syscall_arg4(processor_get_a0(), processor_get_a1(), 
+                        processor_get_a2(), processor_get_a3(), syscallMapped.x86_64[i]);
                     break;
                 case 5:
+                    exec_syscall_arg5(processor_get_a0(), processor_get_a1(), 
+                        processor_get_a2(), processor_get_a3(), processor_get_a4(), syscallMapped.x86_64[i]);
                     break;
                 case 6:
+                    exec_syscall_arg6(processor_get_a0(), processor_get_a1(), 
+                        processor_get_a2(), processor_get_a3(), processor_get_a4(), 
+                        processor_get_a6(), syscallMapped.x86_64[i]);
                     break;
                 default:
                     RAISE(ERR_SYSCALL_NUM);

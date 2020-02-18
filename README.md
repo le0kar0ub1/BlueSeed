@@ -5,7 +5,6 @@
 ## DEPENDENCIES
 
 - `gcc` (dev under 9.2.1)
-- `nasm` (dev under 2.14.02)
 - `make` (dev under 4.3)
 
 ## INSTALL
@@ -47,7 +46,7 @@ _BlueSeed have a toolchain builder_
   - [ ] elf loader
   - [ ] virtual processor
   - [ ] program exec
-  - [ ] syscall host interface
+  - [ ] syscall host interface (limited)
 
 ## SPECIFITY
 

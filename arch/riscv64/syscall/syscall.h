@@ -2,26 +2,28 @@
 #define _SYSCALL_TABLE_H_
 
 #include "def/typedef.h"
+#include "def/keyword.h"
 
 /*
 ** There is no established norm on riscv software interrupt.
-** By the way we will implemente some accepted syscall.
+** By the way we will implement some accepted syscall.
 */
 
 struct syscallHandler
 {
-    int x86_64[100];
-    int riscv[100];
+    int  x86_64[100];
+    int  riscv[100];
     int8 args[100];
-};
+} __packed;
 
 void exec_syscall(uint);
-void exec_syscall_arg1(void);
-void exec_syscall_arg2(void);
-void exec_syscall_arg3(void);
-void exec_syscall_arg4(void);
-void exec_syscall_arg5(void);
-void exec_syscall_arg6(void);
+void exec_syscall_arg0(uint64);
+void exec_syscall_arg1(uint64, uint64);
+void exec_syscall_arg2(uint64, uint64, uint64);
+void exec_syscall_arg3(uint64, uint64, uint64, uint64);
+void exec_syscall_arg4(uint64, uint64, uint64, uint64, uint64);
+void exec_syscall_arg5(uint64, uint64, uint64, uint64, uint64, uint64);
+void exec_syscall_arg6(uint64, uint64, uint64, uint64, uint64, uint64, uint64);
 
 /* RISCV SYSCALL TABLE (?) | MAPPING | X86_64 */
 // int systemcall[100][3] =

@@ -7,6 +7,7 @@
 #include "opcode.h"
 #include "shared/runtime/dump.h"
 #include "instructionBase.h"
+#include "shared/opcode_dichotomy/handler.h"
 
 void arch_exec(void)
 {
@@ -21,8 +22,8 @@ void arch_exec(void)
     free(instr);
 }
 
-void opcode_handler_Itype(extractor32_t *extracted) { printf("opcode_handler_Itype\n");}
 void opcode_handler_Stype(extractor32_t *extracted) { printf("opcode_handler_Stype\n");}
 void opcode_handler_Rtype(extractor32_t *extracted) { printf("opcode_handler_Rtype\n");}
 void opcode_handler_Utype(extractor32_t *extracted) { printf("opcode_handler_Utype\n");}
 void opcode_handler_Jtype(extractor32_t *extracted) { printf("opcode_handler_Jtype\n");}
+void opcode_handler_R4type(extractor32_t *extracted) { printf("opcode_handler_Jtype\n");}
