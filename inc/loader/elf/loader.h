@@ -44,7 +44,7 @@
     typedef Elf32_Dyn         archElf_Dyn;
 #endif
 
-void elf_loader(char const *);
+struct env *elf_loader(char const *);
 struct env *load_file(char const *);
 bool file_header_checkup(archElf_Ehdr *);
 void virtual_loading(struct env *);

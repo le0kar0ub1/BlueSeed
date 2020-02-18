@@ -16,6 +16,7 @@ struct virtual_env
 {
     virtaddr_t link;
     virtaddr_t entry;
+    virtaddr_t end;
 };
 
 struct env

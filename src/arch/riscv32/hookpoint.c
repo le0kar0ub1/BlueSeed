@@ -1,7 +1,10 @@
 #include "builtin.h"
 #include "hookpoint.h"
+#include "env/env.h"
 
-void arch_hookpoint(char const *exec)
+extern struct env *environnement;
+
+void arch_hookpoint(void)
 {
 
 }

@@ -1,6 +1,7 @@
 #include "builtin.h"
 #include "hookpoint.h"
 #include "loader/elf/loader.h"
+#include "env/env.h"
 
 void help(void)
 {
@@ -11,18 +12,21 @@ void help(void)
     exit(0);
 }
 
+struct env *environnement;
+
 int main(int ac, char **av)
 {
     if (ac < 2)
         RAISE(ERR_INP_NUM);
     if (!strcmp(av[1], "-h") || !strcmp(av[1], "--help"))
         help();
+    /* Get Opt */
     struct opt *opt = mgetopt(av);
     verbose_log("Parsing arguments...\n");
     /* ELF LOADER */
-    elf_loader(opt->exec);
+    environnement = elf_loader(opt->exec);
     /* JUMP ON THE ENTRY POINT OF THE TARGETED ARCH */
     verbose_log("Arch hookpoint entry...\n");
-    arch_hookpoint(opt->exec);
+    arch_hookpoint();
     return (0);
 }

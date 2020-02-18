@@ -16,8 +16,9 @@ SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUIL
 all:	$(SHARED_OBJECT)	target_building
 
 target_building:
-	@echo -e "\nBuilding the given target..."
+	@echo -e "\n\nBuilding $(TARGET) specific target...\n"
 	@make -C $(TARGET) --no-print-directory
+	@echo ""
 
 $(BUILDIR)/$(SHARED_PREFIX_BUILD)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)

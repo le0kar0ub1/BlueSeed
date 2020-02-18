@@ -25,8 +25,16 @@ void virtual_loading(struct env *loader)
 {
     archElf_Ehdr *ehdr = loader->host.link;
     archElf_Phdr *phdr = ADD_TO_PTR(ehdr, ehdr->e_phoff);
-    loader->virtual.link = (virtaddr_t)phdr->p_paddr;
+    archElf_Shdr *shdr = ADD_TO_PTR(ehdr, ehdr->e_shoff);
+    loader->virtual.link  = (virtaddr_t)phdr->p_paddr;
     loader->virtual.entry = (virtaddr_t)ehdr->e_entry;
+    char *shdrtab = (char *)(ADD_TO_PTR(ehdr, shdr[ehdr->e_shstrndx].sh_offset));
+    for (uint i = 0; i < ehdr->e_shnum; i++)
+        if (!strcmp(".text", (char *)&(shdrtab[shdr[i].sh_name]))) {
+            loader->virtual.end = (virtaddr_t)shdr[i].sh_size;
+            return;
+        }
+    RAISE(ERR_EXEC_FMT_NUM);
 }
 
 
