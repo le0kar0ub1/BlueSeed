@@ -4,7 +4,7 @@
 #include "typedef.h"
 #include "keyword.h"
 
-struct riscv64_abiprocessor {
+struct abiprocessor {
     uintptr zero; /* zero-hardwired */
     uintptr ra;   /* Adress return */
     uintptr sp;   /* Stack pointer */
@@ -86,8 +86,12 @@ struct riscv64_abiprocessor {
     uintptr pc;   /* PROGRAM COUNTER */
 } __packed;
 
+void processor_init(void);
+void processor_destroy(void);
+void processor_set_stackptr(uintptr ptr);
+
 struct riscv64_processor {
-    uintptr x0;  /* UN-USABLE REGISTER (raise exception else)*/
+    uintptr x0;  /* UN-USABLE REGISTER (raise exception else) */
     uintptr x1;  /* Adress return */
     uintptr x2;  /* Stack pointer */
     uintptr x3;  /* Global pointer */

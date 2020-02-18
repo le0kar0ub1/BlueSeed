@@ -1,4 +1,4 @@
-#include "riscv64/memory/stack.h"
+#include "shared/memory/stack.h"
 #include "env/env.h"
 
 hostaddr_t stackbase;

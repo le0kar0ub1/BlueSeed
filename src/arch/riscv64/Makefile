@@ -5,6 +5,7 @@
 RISCV64_SOURCE_DIR		:=	core 		\
 							isa			\
 							memory		\
+							processor	\
 							.
 
 RISCV64_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)
