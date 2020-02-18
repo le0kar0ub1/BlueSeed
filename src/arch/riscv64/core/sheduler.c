@@ -4,20 +4,11 @@
 #include "shared/memory/stack.h"
 #include "processor/processor.h"
 #include "shared/runtime/extractor.h"
+#include "opcode.h"
+#include "shared/runtime/dump.h"
 
-extern struct env *environnement;
-
-void arch_init(void)
+void arch_exec(void)
 {
-}
-
-void arch_exit(void)
-{
-}
-
-void arch_hookpoint(void)
-{
-    arch_init();
-    arch_exec();
-    arch_exit();
+    // while(1);
+    dumpInstrD(extractCodeD());
 }

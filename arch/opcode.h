@@ -3,10 +3,12 @@
 
 #include "builtin.h"
 
-struct opcodeHandler 
-{
-    int prefix[OPCODE_TYPE_MAX][50];
-    void (*handler[OPCODE_TYPE_MAX])(uint);
-};
+#define RISCV_INSTRUCTION_SIZE 0x4
+
+// struct opcodeHandler 
+// {
+//     int prefix[OPCODE_TYPE_MAX][50];
+//     void (*handler[OPCODE_TYPE_MAX])(uint);
+// };
 
 #endif

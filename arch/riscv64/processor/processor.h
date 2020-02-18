@@ -3,10 +3,12 @@
 
 #include "def/typedef.h"
 #include "keyword.h"
+
+typedef archval_t reg_t;
+
 #include "get_register.h"
 #include "set_register.h"
 
-typedef uintptr reg_t;
 
 struct abiprocessor {
     reg_t zero; /* zero-hardwired */

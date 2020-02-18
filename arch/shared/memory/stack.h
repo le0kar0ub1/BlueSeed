@@ -11,6 +11,9 @@ void stack_destroy(void);
 
 hostaddr_t stack_get_stackptr(void);
 
+void stack_increase(uint);
+void stack_decrease(uint);
+
 struct stack
 {
     hostaddr_t stackbase;
