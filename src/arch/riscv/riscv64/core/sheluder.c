@@ -21,9 +21,3 @@ void arch_exec(void)
     }
     free(instr);
 }
-
-void opcode_handler_Stype(extractor32_t *extracted) { printf("opcode_handler_Stype\n");}
-void opcode_handler_Rtype(extractor32_t *extracted) { printf("opcode_handler_Rtype\n");}
-void opcode_handler_Utype(extractor32_t *extracted) { printf("opcode_handler_Utype\n");}
-void opcode_handler_Jtype(extractor32_t *extracted) { printf("opcode_handler_Jtype\n");}
-void opcode_handler_R4type(extractor32_t *extracted) { printf("opcode_handler_Jtype\n");}

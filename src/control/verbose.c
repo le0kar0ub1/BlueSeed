@@ -10,6 +10,7 @@ void verbose_log(char const *fmt, ...)
 {
     if (!IS_RUN_VERBOSE)
         return;
+    printf("[\e[0;34mBlueSeed\e[0m] ");
     va_list ap;
 
     va_start(ap, fmt);

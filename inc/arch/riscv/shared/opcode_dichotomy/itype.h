@@ -33,6 +33,8 @@ void rv32i_srai(struct opcode_Itype *);
 void rv32i_fence(struct opcode_Itype *);
 void rv32i_fenci(struct opcode_Itype *);
 void rv32i_callNbreak(struct opcode_Itype *);
+    void rv32i_ecall(void);
+    void rv32i_ebreak(void);
 void rv32i_csrrw(struct opcode_Itype *);
 void rv32i_csrrs(struct opcode_Itype *);
 void rv32i_csrrc(struct opcode_Itype *);

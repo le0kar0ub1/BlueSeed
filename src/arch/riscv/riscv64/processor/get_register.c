@@ -4,327 +4,134 @@
 
 extern struct abiprocessor *processor;
 
-uintptr processor_get_zero(void)
-{
-    return (processor->zero);
-}
-
-uintptr processor_get_ra(void)
-{
-    return (processor->ra);
-}
-
-uintptr processor_get_sp(void)
-{
-    return (processor->sp);
-}
-
-uintptr processor_get_gp(void)
-{
-    return (processor->gp);
-}
-
-uintptr processor_get_tp(void)
-{
-    return (processor->tp);
-}
-
-uintptr processor_get_t0(void)
-{
-    return (processor->t0);
-}
-
-uintptr processor_get_t1(void)
-{
-    return (processor->t1);
-}
-
-uintptr processor_get_t2(void)
-{
-    return (processor->t2);
-}
-
-uintptr processor_get_fp(void)
-{
-    return (processor->fp);
-}
-
-uintptr processor_get_s1(void)
-{
-    return (processor->s1);
-}
-
-uintptr processor_get_a0(void)
-{
-    return (processor->a0);
-}
-
-uintptr processor_get_a1(void)
-{
-    return (processor->a1);
-}
-
-uintptr processor_get_a2(void)
-{
-    return (processor->a2);
-}
-
-uintptr processor_get_a3(void)
-{
-    return (processor->a3);
-}
-
-uintptr processor_get_a4(void)
-{
-    return (processor->a4);
-}
-
-uintptr processor_get_a5(void)
-{
-    return (processor->a5);
-}
-
-uintptr processor_get_a6(void)
-{
-    return (processor->a6);
-}
-
-uintptr processor_get_a7(void)
-{
-    return (processor->a7);
-}
-
-uintptr processor_get_s2(void)
-{
-    return (processor->s2);
-}
-
-uintptr processor_get_s3(void)
-{
-    return (processor->s3);
-}
-
-uintptr processor_get_s4(void)
-{
-    return (processor->s4);
-}
-
-uintptr processor_get_s5(void)
-{
-    return (processor->s5);
-}
-
-uintptr processor_get_s6(void)
-{
-    return (processor->s6);
-}
-
-uintptr processor_get_s7(void)
-{
-    return (processor->s7);
-}
-
-uintptr processor_get_s8(void)
-{
-    return (processor->s8);
-}
-
-uintptr processor_get_s9(void)
-{
-    return (processor->s9);
-}
-
-uintptr processor_get_s10(void)
-{
-    return (processor->s10);
-}
-
-uintptr processor_get_s11(void)
-{
-    return (processor->s11);
-}
-
-uintptr processor_get_t3(void)
-{
-    return (processor->t3);
-}
-
-uintptr processor_get_t4(void)
-{
-    return (processor->t4);
-}
-
-uintptr processor_get_t5(void)
-{
-    return (processor->t5);
-}
-
-uintptr processor_get_t6(void)
-{
-    return (processor->t6);
-}
-
-uintptr processor_get_ft0(void)
-{
-    return (processor->ft0);
-}
-
-uintptr processor_get_ft1(void)
-{
-    return (processor->ft1);
-}
-
-uintptr processor_get_ft2(void)
-{
-    return (processor->ft2);
-}
-
-uintptr processor_get_ft3(void)
-{
-    return (processor->ft3);
-}
-
-uintptr processor_get_ft4(void)
-{
-    return (processor->ft4);
-}
-
-uintptr processor_get_ft5(void)
-{
-    return (processor->ft5);
-}
-
-uintptr processor_get_ft6(void)
-{
-    return (processor->ft6);
-}
-
-uintptr processor_get_ft7(void)
-{
-    return (processor->ft7);
-}
-
-uintptr processor_get_fs0(void)
-{
-    return (processor->fs0);
-}
-
-uintptr processor_get_fs1(void)
-{
-    return (processor->fs1);
-}
-
-uintptr processor_get_fa0(void)
-{
-    return (processor->fa0);
-}
-
-uintptr processor_get_fa1(void)
-{
-    return (processor->fa1);
-}
-
-uintptr processor_get_fa2(void)
-{
-    return (processor->fa2);
-}
-
-uintptr processor_get_fa3(void)
-{
-    return (processor->fa3);
-}
-
-uintptr processor_get_fa4(void)
-{
-    return (processor->fa4);
-}
-
-uintptr processor_get_fa5(void)
-{
-    return (processor->fa5);
-}
-
-uintptr processor_get_fa6(void)
-{
-    return (processor->fa6);
-}
-
-uintptr processor_get_fa7(void)
-{
-    return (processor->fa7);
-}
-
-uintptr processor_get_fs2(void)
-{
-    return (processor->fs2);
-}
-
-uintptr processor_get_fs3(void)
-{
-    return (processor->fs3);
-}
-
-uintptr processor_get_fs4(void)
-{
-    return (processor->fs4);
-}
-
-uintptr processor_get_fs5(void)
-{
-    return (processor->fs5);
-}
-
-uintptr processor_get_fs6(void)
-{
-    return (processor->fs6);
-}
-
-uintptr processor_get_fs7(void)
-{
-    return (processor->fs7);
-}
-
-uintptr processor_get_fs8(void)
-{
-    return (processor->fs8);
-}
-
-uintptr processor_get_fs9(void)
-{
-    return (processor->fs9);
-}
-
-uintptr processor_get_fs10(void)
-{
-    return (processor->fs10);
-}
-
-uintptr processor_get_fs11(void)
-{
-    return (processor->fs11);
-}
-
-uintptr processor_get_ft8(void)
-{
-    return (processor->ft8);
-}
-
-uintptr processor_get_ft9(void)
-{
-    return (processor->ft9);
-}
-
-uintptr processor_get_ft10(void)
-{
-    return (processor->ft10);
-}
-
-uintptr processor_get_ft11(void)
-{
-    return (processor->ft11);
-}
-
-uintptr processor_get_pc(void)
-{
-    return (processor->pc);
-}
+int64 processor_get_zero(void) { return ((int64)processor->zero); }
+int64 processor_get_ra(void) { return ((int64)processor->ra); }
+int64 processor_get_sp(void) { return ((int64)processor->sp); }
+int64 processor_get_gp(void) { return ((int64)processor->gp); }
+int64 processor_get_tp(void) { return ((int64)processor->tp); }
+int64 processor_get_t0(void) { return ((int64)processor->t0); }
+int64 processor_get_t1(void) { return ((int64)processor->t1); }
+int64 processor_get_t2(void) { return ((int64)processor->t2); }
+int64 processor_get_fp(void) { return ((int64)processor->fp); }
+int64 processor_get_s1(void) { return ((int64)processor->s1); }
+int64 processor_get_a0(void) { return ((int64)processor->a0); }
+int64 processor_get_a1(void) { return ((int64)processor->a1); }
+int64 processor_get_a2(void) { return ((int64)processor->a2); }
+int64 processor_get_a3(void) { return ((int64)processor->a3); }
+int64 processor_get_a4(void) { return ((int64)processor->a4); }
+int64 processor_get_a5(void) { return ((int64)processor->a5); }
+int64 processor_get_a6(void) { return ((int64)processor->a6); }
+int64 processor_get_a7(void) { return ((int64)processor->a7); }
+int64 processor_get_s2(void) { return ((int64)processor->s2); }
+int64 processor_get_s3(void) { return ((int64)processor->s3); }
+int64 processor_get_s4(void) { return ((int64)processor->s4); }
+int64 processor_get_s5(void) { return ((int64)processor->s5); }
+int64 processor_get_s6(void) { return ((int64)processor->s6); }
+int64 processor_get_s7(void) { return ((int64)processor->s7); }
+int64 processor_get_s8(void) { return ((int64)processor->s8); }
+int64 processor_get_s9(void) { return ((int64)processor->s9); }
+int64 processor_get_s10(void) { return ((int64)processor->s10); }
+int64 processor_get_s11(void) { return ((int64)processor->s11); }
+int64 processor_get_t3(void) { return ((int64)processor->t3); }
+int64 processor_get_t4(void) { return ((int64)processor->t4); }
+int64 processor_get_t5(void) { return ((int64)processor->t5); }
+int64 processor_get_t6(void) { return ((int64)processor->t6); }
+int64 processor_get_ft0(void) { return ((int64)processor->ft0); }
+int64 processor_get_ft1(void) { return ((int64)processor->ft1); }
+int64 processor_get_ft2(void) { return ((int64)processor->ft2); }
+int64 processor_get_ft3(void) { return ((int64)processor->ft3); }
+int64 processor_get_ft4(void) { return ((int64)processor->ft4); }
+int64 processor_get_ft5(void) { return ((int64)processor->ft5); }
+int64 processor_get_ft6(void) { return ((int64)processor->ft6); }
+int64 processor_get_ft7(void) { return ((int64)processor->ft7); }
+int64 processor_get_fs0(void) { return ((int64)processor->fs0); }
+int64 processor_get_fs1(void) { return ((int64)processor->fs1); }
+int64 processor_get_fa0(void) { return ((int64)processor->fa0); }
+int64 processor_get_fa1(void) { return ((int64)processor->fa1); }
+int64 processor_get_fa2(void) { return ((int64)processor->fa2); }
+int64 processor_get_fa3(void) { return ((int64)processor->fa3); }
+int64 processor_get_fa4(void) { return ((int64)processor->fa4); }
+int64 processor_get_fa5(void) { return ((int64)processor->fa5); }
+int64 processor_get_fa6(void) { return ((int64)processor->fa6); }
+int64 processor_get_fa7(void) { return ((int64)processor->fa7); }
+int64 processor_get_fs2(void) { return ((int64)processor->fs2); }
+int64 processor_get_fs3(void) { return ((int64)processor->fs3); }
+int64 processor_get_fs4(void) { return ((int64)processor->fs4); }
+int64 processor_get_fs5(void) { return ((int64)processor->fs5); }
+int64 processor_get_fs6(void) { return ((int64)processor->fs6); }
+int64 processor_get_fs7(void) { return ((int64)processor->fs7); }
+int64 processor_get_fs8(void) { return ((int64)processor->fs8); }
+int64 processor_get_fs9(void) { return ((int64)processor->fs9); }
+int64 processor_get_fs10(void) { return ((int64)processor->fs10); }
+int64 processor_get_fs11(void) { return ((int64)processor->fs11); }
+int64 processor_get_ft8(void) { return ((int64)processor->ft8); }
+int64 processor_get_ft9(void) { return ((int64)processor->ft9); }
+int64 processor_get_ft10(void) { return ((int64)processor->ft10); }
+int64 processor_get_ft11(void) { return ((int64)processor->ft11); }
+int64 processor_get_pc(void) { return ((int64)processor->pc); }
+
+uint64 processor_getu_zero(void) { return ((uint64)processor->zero); }
+uint64 processor_getu_ra(void) { return ((uint64)processor->ra); }
+uint64 processor_getu_sp(void) { return ((uint64)processor->sp); }
+uint64 processor_getu_gp(void) { return ((uint64)processor->gp); }
+uint64 processor_getu_tp(void) { return ((uint64)processor->tp); }
+uint64 processor_getu_t0(void) { return ((uint64)processor->t0); }
+uint64 processor_getu_t1(void) { return ((uint64)processor->t1); }
+uint64 processor_getu_t2(void) { return ((uint64)processor->t2); }
+uint64 processor_getu_fp(void) { return ((uint64)processor->fp); }
+uint64 processor_getu_s1(void) { return ((uint64)processor->s1); }
+uint64 processor_getu_a0(void) { return ((uint64)processor->a0); }
+uint64 processor_getu_a1(void) { return ((uint64)processor->a1); }
+uint64 processor_getu_a2(void) { return ((uint64)processor->a2); }
+uint64 processor_getu_a3(void) { return ((uint64)processor->a3); }
+uint64 processor_getu_a4(void) { return ((uint64)processor->a4); }
+uint64 processor_getu_a5(void) { return ((uint64)processor->a5); }
+uint64 processor_getu_a6(void) { return ((uint64)processor->a6); }
+uint64 processor_getu_a7(void) { return ((uint64)processor->a7); }
+uint64 processor_getu_s2(void) { return ((uint64)processor->s2); }
+uint64 processor_getu_s3(void) { return ((uint64)processor->s3); }
+uint64 processor_getu_s4(void) { return ((uint64)processor->s4); }
+uint64 processor_getu_s5(void) { return ((uint64)processor->s5); }
+uint64 processor_getu_s6(void) { return ((uint64)processor->s6); }
+uint64 processor_getu_s7(void) { return ((uint64)processor->s7); }
+uint64 processor_getu_s8(void) { return ((uint64)processor->s8); }
+uint64 processor_getu_s9(void) { return ((uint64)processor->s9); }
+uint64 processor_getu_s10(void) { return ((uint64)processor->s10); }
+uint64 processor_getu_s11(void) { return ((uint64)processor->s11); }
+uint64 processor_getu_t3(void) { return ((uint64)processor->t3); }
+uint64 processor_getu_t4(void) { return ((uint64)processor->t4); }
+uint64 processor_getu_t5(void) { return ((uint64)processor->t5); }
+uint64 processor_getu_t6(void) { return ((uint64)processor->t6); }
+uint64 processor_getu_ft0(void) { return ((uint64)processor->ft0); }
+uint64 processor_getu_ft1(void) { return ((uint64)processor->ft1); }
+uint64 processor_getu_ft2(void) { return ((uint64)processor->ft2); }
+uint64 processor_getu_ft3(void) { return ((uint64)processor->ft3); }
+uint64 processor_getu_ft4(void) { return ((uint64)processor->ft4); }
+uint64 processor_getu_ft5(void) { return ((uint64)processor->ft5); }
+uint64 processor_getu_ft6(void) { return ((uint64)processor->ft6); }
+uint64 processor_getu_ft7(void) { return ((uint64)processor->ft7); }
+uint64 processor_getu_fs0(void) { return ((uint64)processor->fs0); }
+uint64 processor_getu_fs1(void) { return ((uint64)processor->fs1); }
+uint64 processor_getu_fa0(void) { return ((uint64)processor->fa0); }
+uint64 processor_getu_fa1(void) { return ((uint64)processor->fa1); }
+uint64 processor_getu_fa2(void) { return ((uint64)processor->fa2); }
+uint64 processor_getu_fa3(void) { return ((uint64)processor->fa3); }
+uint64 processor_getu_fa4(void) { return ((uint64)processor->fa4); }
+uint64 processor_getu_fa5(void) { return ((uint64)processor->fa5); }
+uint64 processor_getu_fa6(void) { return ((uint64)processor->fa6); }
+uint64 processor_getu_fa7(void) { return ((uint64)processor->fa7); }
+uint64 processor_getu_fs2(void) { return ((uint64)processor->fs2); }
+uint64 processor_getu_fs3(void) { return ((uint64)processor->fs3); }
+uint64 processor_getu_fs4(void) { return ((uint64)processor->fs4); }
+uint64 processor_getu_fs5(void) { return ((uint64)processor->fs5); }
+uint64 processor_getu_fs6(void) { return ((uint64)processor->fs6); }
+uint64 processor_getu_fs7(void) { return ((uint64)processor->fs7); }
+uint64 processor_getu_fs8(void) { return ((uint64)processor->fs8); }
+uint64 processor_getu_fs9(void) { return ((uint64)processor->fs9); }
+uint64 processor_getu_fs10(void) { return ((uint64)processor->fs10); }
+uint64 processor_getu_fs11(void) { return ((uint64)processor->fs11); }
+uint64 processor_getu_ft8(void) { return ((uint64)processor->ft8); }
+uint64 processor_getu_ft9(void) { return ((uint64)processor->ft9); }
+uint64 processor_getu_ft10(void) { return ((uint64)processor->ft10); }
+uint64 processor_getu_ft11(void) { return ((uint64)processor->ft11); }
+uint64 processor_getu_pc(void) { return ((uint64)processor->pc); }

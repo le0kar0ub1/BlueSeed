@@ -4,327 +4,134 @@
 
 extern struct abiprocessor *processor;
 
-void processor_set_zero(uintptr val)
-{
-    processor->zero = val;
-}
-
-void processor_set_ra(uintptr val)
-{
-    processor->ra = val;
-}
-
-void processor_set_sp(uintptr val)
-{
-    processor->sp = val;
-}
-
-void processor_set_gp(uintptr val)
-{
-    processor->gp = val;
-}
-
-void processor_set_tp(uintptr val)
-{
-    processor->tp = val;
-}
-
-void processor_set_t0(uintptr val)
-{
-    processor->t0 = val;
-}
-
-void processor_set_t1(uintptr val)
-{
-    processor->t1 = val;
-}
-
-void processor_set_t2(uintptr val)
-{
-    processor->t2 = val;
-}
-
-void processor_set_fp(uintptr val)
-{
-    processor->fp = val;
-}
-
-void processor_set_s1(uintptr val)
-{
-    processor->s1 = val;
-}
-
-void processor_set_a0(uintptr val)
-{
-    processor->a0 = val;
-}
-
-void processor_set_a1(uintptr val)
-{
-    processor->a1 = val;
-}
-
-void processor_set_a2(uintptr val)
-{
-    processor->a2 = val;
-}
-
-void processor_set_a3(uintptr val)
-{
-    processor->a3 = val;
-}
-
-void processor_set_a4(uintptr val)
-{
-    processor->a4 = val;
-}
-
-void processor_set_a5(uintptr val)
-{
-    processor->a5 = val;
-}
-
-void processor_set_a6(uintptr val)
-{
-    processor->a6 = val;
-}
-
-void processor_set_a7(uintptr val)
-{
-    processor->a7 = val;
-}
-
-void processor_set_s2(uintptr val)
-{
-    processor->s2 = val;
-}
-
-void processor_set_s3(uintptr val)
-{
-    processor->s3 = val;
-}
-
-void processor_set_s4(uintptr val)
-{
-    processor->s4 = val;
-}
-
-void processor_set_s5(uintptr val)
-{
-    processor->s5 = val;
-}
-
-void processor_set_s6(uintptr val)
-{
-    processor->s6 = val;
-}
-
-void processor_set_s7(uintptr val)
-{
-    processor->s7 = val;
-}
-
-void processor_set_s8(uintptr val)
-{
-    processor->s8 = val;
-}
-
-void processor_set_s9(uintptr val)
-{
-    processor->s9 = val;
-}
-
-void processor_set_s10(uintptr val)
-{
-    processor->s10 = val;
-}
-
-void processor_set_s11(uintptr val)
-{
-    processor->s11 = val;
-}
-
-void processor_set_t3(uintptr val)
-{
-    processor->t3 = val;
-}
-
-void processor_set_t4(uintptr val)
-{
-    processor->t4 = val;
-}
-
-void processor_set_t5(uintptr val)
-{
-    processor->t5 = val;
-}
-
-void processor_set_t6(uintptr val)
-{
-    processor->t6 = val;
-}
-
-void processor_set_ft0(uintptr val)
-{
-    processor->ft0 = val;
-}
-
-void processor_set_ft1(uintptr val)
-{
-    processor->ft1 = val;
-}
-
-void processor_set_ft2(uintptr val)
-{
-    processor->ft2 = val;
-}
-
-void processor_set_ft3(uintptr val)
-{
-    processor->ft3 = val;
-}
-
-void processor_set_ft4(uintptr val)
-{
-    processor->ft4 = val;
-}
-
-void processor_set_ft5(uintptr val)
-{
-    processor->ft5 = val;
-}
-
-void processor_set_ft6(uintptr val)
-{
-    processor->ft6 = val;
-}
-
-void processor_set_ft7(uintptr val)
-{
-    processor->ft7 = val;
-}
-
-void processor_set_fs0(uintptr val)
-{
-    processor->fs0 = val;
-}
-
-void processor_set_fs1(uintptr val)
-{
-    processor->fs1 = val;
-}
-
-void processor_set_fa0(uintptr val)
-{
-    processor->fa0 = val;
-}
-
-void processor_set_fa1(uintptr val)
-{
-    processor->fa1 = val;
-}
-
-void processor_set_fa2(uintptr val)
-{
-    processor->fa2 = val;
-}
-
-void processor_set_fa3(uintptr val)
-{
-    processor->fa3 = val;
-}
-
-void processor_set_fa4(uintptr val)
-{
-    processor->fa4 = val;
-}
-
-void processor_set_fa5(uintptr val)
-{
-    processor->fa5 = val;
-}
-
-void processor_set_fa6(uintptr val)
-{
-    processor->fa6 = val;
-}
-
-void processor_set_fa7(uintptr val)
-{
-    processor->fa7 = val;
-}
-
-void processor_set_fs2(uintptr val)
-{
-    processor->fs2 = val;
-}
-
-void processor_set_fs3(uintptr val)
-{
-    processor->fs3 = val;
-}
-
-void processor_set_fs4(uintptr val)
-{
-    processor->fs4 = val;
-}
-
-void processor_set_fs5(uintptr val)
-{
-    processor->fs5 = val;
-}
-
-void processor_set_fs6(uintptr val)
-{
-    processor->fs6 = val;
-}
-
-void processor_set_fs7(uintptr val)
-{
-    processor->fs7 = val;
-}
-
-void processor_set_fs8(uintptr val)
-{
-    processor->fs8 = val;
-}
-
-void processor_set_fs9(uintptr val)
-{
-    processor->fs9 = val;
-}
-
-void processor_set_fs10(uintptr val)
-{
-    processor->fs10 = val;
-}
-
-void processor_set_fs11(uintptr val)
-{
-    processor->fs11 = val;
-}
-
-void processor_set_ft8(uintptr val)
-{
-    processor->ft8 = val;
-}
-
-void processor_set_ft9(uintptr val)
-{
-    processor->ft9 = val;
-}
-
-void processor_set_ft10(uintptr val)
-{
-    processor->ft10 = val;
-}
-
-void processor_set_ft11(uintptr val)
-{
-    processor->ft11 = val;
-}
-
-void processor_set_pc(uintptr val)
-{
-    processor->pc = val;
-}
+void processor_set_zero(int64 val) { processor->zero = (reg_t)val; }
+void processor_set_ra(int64 val) { processor->ra = (reg_t)val; }
+void processor_set_sp(int64 val) { processor->sp = (reg_t)val; }
+void processor_set_gp(int64 val) { processor->gp = (reg_t)val; }
+void processor_set_tp(int64 val) { processor->tp = (reg_t)val; }
+void processor_set_t0(int64 val) { processor->t0 = (reg_t)val; }
+void processor_set_t1(int64 val) { processor->t1 = (reg_t)val; }
+void processor_set_t2(int64 val) { processor->t2 = (reg_t)val; }
+void processor_set_fp(int64 val) { processor->fp = (reg_t)val; }
+void processor_set_s1(int64 val) { processor->s1 = (reg_t)val; }
+void processor_set_a0(int64 val) { processor->a0 = (reg_t)val; }
+void processor_set_a1(int64 val) { processor->a1 = (reg_t)val; }
+void processor_set_a2(int64 val) { processor->a2 = (reg_t)val; }
+void processor_set_a3(int64 val) { processor->a3 = (reg_t)val; }
+void processor_set_a4(int64 val) { processor->a4 = (reg_t)val; }
+void processor_set_a5(int64 val) { processor->a5 = (reg_t)val; }
+void processor_set_a6(int64 val) { processor->a6 = (reg_t)val; }
+void processor_set_a7(int64 val) { processor->a7 = (reg_t)val; }
+void processor_set_s2(int64 val) { processor->s2 = (reg_t)val; }
+void processor_set_s3(int64 val) { processor->s3 = (reg_t)val; }
+void processor_set_s4(int64 val) { processor->s4 = (reg_t)val; }
+void processor_set_s5(int64 val) { processor->s5 = (reg_t)val; }
+void processor_set_s6(int64 val) { processor->s6 = (reg_t)val; }
+void processor_set_s7(int64 val) { processor->s7 = (reg_t)val; }
+void processor_set_s8(int64 val) { processor->s8 = (reg_t)val; }
+void processor_set_s9(int64 val) { processor->s9 = (reg_t)val; }
+void processor_set_s10(int64 val) { processor->s10 = (reg_t)val; }
+void processor_set_s11(int64 val) { processor->s11 = (reg_t)val; }
+void processor_set_t3(int64 val) { processor->t3 = (reg_t)val; }
+void processor_set_t4(int64 val) { processor->t4 = (reg_t)val; }
+void processor_set_t5(int64 val) { processor->t5 = (reg_t)val; }
+void processor_set_t6(int64 val) { processor->t6 = (reg_t)val; }
+void processor_set_ft0(int64 val) { processor->ft0 = (reg_t)val; }
+void processor_set_ft1(int64 val) { processor->ft1 = (reg_t)val; }
+void processor_set_ft2(int64 val) { processor->ft2 = (reg_t)val; }
+void processor_set_ft3(int64 val) { processor->ft3 = (reg_t)val; }
+void processor_set_ft4(int64 val) { processor->ft4 = (reg_t)val; }
+void processor_set_ft5(int64 val) { processor->ft5 = (reg_t)val; }
+void processor_set_ft6(int64 val) { processor->ft6 = (reg_t)val; }
+void processor_set_ft7(int64 val) { processor->ft7 = (reg_t)val; }
+void processor_set_fs0(int64 val) { processor->fs0 = (reg_t)val; }
+void processor_set_fs1(int64 val) { processor->fs1 = (reg_t)val; }
+void processor_set_fa0(int64 val) { processor->fa0 = (reg_t)val; }
+void processor_set_fa1(int64 val) { processor->fa1 = (reg_t)val; }
+void processor_set_fa2(int64 val) { processor->fa2 = (reg_t)val; }
+void processor_set_fa3(int64 val) { processor->fa3 = (reg_t)val; }
+void processor_set_fa4(int64 val) { processor->fa4 = (reg_t)val; }
+void processor_set_fa5(int64 val) { processor->fa5 = (reg_t)val; }
+void processor_set_fa6(int64 val) { processor->fa6 = (reg_t)val; }
+void processor_set_fa7(int64 val) { processor->fa7 = (reg_t)val; }
+void processor_set_fs2(int64 val) { processor->fs2 = (reg_t)val; }
+void processor_set_fs3(int64 val) { processor->fs3 = (reg_t)val; }
+void processor_set_fs4(int64 val) { processor->fs4 = (reg_t)val; }
+void processor_set_fs5(int64 val) { processor->fs5 = (reg_t)val; }
+void processor_set_fs6(int64 val) { processor->fs6 = (reg_t)val; }
+void processor_set_fs7(int64 val) { processor->fs7 = (reg_t)val; }
+void processor_set_fs8(int64 val) { processor->fs8 = (reg_t)val; }
+void processor_set_fs9(int64 val) { processor->fs9 = (reg_t)val; }
+void processor_set_fs10(int64 val) { processor->fs10 = (reg_t)val; }
+void processor_set_fs11(int64 val) { processor->fs11 = (reg_t)val; }
+void processor_set_ft8(int64 val) { processor->ft8 = (reg_t)val; }
+void processor_set_ft9(int64 val) { processor->ft9 = (reg_t)val; }
+void processor_set_ft10(int64 val) { processor->ft10 = (reg_t)val; }
+void processor_set_ft11(int64 val) { processor->ft11 = (reg_t)val; }
+void processor_set_pc(int64 val) { processor->pc = (reg_t)val; }
+
+void processor_setu_zero(uint64 val) { processor->zero = (reg_t)val; }
+void processor_setu_ra(uint64 val) { processor->ra = (reg_t)val; }
+void processor_setu_sp(uint64 val) { processor->sp = (reg_t)val; }
+void processor_setu_gp(uint64 val) { processor->gp = (reg_t)val; }
+void processor_setu_tp(uint64 val) { processor->tp = (reg_t)val; }
+void processor_setu_t0(uint64 val) { processor->t0 = (reg_t)val; }
+void processor_setu_t1(uint64 val) { processor->t1 = (reg_t)val; }
+void processor_setu_t2(uint64 val) { processor->t2 = (reg_t)val; }
+void processor_setu_fp(uint64 val) { processor->fp = (reg_t)val; }
+void processor_setu_s1(uint64 val) { processor->s1 = (reg_t)val; }
+void processor_setu_a0(uint64 val) { processor->a0 = (reg_t)val; }
+void processor_setu_a1(uint64 val) { processor->a1 = (reg_t)val; }
+void processor_setu_a2(uint64 val) { processor->a2 = (reg_t)val; }
+void processor_setu_a3(uint64 val) { processor->a3 = (reg_t)val; }
+void processor_setu_a4(uint64 val) { processor->a4 = (reg_t)val; }
+void processor_setu_a5(uint64 val) { processor->a5 = (reg_t)val; }
+void processor_setu_a6(uint64 val) { processor->a6 = (reg_t)val; }
+void processor_setu_a7(uint64 val) { processor->a7 = (reg_t)val; }
+void processor_setu_s2(uint64 val) { processor->s2 = (reg_t)val; }
+void processor_setu_s3(uint64 val) { processor->s3 = (reg_t)val; }
+void processor_setu_s4(uint64 val) { processor->s4 = (reg_t)val; }
+void processor_setu_s5(uint64 val) { processor->s5 = (reg_t)val; }
+void processor_setu_s6(uint64 val) { processor->s6 = (reg_t)val; }
+void processor_setu_s7(uint64 val) { processor->s7 = (reg_t)val; }
+void processor_setu_s8(uint64 val) { processor->s8 = (reg_t)val; }
+void processor_setu_s9(uint64 val) { processor->s9 = (reg_t)val; }
+void processor_setu_s10(uint64 val) { processor->s10 = (reg_t)val; }
+void processor_setu_s11(uint64 val) { processor->s11 = (reg_t)val; }
+void processor_setu_t3(uint64 val) { processor->t3 = (reg_t)val; }
+void processor_setu_t4(uint64 val) { processor->t4 = (reg_t)val; }
+void processor_setu_t5(uint64 val) { processor->t5 = (reg_t)val; }
+void processor_setu_t6(uint64 val) { processor->t6 = (reg_t)val; }
+void processor_setu_ft0(uint64 val) { processor->ft0 = (reg_t)val; }
+void processor_setu_ft1(uint64 val) { processor->ft1 = (reg_t)val; }
+void processor_setu_ft2(uint64 val) { processor->ft2 = (reg_t)val; }
+void processor_setu_ft3(uint64 val) { processor->ft3 = (reg_t)val; }
+void processor_setu_ft4(uint64 val) { processor->ft4 = (reg_t)val; }
+void processor_setu_ft5(uint64 val) { processor->ft5 = (reg_t)val; }
+void processor_setu_ft6(uint64 val) { processor->ft6 = (reg_t)val; }
+void processor_setu_ft7(uint64 val) { processor->ft7 = (reg_t)val; }
+void processor_setu_fs0(uint64 val) { processor->fs0 = (reg_t)val; }
+void processor_setu_fs1(uint64 val) { processor->fs1 = (reg_t)val; }
+void processor_setu_fa0(uint64 val) { processor->fa0 = (reg_t)val; }
+void processor_setu_fa1(uint64 val) { processor->fa1 = (reg_t)val; }
+void processor_setu_fa2(uint64 val) { processor->fa2 = (reg_t)val; }
+void processor_setu_fa3(uint64 val) { processor->fa3 = (reg_t)val; }
+void processor_setu_fa4(uint64 val) { processor->fa4 = (reg_t)val; }
+void processor_setu_fa5(uint64 val) { processor->fa5 = (reg_t)val; }
+void processor_setu_fa6(uint64 val) { processor->fa6 = (reg_t)val; }
+void processor_setu_fa7(uint64 val) { processor->fa7 = (reg_t)val; }
+void processor_setu_fs2(uint64 val) { processor->fs2 = (reg_t)val; }
+void processor_setu_fs3(uint64 val) { processor->fs3 = (reg_t)val; }
+void processor_setu_fs4(uint64 val) { processor->fs4 = (reg_t)val; }
+void processor_setu_fs5(uint64 val) { processor->fs5 = (reg_t)val; }
+void processor_setu_fs6(uint64 val) { processor->fs6 = (reg_t)val; }
+void processor_setu_fs7(uint64 val) { processor->fs7 = (reg_t)val; }
+void processor_setu_fs8(uint64 val) { processor->fs8 = (reg_t)val; }
+void processor_setu_fs9(uint64 val) { processor->fs9 = (reg_t)val; }
+void processor_setu_fs10(uint64 val) { processor->fs10 = (reg_t)val; }
+void processor_setu_fs11(uint64 val) { processor->fs11 = (reg_t)val; }
+void processor_setu_ft8(uint64 val) { processor->ft8 = (reg_t)val; }
+void processor_setu_ft9(uint64 val) { processor->ft9 = (reg_t)val; }
+void processor_setu_ft10(uint64 val) { processor->ft10 = (reg_t)val; }
+void processor_setu_ft11(uint64 val) { processor->ft11 = (reg_t)val; }
+void processor_setu_pc(uint64 val) { processor->pc = (reg_t)val; }

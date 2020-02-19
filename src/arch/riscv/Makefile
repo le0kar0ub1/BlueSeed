@@ -2,18 +2,21 @@
 # Makefile Compiling object which are arch independant & calling the targeted ARCH
  #
 
+RISCV_INSTRUCTION_TYPE	:=	i_type		\
+							b_type		\
+							j_type		\
+							r_type		\
+							s_type		\
+							u_type		\
+							r4_type	
+
 SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)									\
 						$(addprefix $(ARCH_SHARED)/,					\
 								riscvhandler							\
 								runtime									\
 								memory									\
 								$(addprefix opcode_dichotomy/,			\
-											i_type						\
-											b_type						\
-											j_type						\
-											r_type						\
-											s_type						\
-											u_type						\
+										$(RISCV_INSTRUCTION_TYPE)		\
 								)										\
 						)
 
@@ -28,7 +31,7 @@ SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUIL
 all:	shared_building		$(SHARED_OBJECT)	target_building
 
 shared_building:
-	@echo -e "\n\nBuilding shared arch object...\n"
+	@echo -e "\n\nBuilding shared $(TARGET_BASE) object...\n"
 	@echo ""
 
 target_building:
