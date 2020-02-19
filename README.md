@@ -1,6 +1,6 @@
 # BlueSeed Project
 
-*_BlueSeed is a `BASIC` multi-plateform RISC-V emulator_*
+*_BlueSeed is a `BASIC` multi-plateform RISC-V emulator wroten in C_*
 
 ## DEPENDENCIES
 
@@ -43,16 +43,16 @@ _BlueSeed have a toolchain builder_
   - [ ] riscv32
   - [ ] riscv64
 - [ ] emulation
-  - [ ] elf loader
-  - [ ] virtual processor
-  - [ ] program exec
-  - [ ] syscall host interface (limited)
+  - [X] elf loader
+  - [X] virtual processor
+  - [X] program exec
+  - [X] syscall host interface (limited)
 
 ## SPECIFITY
 
 _The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)_
 
-_Software interrupt are based on [RV8 project](https://rv8.io/syscalls.html)_
+_Software interrupts are based on [RV8 project](https://rv8.io/syscalls.html)_
 
 
 ## EPILOGUE

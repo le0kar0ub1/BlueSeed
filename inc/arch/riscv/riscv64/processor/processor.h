@@ -2,8 +2,8 @@
 #define _PROCESSOR_CONTEXT_H_
 
 #include "def/typedef.h"
+#include "def/keyword.h"
 #include "control/config.h"
-#include "keyword.h"
 
 typedef archval_t reg_t;
 

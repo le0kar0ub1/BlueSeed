@@ -1,7 +1,7 @@
-#include "opt.h"
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "opt/opt.h"
 #include "prototypes.h"
 
 extern bool IS_RUN_VERBOSE;

@@ -1,9 +1,9 @@
 #ifndef _FATAL_ASSERT_H
 #define _FATAL_ASSERT_H
 
-#include "keyword.h"
-#include "stdio.h"
-#include "config.h"
+#include <stdio.h>
+#include "def/keyword.h"
+#include "control/config.h"
 
 static inline void CRASH(void)
 {

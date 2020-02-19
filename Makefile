@@ -31,23 +31,17 @@ export ROOT_ARC_DIR	:= arch
 
 export ARCH_SHARED	:= shared
 
-export INCLUDE_DIR =	$(addprefix -I$(realpath $(ROOT_INC_DIR))/,				\
-									.											\
-									def											\
-									control										\
-									assembly									\
-									opt											\
-									loader										\
-									env											\
-						)
+export TARGET_BASE	:=	$(shell echo "$(TARGET)" | sed 's/[0-9]//g')
 
-INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_ARC_DIR))/,		\
-						/										\
-						$(TARGET)								\
-						$(ARCH_SHARED)							\
-						$(addprefix isa/,						\
-									$(HANDLE_IS)				\
-						)										\
+export INCLUDE_DIR =	$(addprefix -I$(realpath $(ROOT_INC_DIR))/,		.)
+
+INCLUDE_DIR	+= $(addprefix -I$(realpath $(ROOT_INC_DIR)/$(ROOT_ARC_DIR)/$(TARGET_BASE))/,		\
+						/																		\
+						$(TARGET)																\
+						$(ARCH_SHARED)															\
+						$(addprefix isa/,														\
+									$(HANDLE_IS)												\
+						)																		\
 				)
 
 export	LDFLAGS	=	--trace
@@ -85,12 +79,6 @@ CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D INSTRUCTION_SET="$(HANDLE_IS)"'		\
 				'-D TARGETED_ARCH="$(TARGET)"'
 
-# System target adressing size
-ifeq ($(TARGET), riscv64)
-	CFLAGS +=	-D SYSTEMSZ=64
-else
-	CFLAGS +=	-D SYSTEMSZ=32
-endif
 
 # Debug mode
 export 	CFLAGSDEBUG	= 	-D DEBUG \
@@ -102,6 +90,13 @@ ifeq ($(debug), 1)
 endif
 
 export	RM	=	rm -rf
+
+# System target adressing size
+ifeq ($(TARGET), riscv64)
+	CFLAGS +=	-D SYSTEMSZ=64
+else
+	CFLAGS +=	-D SYSTEMSZ=32
+endif
 
 .SECONDEXPANSION:
 # Savage method

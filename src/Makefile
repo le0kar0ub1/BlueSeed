@@ -40,7 +40,7 @@ else
 endif
 
 subBuild:
-	@make -C $(ROOT_ARC_DIR) --no-print-directory
+	@make -C $(ROOT_ARC_DIR)/$(TARGET_BASE) --no-print-directory
 
 $(BUILDIR)/$(ROOT_PREFIX_BUILD)/%$(EXTENSION_OBJ): %$(EXTENSION_SRC)
 	@mkdir -p $(shell dirname $@)
