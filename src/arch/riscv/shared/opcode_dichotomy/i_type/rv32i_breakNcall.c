@@ -5,12 +5,14 @@
 
 void rv32i_ecall(void)
 {
+    debug_log_instr("ecall");
     exec_syscall();
 }
 
 void rv32i_ebreak(void)
 {
     /* Generally used for debugging */
+    debug_log_instr("ebreak");
 }
 
 void rv32i_callNbreak(struct opcode_Itype *extracted)

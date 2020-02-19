@@ -28,7 +28,7 @@ static struct opcodeIhandler opcodeI =
 
         {rv32i_slli, rv32i_srli, rv32i_srai}, /* IDX 2 in opcodeHandler (I) */
 
-        {rv32i_fence, rv32i_fenci}, /* IDX 3 in opcodeHandler (I) */
+        {rv32i_fence, rv32i_fencei}, /* IDX 3 in opcodeHandler (I) */
 
         {rv32i_callNbreak}, /* IDX 4 in opcodeHandler (I) */
 

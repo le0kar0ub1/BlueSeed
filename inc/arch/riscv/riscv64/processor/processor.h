@@ -13,6 +13,8 @@ typedef archval_t reg_t;
 void processor_dump(void);
 void processor_udump(void);
 
+char const *getRegisterName(uint);
+
 #define REGISTER_CLEAR_BYTE(x)  (x & ((1 << 8) - 1))
 #define REGISTER_CLEAR_WORD(x)  (x & ((1 << 16) - 1))
 #define REGISTER_CLEAR_DWORD(x) ((uint32)(x & ((((uint64)1 << 32)) - 1)))

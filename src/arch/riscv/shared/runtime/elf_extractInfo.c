@@ -25,7 +25,7 @@ archElf_Shdr *elftool_getSectionFromName(char const *name)
 
 virtaddr_t elftool_getSecAddrFromName(char const *name)
 {
-    return ((virtaddr_t)elftool_getSectionFromName(name)->sh_addr);
+    return ((virtaddr_t)(elftool_getSectionFromName(name)->sh_addr));
 }
 
 uint elftool_getSectionSizeFromName(char const *name)

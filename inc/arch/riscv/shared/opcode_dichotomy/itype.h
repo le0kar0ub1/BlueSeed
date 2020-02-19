@@ -1,5 +1,5 @@
-#ifndef _ITYPE_H_
-#define _ITYPE_H_
+#ifndef _INSTR_ITYPE_H_
+#define _INSTR_ITYPE_H_
 
 #include "def/typedef.h"
 #include "def/keyword.h"
@@ -31,7 +31,7 @@ void rv32i_slli(struct opcode_Itype *);
 void rv32i_srli(struct opcode_Itype *);
 void rv32i_srai(struct opcode_Itype *);
 void rv32i_fence(struct opcode_Itype *);
-void rv32i_fenci(struct opcode_Itype *);
+void rv32i_fencei(struct opcode_Itype *);
 void rv32i_callNbreak(struct opcode_Itype *);
     void rv32i_ecall(void);
     void rv32i_ebreak(void);

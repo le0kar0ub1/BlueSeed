@@ -130,7 +130,7 @@ ifeq ($(EXEC),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mYou must specify a binary to exec\e[0m\n"
 	@exit 1
 else
-	@./$(PROJECT)_$(ARCH_HOST)-$(VERSION)* $(EXEC) --verbose
+	@./$(PROJECT)_$(ARCH_HOST)-$(VERSION)* $(EXEC) --verbose --debug
 endif
 
 help:

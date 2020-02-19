@@ -1,21 +1,18 @@
 #include "builtin.h"
 #include "opt/opt.h"
 
-// char const *emulatorFlags[20] =
-// {
-//     "--verbose",
-//     NULL
-// };
-
 bool IS_RUN_VERBOSE = false;
+bool IS_RUN_DEBUG   = false;
 
 bool getFlag(char *arg)
 {
-    if (!strcmp("--verbose", arg)) {
+    if (!strcmp("--verbose", arg))
         IS_RUN_VERBOSE = true;
-        return (true);
-    }
-    return (false);
+    else if (!strcmp("--debug", arg))
+        IS_RUN_DEBUG = true;
+    else
+        return (false);
+    return (true);
 }
 
 struct opt *mgetopt(char **av)

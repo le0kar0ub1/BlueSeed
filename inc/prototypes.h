@@ -13,5 +13,6 @@ int main(int, char **);
 struct opt *mgetopt(char **);
 
 void verbose_log(char const *, ...);
+void debug_log_instr(char const *, ...);
 
 #endif

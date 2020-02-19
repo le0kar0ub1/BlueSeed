@@ -31,7 +31,7 @@ SHARED_OBJECT 	:= 	$(patsubst %$(EXTENSION_SRC), $(BUILDIR)/$(SHARED_PREFIX_BUIL
 all:	shared_building		$(SHARED_OBJECT)	target_building
 
 shared_building:
-	@echo -e "\n\nBuilding shared $(TARGET_BASE) object...\n"
+	@echo -e "\n\nBuilding shared $(TARGET_BASE) object..."
 	@echo ""
 
 target_building:

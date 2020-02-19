@@ -18,6 +18,8 @@
 #define decto(x) while (x --> 0)
 #define incto(x, y) while (x ++< y)
 
+#define APPLY_AND_MASK(x, y) (x & ((1 << y) - 1))
+
 #define swap(x,y) (x ^= y ^= x ^= y)
 
 #define arrsize(x) (sizeof(x) / sizeof(*x))
