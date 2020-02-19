@@ -42,6 +42,13 @@ static struct opcodeHandler riscvopcode =
     }
 };
 
+bool isOpcodeInIndex(uint typeidx, uint subidx, uint val)
+{
+    if ((uint)riscvopcode.opcode[typeidx][subidx] == val)
+        return (true);
+    return (false);
+}
+
 void *getHandlerFromOpcode(int opcode)
 {
     for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++) {

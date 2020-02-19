@@ -12,7 +12,7 @@ static struct syscallHandler syscallMapped =
 };
 
 /* HANDLER BY NUMBER OF ARGUMENT */
-void exec_syscall(uint unused __unused)
+void exec_syscall(void)
 {
     uint syscall = (uint)processor_get_a7();
     for (uint i = 0; syscallMapped.riscv[i] != -1; i++)

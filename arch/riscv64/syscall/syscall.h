@@ -16,7 +16,7 @@ struct syscallHandler
     int8 args[100];
 } __packed;
 
-void exec_syscall(uint);
+void exec_syscall(void);
 void exec_syscall_arg0(uint64);
 void exec_syscall_arg1(uint64, uint64);
 void exec_syscall_arg2(uint64, uint64, uint64);

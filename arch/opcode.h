@@ -11,6 +11,14 @@
 
 #define RISCV_OPCODE_TYPE_MAX 0x8
 
+#define BTYPE_OPCODE_IDX  0x0
+#define ITYPE_OPCODE_IDX  0x1
+#define STYPE_OPCODE_IDX  0x2
+#define RTYPE_OPCODE_IDX  0x3
+#define UTYPE_OPCODE_IDX  0x4
+#define JTYPE_OPCODE_IDX  0x5
+#define R4TYPE_OPCODE_IDX 0x6
+
 struct opcodeHandler
 {
     int opcode[RISCV_OPCODE_TYPE_MAX][50];
@@ -18,5 +26,6 @@ struct opcodeHandler
 };
 
 void *getHandlerFromOpcode(int);
+bool isOpcodeInIndex(uint, uint, uint);
 
 #endif

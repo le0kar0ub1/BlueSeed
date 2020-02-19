@@ -2,6 +2,7 @@
 #define _PROCESSOR_CONTEXT_H_
 
 #include "def/typedef.h"
+#include "control/config.h"
 #include "keyword.h"
 
 typedef archval_t reg_t;
@@ -9,6 +10,8 @@ typedef archval_t reg_t;
 #include "get_register.h"
 #include "set_register.h"
 
+uint64 registerGet(uint);
+void registerSet(uint, uint64);
 
 struct abiprocessor {
     reg_t zero; /* zero-hardwired */

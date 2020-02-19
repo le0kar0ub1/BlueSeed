@@ -14,7 +14,7 @@ void arch_exit(void) {}
 void arch_hookpoint(void)
 {
     arch_init();
-    verbose_log("Entering in the scheluder...\n");
+    verbose_log("Entering in program scheluder...\n");
     arch_exec();
     verbose_log("Program successfuly executed!\n");
     arch_exit();
