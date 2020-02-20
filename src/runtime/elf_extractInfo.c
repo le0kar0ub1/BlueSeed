@@ -4,8 +4,9 @@
 
 extern struct env *environnement;
 
-/* Initialize during elftool_init to decrease the compute in run-time */
+/* Initialized during elftool_init to decrease the compute in run-time */
 archElf_Ehdr *ehdr;
+archElf_Phdr *phdr;
 archElf_Shdr *shdr;
 archElf_Sym  *symtab;
 uint         symtab_entries;
@@ -53,6 +54,7 @@ uint elftool_getSectionSizeFromName(char const *name)
 void elftool_init(void)
 {
     ehdr = environnement->host.link;
+    phdr = ADD_TO_PTR(ehdr, ehdr->e_phoff);
     shdr = ADD_TO_PTR(ehdr, ehdr->e_shoff);
     shdrtab = (char *)(ADD_TO_PTR(ehdr, shdr[ehdr->e_shstrndx].sh_offset));
     symtab = (archElf_Sym *)elftool_getSectionContentFromName(".symtab");

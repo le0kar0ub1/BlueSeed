@@ -12,4 +12,6 @@ void *elftool_getSectionContentFromName(char const *);
 uint elftool_getSectionSizeFromName(char const *);
 char const *elftool_getSymFromAddr(virtaddr_t);
 
+virtaddr_t elf_getSymbolOffsetFromAddr(virtaddr_t sym);
+
 #endif

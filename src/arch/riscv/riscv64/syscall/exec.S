@@ -23,21 +23,24 @@ exec_syscall_arg2:
     ret
 
 exec_syscall_arg3:
-    mov %r10, %rax
+    mov %rcx, %rax
     syscall
     ret
 
 exec_syscall_arg4:
     mov %r8, %rax
+    mov %rcx, %r10
     syscall
     ret
 
 exec_syscall_arg5:
     mov %r9, %rax
+    mov %rcx, %r10
     syscall
     ret
 
 exec_syscall_arg6:
     pop %rax
+    mov %rcx, %r10
     syscall
     ret

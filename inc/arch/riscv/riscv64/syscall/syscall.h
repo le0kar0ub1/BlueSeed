@@ -13,17 +13,46 @@ struct syscallHandler
 {
     int  x86_64[100];
     int  riscv[100];
+    void (*handler[100])(uint);
     int8 args[100];
 } __packed;
 
 void exec_syscall(void);
-void exec_syscall_arg0(uint64);
-void exec_syscall_arg1(uint64, uint64);
-void exec_syscall_arg2(uint64, uint64, uint64);
-void exec_syscall_arg3(uint64, uint64, uint64, uint64);
-void exec_syscall_arg4(uint64, uint64, uint64, uint64, uint64);
-void exec_syscall_arg5(uint64, uint64, uint64, uint64, uint64, uint64);
-void exec_syscall_arg6(uint64, uint64, uint64, uint64, uint64, uint64, uint64);
+uint64 exec_syscall_arg0(uint64);
+uint64 exec_syscall_arg1(uint64, uint64);
+uint64 exec_syscall_arg2(uint64, uint64, uint64);
+uint64 exec_syscall_arg3(uint64, uint64, uint64, uint64);
+uint64 exec_syscall_arg4(uint64, uint64, uint64, uint64, uint64);
+uint64 exec_syscall_arg5(uint64, uint64, uint64, uint64, uint64, uint64);
+uint64 exec_syscall_arg6(uint64, uint64, uint64, uint64, uint64, uint64, uint64);
+
+void syscall_getcwd(uint);
+void syscall_fcntl(uint);
+void syscall_ioctl(uint);
+void syscall_close(uint);
+void syscall_read(uint);
+void syscall_write(uint);
+void syscall_readv(uint);
+void syscall_writev(uint);
+void syscall_fstat(uint);
+void syscall_exit(uint);
+void syscall_set_tid_address(uint);
+void syscall_clock_gettime(uint);
+void syscall_rt_sigaction(uint);
+void syscall_rt_sigprocmask(uint);
+void syscall_times(uint);
+void syscall_uname(uint);
+void syscall_getrusage(uint);
+void syscall_gettimeofday(uint);
+void syscall_sysinfo(uint);
+void syscall_brk(uint);
+void syscall_munmap(uint);
+void syscall_mmap(uint);
+void syscall_mprotect(uint);
+void syscall_madvise(uint);
+void syscall_prlimit64(uint);
+void syscall_open(uint);
+void syscall_stat(uint);
 
 /* RISCV SYSCALL TABLE (?) | MAPPING | X86_64 */
 // int systemcall[100][3] =

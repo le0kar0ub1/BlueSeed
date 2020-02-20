@@ -17,6 +17,7 @@ struct virtual_env
     virtaddr_t link;
     virtaddr_t entry;
     virtaddr_t end;
+    uint       size;
 };
 
 struct env
@@ -28,7 +29,9 @@ struct env
 hostaddr_t virtToHost(virtaddr_t);
 virtaddr_t hostToVirt(hostaddr_t);
 
-void free_environement(struct env *env);
+bool isAddressInfile(virtaddr_t);
+
+void free_environement(struct env *);
 void exit_environnement(void);
 void init_environnement(void);
 

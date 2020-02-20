@@ -14,6 +14,7 @@ struct env *load_file(char const *exec)
     void *mapped = mmap(NULL, st.st_size, PROT_READ, MAP_SHARED, fd, 0);
     loader->host.link = vmalloc(st.st_size);
     loader->host.end  = ADD_TO_PTR(loader->host.link, st.st_size);
+    loader->virtual.size = st.st_size;
     if (!mapped)
         RAISE(ERR_OUTOFMEM_NUM);
     memcpy(loader->host.link, mapped, st.st_size);
