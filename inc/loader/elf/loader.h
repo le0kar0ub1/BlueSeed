@@ -5,6 +5,9 @@
 #include "builtin.h"
 #include "env/env.h"
 
+#define ALIGN(x, y)      (((x) + ((y) - 1)) & ~((y) - 1))
+#define IS_ALIGNED(x, y) (!((uint64)(x) & (y - 0x1)))
+
 /* Compile-time macro */
 #if SYSTEMSZ == 64
     typedef Elf64_Ehdr        archElf_Ehdr;
@@ -45,8 +48,11 @@
 #endif
 
 struct env *elf_loader(char const *);
-struct env *load_file(char const *);
+void *map_file(char const *);
+void munmap_file(void *, char const *);
 bool file_header_checkup(archElf_Ehdr *);
-void virtual_loading(struct env *);
+
+struct env *virtual_loading(void *);
+void load_section(void *, void *, archElf_Shdr *);
 
 #endif

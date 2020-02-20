@@ -15,5 +15,5 @@ void rv32i_auipc(struct opcode_Utype *extracted)
     // set = set + APPLY_AND_MASK(extracted->imm << 12, 12);
     set += extracted->imm << 12;
     set -= 4; /* we are already at next instruction */
-    registerSetD(extracted->rd , set);
+    registerSet(extracted->rd , set);
 }

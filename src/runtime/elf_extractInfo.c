@@ -28,9 +28,10 @@ void *elftool_getSectionContentFromName(char const *name)
 {
     if (!shdr || !ehdr)
         RAISE(ERR_UNKNOW_SEC_NUM);
-    for (uint i = 0; i < ehdr->e_shnum; i++)
+    for (uint i = 0; i < ehdr->e_shnum; i++) {
         if (!strcmp(name, (char *)&(shdrtab[shdr[i].sh_name])))
-            return (ADD_TO_PTR(ehdr, shdr[i].sh_offset));
+            return (ADD_TO_PTR(ehdr, shdr[i].sh_addr));
+    }
     RAISE(ERR_UNKNOW_SYM_NUM);
     return (NULL);
 }
