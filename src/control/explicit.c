@@ -4,11 +4,12 @@
 #include "opt/opt.h"
 #include "prototypes.h"
 
+extern bool IS_RUN_EXPLICIT;
 extern bool IS_RUN_DEBUG;
 
 void debug_log_instr(char const *fmt, ...)
 {
-    if (!IS_RUN_DEBUG)
+    if (!IS_RUN_EXPLICIT && !IS_RUN_DEBUG)
         return;
     printf("[\e[0;32mINSTR EXEC\e[0m] \e[0;31m");
     va_list ap;

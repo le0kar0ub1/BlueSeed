@@ -8,8 +8,8 @@ typedef void * virtaddr_t;
 
 struct host_env
 {
-    uint loadsize;
     hostaddr_t link;
+    hostaddr_t end;
 };
 
 struct virtual_env

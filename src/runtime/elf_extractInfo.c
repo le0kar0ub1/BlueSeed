@@ -23,6 +23,17 @@ archElf_Shdr *elftool_getSectionFromName(char const *name)
     return (NULL);
 }
 
+void *elftool_getSectionContentFromName(char const *name)
+{
+    if (!shdr || !ehdr)
+        RAISE(ERR_UNKNOW_SEC_NUM);
+    for (uint i = 0; i < ehdr->e_shnum; i++)
+        if (!strcmp(name, (char *)&(shdrtab[shdr[i].sh_name])))
+            return (ADD_TO_PTR(ehdr, shdr[i].sh_offset));
+    RAISE(ERR_UNKNOW_SYM_NUM);
+    return (NULL);
+}
+
 virtaddr_t elftool_getSecAddrFromName(char const *name)
 {
     return ((virtaddr_t)(elftool_getSectionFromName(name)->sh_addr));
@@ -44,9 +55,9 @@ void elftool_init(void)
     ehdr = environnement->host.link;
     shdr = ADD_TO_PTR(ehdr, ehdr->e_shoff);
     shdrtab = (char *)(ADD_TO_PTR(ehdr, shdr[ehdr->e_shstrndx].sh_offset));
-    symtab = (archElf_Sym *)elftool_getSectionFromName(".symtab");
+    symtab = (archElf_Sym *)elftool_getSectionContentFromName(".symtab");
     symtab_entries = (uint)elftool_getSectionSizeFromName(".symtab") / sizeof(archElf_Sym);
-    strtab = (char *)elftool_getSectionFromName(".strtab");
+    strtab = (char *)elftool_getSectionContentFromName(".strtab");
 }
 
 virtaddr_t elftool_getAddrFromSym(char const *sym)
@@ -66,6 +77,7 @@ char const *elftool_getSymFromAddr(virtaddr_t addr)
     for (uint i = 0; i < symtab_entries; i++)
         if (symtab[i].st_value == (uintptr)addr)
             return ((char *)ADD_TO_PTR(strtab, symtab[i].st_name));
+    RAISE(ERR_UNKNOW_SEC_NUM);
     return (NULL);
 }
 

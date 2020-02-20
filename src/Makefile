@@ -7,7 +7,8 @@ ROOT_SOURCE_DIR	:=	$(ROOT_SRC_DIR)									\
 								opt									\
 								control								\
 								loader								\
-								runtimeTools						\
+								runtime								\
+								debugger							\
 								env									\
 								env/memory							\
 					)

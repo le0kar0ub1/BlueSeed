@@ -102,7 +102,7 @@ endif
 # Savage method
 TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
-.PHONY: all build fclean debug clean
+.PHONY: all build fclean debug clean $(BINARY)
 
 all:	build	$(BINARY)
 
@@ -130,7 +130,7 @@ ifeq ($(EXEC),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mYou must specify a binary to exec\e[0m\n"
 	@exit 1
 else
-	@./$(PROJECT)_$(ARCH_HOST)-$(VERSION)* $(EXEC) --verbose --debug
+	@./$(PROJECT)_$(ARCH_HOST)-$(VERSION)* $(EXEC) --verbose --explicit
 endif
 
 help:

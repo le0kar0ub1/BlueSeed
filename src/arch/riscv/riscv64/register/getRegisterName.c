@@ -4,7 +4,7 @@
 
 static char const *abiRegName[32] =
 {
-        "zero",
+        "x0",
         "ra",
         "sp",
         "gp",

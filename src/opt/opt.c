@@ -1,16 +1,19 @@
 #include "builtin.h"
 #include "opt/opt.h"
 
-bool IS_RUN_VERBOSE = false;
-bool IS_RUN_DEBUG   = false;
+bool IS_RUN_VERBOSE  = false;
+bool IS_RUN_EXPLICIT = false;
+bool IS_RUN_DEBUG    = false;
 
 bool getFlag(char *arg)
 {
     if (!strcmp("--verbose", arg))
         IS_RUN_VERBOSE = true;
+    else if (!strcmp("--explicit", arg))
+        IS_RUN_EXPLICIT = true;
     else if (!strcmp("--debug", arg))
         IS_RUN_DEBUG = true;
-    else
+    else 
         return (false);
     return (true);
 }

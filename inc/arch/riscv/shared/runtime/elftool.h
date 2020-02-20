@@ -8,6 +8,7 @@ void elftool_init(void);
 virtaddr_t elftool_getAddrFromSym(char const *);
 virtaddr_t elftool_getSecAddrFromName(char const *);
 archElf_Shdr *elftool_getSectionFromName(char const *);
+void *elftool_getSectionContentFromName(char const *);
 uint elftool_getSectionSizeFromName(char const *);
 char const *elftool_getSymFromAddr(virtaddr_t);
 

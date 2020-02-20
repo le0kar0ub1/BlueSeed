@@ -1,6 +1,7 @@
 #include "builtin.h"
 #include "syscall/syscall.h"
 #include "processor/processor.h"
+#include "env/env.h"
 
 static struct syscallHandler syscallMapped =
 {
@@ -10,6 +11,8 @@ static struct syscallHandler syscallMapped =
 
     .args   = {2, 3, 3, 1, 3, 3, 3, 3, 2, 1, 1, 2, 4, 4, 1, 1, 2, 2, 1, 1, 2, 6, 3, 3, 4, 3, 2, -1},
 };
+
+extern struct env *environnement;
 
 /* HANDLER BY NUMBER OF ARGUMENT */
 void exec_syscall(void)
@@ -28,6 +31,10 @@ void exec_syscall(void)
                     exec_syscall_arg2(processor_get_a0(), processor_get_a1(), syscallMapped.x86_64[i]);
                     break;
                 case 3:
+                    printf("WRITE: %lx %lx %lx\n", processor_get_a0(), processor_get_a1(), processor_get_a2());
+                    // printf("HOST addr:  0x%lx\nHOSt start: 0x%lx\n  Host end: 0x%lx\n", (uint64)virtToHost((virtaddr_t)processor_get_a1()),
+                    // environnement->host.link, environnement->host.link + environnement->host.loadsize);
+                    // exit(0);
                     exec_syscall_arg3(processor_get_a0(), processor_get_a1(), 
                         processor_get_a2(), syscallMapped.x86_64[i]);
                     break;

@@ -12,9 +12,9 @@ RISCV_INSTRUCTION_TYPE	:=	i_type		\
 
 SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)									\
 						$(addprefix $(ARCH_SHARED)/,					\
-								riscvhandler							\
 								runtime									\
 								memory									\
+								debugger								\
 								$(addprefix opcode_dichotomy/,			\
 										$(RISCV_INSTRUCTION_TYPE)		\
 								)										\

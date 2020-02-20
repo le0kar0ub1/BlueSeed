@@ -22,6 +22,13 @@ _BlueSeed have a toolchain builder_
 
 `make run EXEC=$BINARY` | `./BlueSeed $BINARY`
 
+*flag list:*
+  - `--verbose`   : print information during environnement init
+
+  - `--explicit`  : print all instruction executed
+
+  - `--debug`     : execut instruction one by one
+
 
 ## ROADMAP
 
