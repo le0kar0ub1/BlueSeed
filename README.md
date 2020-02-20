@@ -1,4 +1,4 @@
-# BlueSeed Project
+# Project
 
 *_BlueSeed is a `BASIC` multi-plateform RISC-V emulator wroten in C_*
 
@@ -9,7 +9,7 @@
 
 ## INSTALL
 
-_BlueSeed have a toolchain builder_
+_BlueSeed have a dependencies installer_
 
 `make toolchain TARGET=$HOST_ARCH` | `./mktoolchain/mktoolchain $HOST_ARCH`
 
@@ -59,7 +59,7 @@ _BlueSeed have a toolchain builder_
 
 _The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)_
 
-_Software interrupts are based on [RV8 project](https://rv8.io/syscalls.html)_
+_Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html)_
 
 
 ## EPILOGUE

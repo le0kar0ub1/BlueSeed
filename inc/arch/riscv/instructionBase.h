@@ -36,7 +36,7 @@ struct opcode_Stype
 struct opcode_Btype
 {
     uint opcode : 7;
-    uint imm1   : 5; // 4 : 1 | 11
+    uint imm1   : 5; // 11 | 4 : 1
     uint funct3 : 3;
     uint rs1    : 5;
     uint rs2    : 5;
