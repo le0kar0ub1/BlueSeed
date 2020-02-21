@@ -1,19 +1,22 @@
 #include "shared/opcode_dichotomy/btype.h"
 #include "processor/processor.h"
 
-int64 instrBranch_getOffset(struct opcode_Btype *op)
+int instrBranch_getOffset(struct opcode_Btype *op)
 {
-    int64 off = 0;
+    int off = 0x0;
 
-    off += (op->imm1 & 0b00001) << 11;
-    off += (op->imm1 & 0b11110) >> 1;
-
-    off += (op->imm2 & 0b0111111) << 5;
-    off += (op->imm2 & 0b1000000) << 6;
+    /* YES, THE DOCUMENTATION IS DIRTY */
+    off += (op->imm1);
+    off += (op->imm2 << 5);
+    off = off - (1 << 12) - 1;
+    /* off += (op->imm1 & 0b00001) << 11;  */
+    /* off += (op->imm1 & 0b11110) >> 1;   */
+    /* off += (op->imm2 & 0b0111111) << 5; */
+    /* off += (op->imm2 & 0b1000000) << 6; */
     return (off);
 }
 
-void instrBranch_takeBranch(int64 off)
+void instrBranch_takeBranch(int off)
 {
-    processor_set_pc(processor_get_pc() + off);
+    processor_set_pc(processor_get_pc() + off - 4);
 }

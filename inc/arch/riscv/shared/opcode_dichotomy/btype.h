@@ -23,7 +23,7 @@ void rv32i_bge(struct opcode_Btype *);
 void rv32i_bltu(struct opcode_Btype *);
 void rv32i_bgeu(struct opcode_Btype *);
 
-int64 instrBranch_getOffset(struct opcode_Btype *);
-void instrBranch_takeBranch(int64);
+int instrBranch_getOffset(struct opcode_Btype *);
+void instrBranch_takeBranch(int);
 
 #endif
