@@ -9,6 +9,7 @@
 #include "isa/rv64i/opcode.h"
 
 #include "instructionBase.h"
+#include "processor/processor.h"
 
 struct opcodeBhandler
 {
@@ -23,7 +24,16 @@ void rv32i_bge(struct opcode_Btype *);
 void rv32i_bltu(struct opcode_Btype *);
 void rv32i_bgeu(struct opcode_Btype *);
 
+static inline void instrBranch_takeBranch(int off)
+{
+    processor_set_pc(processor_get_pc() + off - 4);
+}
+
+static inline int instrBranch_getOffBranch(int off)
+{
+    return (processor_get_pc() + off - 4);
+}
+
 int instrBranch_getOffset(struct opcode_Btype *);
-void instrBranch_takeBranch(int);
 
 #endif

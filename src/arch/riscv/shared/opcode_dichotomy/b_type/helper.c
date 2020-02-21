@@ -15,8 +15,3 @@ int instrBranch_getOffset(struct opcode_Btype *op)
     /* off += (op->imm2 & 0b1000000) << 6; */
     return (off);
 }
-
-void instrBranch_takeBranch(int off)
-{
-    processor_set_pc(processor_get_pc() + off - 4);
-}
