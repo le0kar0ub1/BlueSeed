@@ -26,12 +26,12 @@ void rv32i_bgeu(struct opcode_Btype *);
 
 static inline void instrBranch_takeBranch(int off)
 {
-    processor_set_pc(processor_get_pc() + off - 4);
+    processor_set_pc((processor_get_pc() - 4) + off);
 }
 
 static inline int instrBranch_getOffBranch(int off)
 {
-    return (processor_get_pc() + off - 4);
+    return ((processor_get_pc() - 4) + off);
 }
 
 int instrBranch_getOffset(struct opcode_Btype *);

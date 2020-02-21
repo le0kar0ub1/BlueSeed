@@ -13,7 +13,8 @@ static struct opcodeHandler riscvopcode =
 
                 /* I-Type */
                 {RV32I_LOAD_OPCODE, RV32I_OPIMM_OPCODE, RV32I_SHIFTIMM_OPCODE,
-                RV32I_FENCE_OPCODE, RV32I_CALL_BREAK_OPCODE, RV32I_CSR_OPCODE},
+                RV32I_FENCE_OPCODE, RV32I_CALL_BREAK_OPCODE, RV32I_CSR_OPCODE,
+                JALR_OPCODE},
 
                 /* S-Type */
                 {RV32I_STORE_OPCODE},
@@ -28,7 +29,7 @@ static struct opcodeHandler riscvopcode =
                 {JAL_OPCODE},
 
                 /* R4-Type */
-                {JALR_OPCODE}
+                {}
                },
     .handler = {
             opcode_handler_Btype,

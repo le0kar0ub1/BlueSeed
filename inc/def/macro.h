@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** inline_cmp.h
-** File description:
-** inline_cmp.h
-*/
-
 #ifndef CMP_H_
 #define CMP_H_
 
@@ -12,13 +5,15 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <math.h>
+#include <limits.h>
 #include "fatalAssert.h"
 #include "typedef.h"
 
 #define decto(x) while (x --> 0)
 #define incto(x, y) while (x ++< y)
 
-#define APPLY_AND_MASK(x, y) (x & ((1 << y) - 1))
+#define APPLY_AND_LOWER_MASK(x, y) (x & ((1 << y) - 1))
+#define APPLY_AND_UPPER_MASK(x, y) (x & ((UINT_MAX) - ((1 << y) - 1)))
 
 #define swap(x,y) (x ^= y ^= x ^= y)
 

@@ -12,8 +12,8 @@
 
 struct opcodeIhandler
 {
-    int funct3[7][10];
-    void (*handler[7][10])(struct opcode_Itype *);
+    int funct3[8][10];
+    void (*handler[8][10])(struct opcode_Itype *);
 };
 
 void rv32i_lb(struct opcode_Itype *);
@@ -41,5 +41,7 @@ void rv32i_csrrc(struct opcode_Itype *);
 void rv32i_csrrwi(struct opcode_Itype *);
 void rv32i_csrrsi(struct opcode_Itype *);
 void rv32i_csrrci(struct opcode_Itype *);
+
+void rv32i_jalr(struct opcode_Itype *);
 
 #endif

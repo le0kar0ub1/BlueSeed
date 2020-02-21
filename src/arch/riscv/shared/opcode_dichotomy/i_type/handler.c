@@ -19,6 +19,8 @@ static struct opcodeIhandler opcodeI =
 
         {0b001,      0b010,        0b011,       0b101,        0b110,        0b111, -1},
 
+        {0b0, -1},
+
         {-1}
     },
     .handler = {
@@ -33,6 +35,8 @@ static struct opcodeIhandler opcodeI =
         {rv32i_callNbreak}, /* IDX 4 in opcodeHandler (I) */
 
         {rv32i_csrrw, rv32i_csrrs, rv32i_csrrc, rv32i_csrrwi, rv32i_csrrsi, rv32i_csrrci}, /* IDX 5 in opcodeHandler (I) */
+
+        {rv32i_jalr}, /* IDX 6 in opcodehandler (I) */
 
         {NULL}
     } 
