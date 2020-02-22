@@ -23,7 +23,7 @@ export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 export EXTENSION_SRC	:=	.c
 export EXTENSION_OBJ	:=	.o
-export EXTENSION_ASM	:= .S
+export EXTENSION_ASM	:=	.S
 
 export ROOT_SRC_DIR	:= src
 export ROOT_INC_DIR	:= inc
@@ -48,6 +48,8 @@ export	LDFLAGS	=	--trace
 
 # Cleaner as possible
 export  CFLAGS	=	$(INCLUDE_DIR)						\
+					-MMD								\
+					-MF		dep.d						\
 					-Wall								\
 					-Wextra				 				\
 					-Wnested-externs					\
@@ -118,7 +120,9 @@ clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* vgcore.*
+	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* 
+	@$(RM) vgcore.*
+	@$(RM) $(shell $(realpath $(find . -name dep.d)))
 
 $(BINARY):	$(.SECONDEXPANSION)
 	@$(CC) -o $(BINARY) $(TARGET_BUILT_OBJECT) $(LDFLAGS)

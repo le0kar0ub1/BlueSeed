@@ -137,5 +137,4 @@ void processor_setu_ft10(archuval_t);
 void processor_setu_ft11(archuval_t);
 void processor_setu_pc(archuval_t);
 
-
 #endif

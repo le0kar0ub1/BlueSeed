@@ -23,11 +23,11 @@ _BlueSeed have a dependencies installer_
 `make run EXEC=$BINARY` | `./BlueSeed $BINARY`
 
 *flag list:*
-  - `--verbose`   : print information during environnement init
+  - `--verbose`   : display information during environnement init
 
-  - `--explicit`  : print all instruction executed
+  - `--explicit`  : display the current executed instruction
 
-  - `--debug`     : execut instruction one by one
+  - `--debug`     : debug environnement (CLI)
 
 
 ## ROADMAP
@@ -54,6 +54,12 @@ _BlueSeed have a dependencies installer_
   - [X] virtual processor
   - [X] program exec
   - [X] syscall host interface (limited)
+  - [ ] Debug
+    - [X] Display the running instruction
+    - [X] Dump the processor state
+    - [ ] Runtime register set
+    - [ ] Runtime jump/break over symbols
+    - [ ] Breakpoints ?
 
 ## SPECIFITY
 
