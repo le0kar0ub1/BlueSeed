@@ -1,7 +1,7 @@
 #include "shared/opcode_dichotomy/itype.h"
 #include "syscall/syscall.h"
 
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 
 void rv32i_ecall(void)
 {

@@ -1,5 +1,5 @@
 #include "shared/opcode_dichotomy/btype.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 
 /*
 ** Based on test with the RISC-V Assembler 

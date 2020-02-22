@@ -1,6 +1,6 @@
 #include "builtin.h"
-#include "riscv64/processor/processor.h"
-#include "riscv64/processor/set_register.h"
+#include "shared/processor/processor.h"
+#include "shared/processor/set_register.h"
 
 extern struct abiprocessor *processor;
 

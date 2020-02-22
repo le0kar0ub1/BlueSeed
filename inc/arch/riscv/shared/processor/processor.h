@@ -5,7 +5,7 @@
 #include "def/keyword.h"
 #include "control/config.h"
 
-typedef archval_t reg_t;
+typedef archuval_t reg_t;
 
 #include "get_register.h"
 #include "set_register.h"

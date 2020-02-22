@@ -9,7 +9,7 @@
 #include "isa/rv64i/opcode.h"
 
 #include "instructionBase.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 
 struct opcodeBhandler
 {

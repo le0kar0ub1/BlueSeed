@@ -1,6 +1,6 @@
 #include "builtin.h"
 #include "syscall/syscall.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "env/env.h"
 
 static struct syscallHandler syscallMapped =

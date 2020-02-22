@@ -1,7 +1,7 @@
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "control/error.h"
 
-static int64 (*getreg[32])(void) =
+static archival_t (*getreg[32])(void) =
 {
         processor_get_zero,
         processor_get_ra,
@@ -37,7 +37,7 @@ static int64 (*getreg[32])(void) =
         processor_get_t6
 };
 
-static uint64 (*getUreg[32])(void) =
+static archuval_t (*getUreg[32])(void) =
 {
         processor_getu_zero,
         processor_getu_ra,
@@ -73,7 +73,7 @@ static uint64 (*getUreg[32])(void) =
         processor_getu_t6
 };
 
-int64 registerGet(uint reg)
+archival_t registerGet(uint reg)
 {
     if (reg == 0)
         return (0);
@@ -109,14 +109,14 @@ int32 registerGetD(uint reg)
     return ((int32)getreg[reg]());
 }
 
-int64 registerGetQ(uint reg)
+archival_t registerGetQ(uint reg)
 {
     return (registerGet(reg));
 }
 
 
 
-uint64 registerUGet(uint reg)
+archuval_t registerUGet(uint reg)
 {
     if (reg == 0)
         return (0);
@@ -152,7 +152,7 @@ uint32 registerUGetD(uint reg)
     return ((uint32)getUreg[reg]());
 }
 
-uint64 registerUGetQ(uint reg)
+archuval_t registerUGetQ(uint reg)
 {
     return (registerUGet(reg));
 }

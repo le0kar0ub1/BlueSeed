@@ -1,6 +1,6 @@
 #include "shared/opcode_dichotomy/utype.h"
 #include "def/macro.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "env/env.h"
 
 #include "runtime/elftool.h"

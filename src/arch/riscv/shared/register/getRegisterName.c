@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "control/error.h"
 
 static char const *abiRegName[32] =

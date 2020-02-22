@@ -2,7 +2,7 @@
 #include "hookpoint.h"
 #include "env/env.h"
 #include "shared/memory/stack.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "shared/runtime/extractor.h"
 #include "opcode.h"
 #include "shared/runtime/dump.h"

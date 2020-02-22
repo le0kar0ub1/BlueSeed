@@ -1,5 +1,5 @@
 #include "shared/opcode_dichotomy/stype.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "env/env.h"
 
 void rv32i_sb(struct opcode_Stype *extracted)

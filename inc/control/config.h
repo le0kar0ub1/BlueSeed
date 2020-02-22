@@ -12,10 +12,12 @@
 /* Compile-time macro */
 #if SYSTEMSZ == 64
     typedef uint64 *archptr_t;
-    typedef uint64  archval_t;
+    typedef uint64  archuval_t;
+    typedef int64   archival_t;
 #else
     typedef uint32 *archptr_t;
-    typedef uint32  archval_t;
+    typedef uint32  archuval_t;
+    typedef int32   archival_t;
 #endif
 
 #endif

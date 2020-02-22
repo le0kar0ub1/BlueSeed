@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "shared/debugger/debugger.h"
 
 static char const *debugCommandAllowed[10] =

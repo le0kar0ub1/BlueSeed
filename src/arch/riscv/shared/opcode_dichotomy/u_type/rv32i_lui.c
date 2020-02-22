@@ -1,6 +1,6 @@
 #include "shared/opcode_dichotomy/utype.h"
 #include "def/macro.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "shared/runtime/elftool.h"
 
 void rv32i_lui(struct opcode_Utype *extracted)

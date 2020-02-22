@@ -1,5 +1,5 @@
 #include "shared/opcode_dichotomy/itype.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "env/env.h"
 
 void rv32i_lbu(struct opcode_Itype *extracted )

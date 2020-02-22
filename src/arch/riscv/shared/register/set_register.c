@@ -1,7 +1,7 @@
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "control/error.h"
 
-static void (*setreg[32])(int64 val) =
+static void (*setreg[32])(archival_t val) =
 {
         processor_set_zero,
         processor_set_ra,
@@ -37,7 +37,7 @@ static void (*setreg[32])(int64 val) =
         processor_set_t6
 };
 
-static void (*setUreg[32])(uint64 val) =
+static void (*setUreg[32])(archuval_t val) =
 {
         processor_setu_zero,
         processor_setu_ra,
@@ -73,7 +73,7 @@ static void (*setUreg[32])(uint64 val) =
         processor_setu_t6
 };
 
-void registerSet(uint reg, int64 val)
+void registerSet(uint reg, archival_t val)
 {
     if (reg == 0)
         return;
@@ -109,14 +109,14 @@ void registerSetD(uint reg, int32 val)
     setreg[reg](REGISTER_CLEAR_DWORD(registerGet(reg)) + val);
 }
 
-void registerSetQ(uint reg, int64 val)
+void registerSetQ(uint reg, archival_t val)
 {
     registerSet(reg, val);
 }
 
 
 
-void registerUSet(uint reg, uint64 val)
+void registerUSet(uint reg, archuval_t val)
 {
     if (reg == 0)
         return;
@@ -152,7 +152,7 @@ void registerUSetD(uint reg, uint32 val)
     setUreg[reg](REGISTER_CLEAR_DWORD(registerGet(reg)) + val);
 }
 
-void registerUSetQ(uint reg, uint64 val)
+void registerUSetQ(uint reg, archuval_t val)
 {
     registerUSet(reg, val);
 }

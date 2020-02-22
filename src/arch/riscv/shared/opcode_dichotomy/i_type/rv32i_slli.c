@@ -1,5 +1,5 @@
 #include "shared/opcode_dichotomy/itype.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 
 #define SHIFT_IMM_MASK(x) (x & ((1 << 5) - 1))
 

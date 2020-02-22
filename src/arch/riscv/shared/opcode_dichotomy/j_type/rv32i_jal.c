@@ -1,5 +1,5 @@
 #include "shared/opcode_dichotomy/jtype.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 
 void rv32i_jal(struct opcode_Jtype *extracted)
 {

@@ -1,7 +1,7 @@
 #include "env/env.h"
 #include "loader/elf/loader.h"
 #include "shared/runtime/elftool.h"
-#include "processor/processor.h"
+#include "shared/processor/processor.h"
 #include "shared/runtime/extractor.h"
 
 extern struct env *environnement;
