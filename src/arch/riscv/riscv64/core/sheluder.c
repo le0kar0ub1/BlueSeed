@@ -19,11 +19,11 @@ void arch_exec(void)
     verbose_log("Starting execution...\n");
     /* Program main loop */
     while (1) {
+        if (IS_RUN_DEBUG)
+            debugger();
         *instr = extractCodeD();
         handler = getHandlerFromOpcode(RISCV_OPCODE_MASK(*instr));
         handler(instr);
-        if (IS_RUN_DEBUG)
-            debugger();
     }
     free(instr);
 }

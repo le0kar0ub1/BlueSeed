@@ -77,7 +77,7 @@ void processor_udump(void)
 
 void processor_dump(void)
 {
-    printf("\e[0;31mxo    \e[0m: \e[0;34m%020lx \e[0m (zero-hardwired)\n", (int64)processor->zero);
+    printf("\e[0;31mx0    \e[0m: \e[0;34m%020lx \e[0m (zero-hardwired)\n", (int64)processor->zero);
     printf("\e[0;31mra    \e[0m: \e[0;34m%020lx \e[0m (Adress return)\n", (int64)processor->ra);
     printf("\e[0;31msp    \e[0m: \e[0;34m%020lx \e[0m (Stack pointer)\n", (int64)processor->sp);
     printf("\e[0;31mgp    \e[0m: \e[0;34m%020lx \e[0m (Global pointer)\n", (int64)processor->gp);
