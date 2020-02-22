@@ -16,11 +16,8 @@ struct opcodeShandler
     void (*handler[8][10])(struct opcode_Stype *);
 };
 
-void rv32i_lb(struct opcode_Stype *);
-void rv32i_lh(struct opcode_Stype *);
-void rv32i_lw(struct opcode_Stype *);
-void rv32i_lbu(struct opcode_Stype *);
-void rv32i_lhu(struct opcode_Stype *);
-void rv32i_addi(struct opcode_Stype *);
+void rv32i_sb(struct opcode_Stype *);
+void rv32i_sh(struct opcode_Stype *);
+void rv32i_sw(struct opcode_Stype *);
 
 #endif

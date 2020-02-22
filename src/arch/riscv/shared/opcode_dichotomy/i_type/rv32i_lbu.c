@@ -4,6 +4,6 @@
 
 void rv32i_lbu(struct opcode_Itype *extracted )
 {
-    uint8 *get = (uint8 *)virtToHost((void *)(uint64)extracted->imm);
-    registerSetB(extracted->rd, get[0]);
+    uint8 *get = (uint8 *)virtToHost((void *)((uint64)((int)extracted->imm + registerGet(extracted->rs1))));
+    registerSetB(extracted->rd, *get);
 }
