@@ -1,0 +1,6 @@
+#ifndef _PSEUDO_OPCODE_H_
+#define _PSEUDO_OPCODE_H_
+
+#define PSEUDO_OPCODE_RET 0b0000010
+
+#endif

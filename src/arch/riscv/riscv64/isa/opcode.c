@@ -4,6 +4,7 @@
 #include "isa/rv64i/opcode.h"
 #include "isa/rv32m/opcode.h"
 #include "isa/rv64m/opcode.h"
+#include "isa/pseudoinstr/opcode.h"
 
 static struct opcodeHandler riscvopcode =
 {
@@ -29,7 +30,10 @@ static struct opcodeHandler riscvopcode =
                 {JAL_OPCODE},
 
                 /* R4-Type */
-                {}
+                {},
+
+                /* Pseudo instr */
+                {PSEUDO_OPCODE_RET}
                },
     .handler = {
             opcode_handler_Btype,
@@ -39,6 +43,7 @@ static struct opcodeHandler riscvopcode =
             opcode_handler_Utype,
             opcode_handler_Jtype,
             opcode_handler_R4type,
+            opcode_handler_pseudoInstr,
             NULL
     }
 };

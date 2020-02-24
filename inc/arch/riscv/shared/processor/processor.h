@@ -54,7 +54,7 @@ struct abiprocessor {
     reg_t t1;   /* temporary register */
     reg_t t2;   /* temporary register */
 
-    reg_t fp;   /* frame pointer */
+    reg_t fp;   /* frame pointer | s0 */
 
     reg_t s1;   /* saved register */
 

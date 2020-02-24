@@ -19,10 +19,13 @@ static inline uint get_loadsize(archElf_Shdr *shdr, uint entries)
     return (ALIGN(max, 0x1000));
 }
 
-static inline uint get_execsize(archElf_Shdr *shdr, uint entries)
+static inline uint get_execsize(archElf_Shdr *shdr, char *shdrtab, uint entries)
 {
+    // for (uint i = 0; i < entries; i++)
+    //     if (shdr[i].sh_flags == (SHF_EXECINSTR | SHF_ALLOC))
+    //         return (shdr[i].sh_size);
     for (uint i = 0; i < entries; i++)
-        if (shdr[i].sh_flags == (SHF_EXECINSTR | SHF_ALLOC))
+        if (!strcmp(".text", (char *)&(shdrtab[shdr[i].sh_name])))
             return (shdr[i].sh_size);
     RAISE(ERR_EXEC_FMT_NUM);
     return (0);
@@ -38,7 +41,7 @@ struct env *virtual_loading(void *mapped)
     loader->host.link = vmalloc(alloc);
     loader->host.end  = (hostaddr_t)ADD_TO_PTR(loader->host.link, alloc);
     loader->virtual.entry = (virtaddr_t)ehdr->e_entry;
-    loader->virtual.end   = (virtaddr_t)(uint64)ADD_TO_PTR(loader->virtual.entry, get_execsize(shdr, ehdr->e_shnum));
+    loader->virtual.end   = (virtaddr_t)(uint64)ADD_TO_PTR(loader->virtual.entry, get_execsize(shdr, (char *)(ADD_TO_PTR(ehdr, shdr[ehdr->e_shstrndx].sh_offset)), ehdr->e_shnum));
     memset(loader->host.link, 0x0, alloc);
     /* memcpy the head of the file */
     memcpy(loader->host.link, mapped, ehdr->e_ehsize);

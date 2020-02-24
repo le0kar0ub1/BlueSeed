@@ -8,7 +8,8 @@ RISCV_INSTRUCTION_TYPE	:=	i_type		\
 							r_type		\
 							s_type		\
 							u_type		\
-							r4_type	
+							r4_type		\
+							pseudoinstr
 
 SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)									\
 						$(addprefix $(ARCH_SHARED)/,					\

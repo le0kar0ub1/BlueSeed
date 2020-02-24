@@ -19,7 +19,7 @@ export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
 export BUILDIR	:=	$(realpath .)/build
 
 export ALLOWED_ARCH	:= riscv32 riscv64
-export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
+export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d pseudoinstr
 
 export EXTENSION_SRC	:=	.c
 export EXTENSION_OBJ	:=	.o

@@ -9,7 +9,7 @@
 
 #define RISCV_OPCODE_MASK(x) (x & ((1 << 7) - 1))
 
-#define RISCV_OPCODE_TYPE_MAX 0x8
+#define RISCV_OPCODE_TYPE_MAX 0x9
 
 #define BTYPE_OPCODE_IDX  0x0
 #define ITYPE_OPCODE_IDX  0x1
@@ -18,6 +18,7 @@
 #define UTYPE_OPCODE_IDX  0x4
 #define JTYPE_OPCODE_IDX  0x5
 #define R4TYPE_OPCODE_IDX 0x6
+#define PSEUDO_OPCODE_IDX 0x7
 
 struct opcodeHandler
 {

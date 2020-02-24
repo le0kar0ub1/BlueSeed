@@ -10,5 +10,6 @@ void opcode_handler_Rtype(extractor32_t *);
 void opcode_handler_Utype(extractor32_t *);
 void opcode_handler_Jtype(extractor32_t *);
 void opcode_handler_R4type(extractor32_t *);
+void opcode_handler_pseudoInstr(extractor32_t *);
 
 #endif

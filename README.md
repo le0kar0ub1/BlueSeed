@@ -20,7 +20,7 @@ _BlueSeed have a dependencies installer_
 
 ## RUN
 
-`make run EXEC=$BINARY` | `./BlueSeed $BINARY`
+`./BlueSeed $BINARY [..options]`
 
 *flag list:*
   - `--verbose`   : display information during environnement init
@@ -63,13 +63,15 @@ _BlueSeed have a dependencies installer_
 
 ## SPECIFITY
 
-_The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)_
+The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)
 
-_Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html)_
+Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html)
 
 
 ## EPILOGUE
 
 _BlueSeed is in developpment_
+
+RISC-V is a young architecture. There is yet a quantity of lacks & implementation problems.
 
 [RISCV official spec](https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf)
