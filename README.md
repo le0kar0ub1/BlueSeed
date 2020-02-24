@@ -20,7 +20,7 @@ _BlueSeed have a dependencies installer_
 
 ## RUN
 
-`./BlueSeed $BINARY [..options]`
+`./BlueSeedXXX $BINARY [..options]`
 
 *flag list:*
   - `--verbose`   : display information during environnement init
