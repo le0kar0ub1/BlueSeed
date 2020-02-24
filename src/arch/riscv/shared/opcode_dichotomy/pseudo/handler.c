@@ -1,6 +1,6 @@
 #include "builtin.h"
 #include "shared/opcode_dichotomy/handler.h"
-#include "shared/opcode_dichotomy/pseudoinstr.h"
+#include "shared/opcode_dichotomy/pseudo.h"
 #include "instructionBase.h"
 #include "opcode.h"
 
@@ -11,19 +11,19 @@ static struct opcodePseudohandler opcodePseudo =
         -1
     },
     .handler = {
-        pseudoinstr_ret,
+        pseudo_ret,
         NULL
     } 
 };
 
-void opcode_handler_pseudoInstr(extractor32_t *extracted)
+bool opcode_handler_pseudo(extractor32_t *extracted)
 { 
     int parser = (int)*extracted;
     for (int i = 0; opcodePseudo.opcode[i] != -1; i++) {
         if (opcodePseudo.opcode[i] == parser) {
             opcodePseudo.handler[i](parser);
-            return;
+            return (true);
         }
     }
-    RAISE(ERR_OPCODE_NUM);
+    return (false);
 }

@@ -23,6 +23,8 @@ void arch_exec(void)
             debugger();
         *instr = extractCodeD();
         handler = getHandlerFromOpcode(RISCV_OPCODE_MASK(*instr));
+        if (!handler)
+            RAISE(ERR_OPCODE_NUM);
         handler(instr);
     }
     free(instr);

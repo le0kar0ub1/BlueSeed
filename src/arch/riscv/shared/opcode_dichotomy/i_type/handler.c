@@ -42,7 +42,7 @@ static struct opcodeIhandler opcodeI =
     } 
 };
 
-void opcode_handler_Itype(extractor32_t *extracted)
+bool opcode_handler_Itype(extractor32_t *extracted)
 { 
     struct opcode_Itype *parser = (struct opcode_Itype *)extracted;
     for (int i = 0; opcodeI.funct3[i][0] != -1; i++) {
@@ -50,9 +50,9 @@ void opcode_handler_Itype(extractor32_t *extracted)
             if (isOpcodeInIndex(ITYPE_OPCODE_IDX, i, parser->opcode) &&
             opcodeI.funct3[i][j] == (int)parser->funct3) {
                 opcodeI.handler[i][j](parser);
-                return;
+                return (true);
             }
         }
     }
-    RAISE(ERR_OPCODE_NUM);
+    return (false);
 }

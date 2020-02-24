@@ -5,20 +5,13 @@
 #include "def/keyword.h"
 #include "shared/runtime/extractor.h"
 
-#include "isa/rv32i/opcode.h"
-#include "isa/rv64i/opcode.h"
-
-#include "instructionBase.h"
+#include "compressedInstructionBase.h"
 #include "shared/processor/processor.h"
 
-struct opcodePseudohandler
+struct opcodeCompressedHandler
 {
     int opcode[10];
     void (*handler[10])(int);
 };
-
-#define PSEUDO_INSTR_RET 0x8082
-
-void pseudoinstr_ret(int);
 
 #endif

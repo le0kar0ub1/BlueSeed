@@ -4,7 +4,7 @@
 #include "instructionBase.h"
 #include "opcode.h"
 
-void opcode_handler_Rtype(extractor32_t *extracted __unused)
+bool opcode_handler_Rtype(extractor32_t *extracted __unused)
 { 
-    printf("opcode_handler_Rtype\n");
+    return (false);
 }

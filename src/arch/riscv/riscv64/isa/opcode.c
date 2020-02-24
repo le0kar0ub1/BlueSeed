@@ -4,7 +4,8 @@
 #include "isa/rv64i/opcode.h"
 #include "isa/rv32m/opcode.h"
 #include "isa/rv64m/opcode.h"
-#include "isa/pseudoinstr/opcode.h"
+#include "isa/compressed/opcode.h"
+#include "shared/opcode_dichotomy/pseudo.h"
 
 static struct opcodeHandler riscvopcode =
 {
@@ -43,7 +44,7 @@ static struct opcodeHandler riscvopcode =
             opcode_handler_Utype,
             opcode_handler_Jtype,
             opcode_handler_R4type,
-            opcode_handler_pseudoInstr,
+            opcode_handler_pseudo,
             NULL
     }
 };
@@ -57,12 +58,17 @@ bool isOpcodeInIndex(uint typeidx, uint subidx, uint val)
 
 void *getHandlerFromOpcode(int opcode)
 {
+    void *handler;
+
     for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++) {
         for (uint j = 0; riscvopcode.opcode[i][j]; j++) {
-            if (opcode == riscvopcode.opcode[i][j])
-                return (riscvopcode.handler[i]);
+            if (opcode == riscvopcode.opcode[i][j]) {
+                if ((handler = riscvopcode.handler[i]) == NULL)
+                    return (getCompressedHandlerFromOpcode(opcode));
+                else
+                    return (handler);
+            }
         }
     }
-    RAISE(ERR_OPCODE_NUM);
-    return (NULL);
+    return (getCompressedHandlerFromOpcode(opcode));
 }

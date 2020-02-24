@@ -23,10 +23,11 @@
 struct opcodeHandler
 {
     int opcode[RISCV_OPCODE_TYPE_MAX][50];
-    void (*handler[RISCV_OPCODE_TYPE_MAX])(extractor32_t *);
+    bool (*handler[RISCV_OPCODE_TYPE_MAX])(extractor32_t *);
 };
 
 void *getHandlerFromOpcode(int);
+void *getCompressedHandlerFromOpcode(int);
 bool isOpcodeInIndex(uint, uint, uint);
 
 #endif

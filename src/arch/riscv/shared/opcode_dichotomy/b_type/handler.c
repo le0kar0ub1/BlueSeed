@@ -18,7 +18,7 @@ static struct opcodeBhandler opcodeB =
     } 
 };
 
-void opcode_handler_Btype(extractor32_t *extracted)
+bool opcode_handler_Btype(extractor32_t *extracted)
 { 
     struct opcode_Btype *parser = (struct opcode_Btype *)extracted;
     for (int i = 0; opcodeB.funct3[i][0] != -1; i++) {
@@ -26,9 +26,9 @@ void opcode_handler_Btype(extractor32_t *extracted)
             if (isOpcodeInIndex(BTYPE_OPCODE_IDX, i, parser->opcode) &&
             opcodeB.funct3[i][j] == (int)parser->funct3) {
                 opcodeB.handler[i][j](parser);
-                return;
+                return (true);
             }
         }
     }
-    RAISE(ERR_OPCODE_NUM);
+    return (false);
 }

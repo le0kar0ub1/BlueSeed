@@ -19,6 +19,6 @@ char const *errorMsg[100] =
 
 void RAISE(int errorcode)
 {
-    dprintf(2, "[\e[0;34mBlueSeed\e[0m] Abort reason: %s\n", errorMsg[errorcode - 1]);
+    dprintf(2, "[\e[91;1mABORT\e[0m] %s\n", errorMsg[errorcode - 1]);
     exit (errorcode);
 }

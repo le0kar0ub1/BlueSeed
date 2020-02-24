@@ -1,8 +1,8 @@
-#include "shared/opcode_dichotomy/pseudoinstr.h"
+#include "shared/opcode_dichotomy/pseudo.h"
 #include "shared/processor/processor.h"
 #include "shared/opcode_dichotomy/itype.h"
 
-void pseudoinstr_ret(int extracted __unused)
+void pseudo_ret(int extracted __unused)
 {
     struct opcode_Itype transfer;
     transfer.opcode = 0;

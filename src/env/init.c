@@ -22,3 +22,9 @@ void exit_environnement(void)
     verbose_log("Destroying stack...\n");
     stack_destroy();
 }
+
+void free_environement(struct env *env)
+{
+    free(env->host.link);
+    free(env);
+}
