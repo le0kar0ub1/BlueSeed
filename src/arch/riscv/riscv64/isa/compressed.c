@@ -1,33 +1,40 @@
 #include "opcode.h"
 #include "shared/opcode_dichotomy/handler.h"
 #include "isa/compressed/opcode.h"
+#include "shared/opcode_dichotomy/compressed.h"
 
-// static struct opcodeHandler compressedOpcode =
-// {
-//     .opcode  = {
-//                 {},
-//                },
-//     .handler = {
-//             NULL
-//     }
-// };
+void *compressedHandlerGetZero(int opcode)
+{
+    return (NULL);
+}
 
-// bool isOpcodeInIndex(uint typeidx, uint subidx, uint val)
-// {
-//     if ((uint)riscvopcode.opcode[typeidx][subidx] == val)
-//         return (true);
-//     return (false);
-// }
+void *compressedHandlerGetOne(int opcode __unused)
+{
+    return (NULL);
+}
+
+void *compressedHandlerGetTwo(int opcode __unused)
+{
+    return (NULL);
+}
+
 
 void *getCompressedHandlerFromOpcode(int opcode)
 {
-    printf("COMPRESSED\n");
-    // for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++) {
-    //     for (uint j = 0; riscvopcode.opcode[i][j]; j++) {
-    //         if (opcode == riscvopcode.opcode[i][j])
-    //             return (riscvopcode.handler[i]);
-    //     }
-    // }
-    // RAISE(ERR_OPCODE_NUM);
-    return (NULL);
+    switch (COMPRESSED_OPMASK(opcode)) {
+        case COMPRESSED_OP0:
+            return (compressedHandlerGetZero(opcode));
+            break;
+        case COMPRESSED_OP1:
+            return (compressedHandlerGetOne(opcode));
+            break;
+        case COMPRESSED_OP2:
+            return (compressedHandlerGetTwo(opcode));
+            break;
+        case COMPRESSED_OP3:
+            return (NULL);
+            break;
+        default:
+            return (NULL);
+    }
 }

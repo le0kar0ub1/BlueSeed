@@ -60,15 +60,11 @@ void *getHandlerFromOpcode(int opcode)
 {
     void *handler;
 
-    for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++) {
-        for (uint j = 0; riscvopcode.opcode[i][j]; j++) {
-            if (opcode == riscvopcode.opcode[i][j]) {
-                if ((handler = riscvopcode.handler[i]) == NULL)
-                    return (getCompressedHandlerFromOpcode(opcode));
-                else
-                    return (handler);
-            }
-        }
-    }
-    return (getCompressedHandlerFromOpcode(opcode));
+    for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++)
+        for (uint j = 0; riscvopcode.opcode[i][j]; j++)
+            if (opcode == riscvopcode.opcode[i][j])
+                return (riscvopcode.handler[i]);
+    if ((handler = getCompressedHandlerFromOpcode(opcode)) != NULL)
+        processor_set_pc(processor_get_pc() - 2);
+    return (handler);
 }
