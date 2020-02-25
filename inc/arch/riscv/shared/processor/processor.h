@@ -1,6 +1,8 @@
 #ifndef _PROCESSOR_CONTEXT_H_
 #define _PROCESSOR_CONTEXT_H_
 
+#include <stdbool.h>
+
 #include "def/typedef.h"
 #include "def/keyword.h"
 #include "control/config.h"
@@ -10,10 +12,14 @@ typedef archuval_t reg_t;
 #include "get_register.h"
 #include "set_register.h"
 
+void processor_dump_register(char const *);
 void processor_dump(void);
 void processor_udump(void);
 
 char const *getRegisterName(uint);
+archival_t getRegisterFromName(char const *);
+uint getRegisterIdxFromName(char const *);
+bool isRegisterExistant(uint);
 
 #define REGISTER_CLEAR_BYTE(x)  (x & ((1 << 8) - 1))
 #define REGISTER_CLEAR_WORD(x)  (x & ((1 << 16) - 1))

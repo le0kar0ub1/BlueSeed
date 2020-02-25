@@ -114,8 +114,6 @@ archival_t registerGetQ(uint reg)
     return (registerGet(reg));
 }
 
-
-
 archuval_t registerUGet(uint reg)
 {
     if (reg == 0)

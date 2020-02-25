@@ -4,6 +4,14 @@
 
 extern struct abiprocessor *processor;
 
+void processor_dump_register(char const *name)
+{
+    if (!isRegisterExistant(getRegisterIdxFromName(name)))
+        printf("Invalid Register...\n");
+    else
+        printf("\e[0;31m%s    \e[0m: \e[0;34m%016lx \e[0m\n", name, getRegisterFromName(name));
+}
+
 void processor_udump(void)
 {
     printf("\e[0;31mx0    \e[0m: \e[0;34m%016lxu \e[0m (zero-hardwired)\n", (archuval_t)processor->zero);

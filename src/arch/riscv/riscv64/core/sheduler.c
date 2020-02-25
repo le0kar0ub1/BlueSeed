@@ -8,7 +8,7 @@
 #include "shared/runtime/dump.h"
 #include "instructionBase.h"
 #include "shared/opcode_dichotomy/handler.h"
-#include "shared/debugger/debugger.h"
+#include "debugger/debugger.h"
 
 extern bool IS_RUN_DEBUG;
 
