@@ -63,7 +63,8 @@ void *getHandlerFromOpcode(int opcode)
     for (uint i = 0; i < RISCV_OPCODE_TYPE_MAX - 1; i++)
         for (uint j = 0; riscvopcode.opcode[i][j]; j++)
             if (RISCV_OPCODE_MASK(opcode) == riscvopcode.opcode[i][j])
-                return (riscvopcode.handler[i]);
+                if ((handler = riscvopcode.handler[i]((extractor32_t *)&opcode)) != NULL)
+                    return (handler);
     if ((handler = getCompressedHandlerFromOpcode(opcode & ((1 << 16) - 1))) != NULL)
         processor_set_pc(processor_get_pc() - 2);
     return (handler);

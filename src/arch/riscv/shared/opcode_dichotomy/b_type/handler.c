@@ -18,17 +18,16 @@ static struct opcodeBhandler opcodeB =
     } 
 };
 
-bool opcode_handler_Btype(extractor32_t *extracted)
+void *opcode_handler_Btype(extractor32_t *extracted)
 { 
     struct opcode_Btype *parser = (struct opcode_Btype *)extracted;
     for (int i = 0; opcodeB.funct3[i][0] != -1; i++) {
         for (int j = 0; opcodeB.funct3[i][j] != -1; j++) {
             if (isOpcodeInIndex(BTYPE_OPCODE_IDX, i, parser->opcode) &&
             opcodeB.funct3[i][j] == (int)parser->funct3) {
-                opcodeB.handler[i][j](parser);
-                return (true);
+                return (opcodeB.handler[i][j]);
             }
         }
     }
-    return (false);
+    return (NULL);
 }

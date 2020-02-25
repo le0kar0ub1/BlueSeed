@@ -38,6 +38,7 @@ _BlueSeed have a dependencies installer_
 - [ ] instruction set
   - [ ] RV32I Base Instruction Set
   - [ ] RV64I Base Instruction Set
+  - [ ] Compressed Instruction Set
   - [ ] RV32M Standard Extension ?
   - [ ] RV64M Standard Extension ?
   - [ ] RV32A Standard Extension ?

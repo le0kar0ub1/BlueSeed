@@ -23,7 +23,7 @@
 struct opcodeHandler
 {
     int opcode[RISCV_OPCODE_TYPE_MAX][50];
-    bool (*handler[RISCV_OPCODE_TYPE_MAX])(extractor32_t *);
+    void *(*handler[RISCV_OPCODE_TYPE_MAX])(extractor32_t *);
 };
 
 void *getHandlerFromOpcode(int);

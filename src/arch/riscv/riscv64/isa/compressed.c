@@ -43,7 +43,7 @@ void *compressedHandlerGetOne(int opcode __unused)
         default:
             break;
     }
-    uint8 ca = getFuncFromCompressedCA(&opcode) & 0b111000;
+    uint8 ca  = getFuncFromCompressedCA(&opcode) & 0b111000;
     uint8 ca2 = getFuncFromCompressedCA(&opcode) & 0b000111;
     uint8 imm = getImmFromCompressedCA(&opcode);
     switch (ca) {
@@ -141,7 +141,7 @@ void *compressedHandlerGetTwo(int opcode __unused)
 
 void *getCompressedHandlerFromOpcode(int opcode)
 {
-    printf("COMPRESSED\n");
+    printf("COMPRESSED: %x\n", opcode);
     switch (COMPRESSED_OPMASK(opcode)) {
         case COMPRESSED_OP0:
             return (compressedHandlerGetZero(opcode));

@@ -42,17 +42,25 @@ static struct opcodeIhandler opcodeI =
     } 
 };
 
-bool opcode_handler_Itype(extractor32_t *extracted)
+bool checkItypeConstraints(int i, int j __unused, struct opcode_Itype *parser)
+{
+    if (i == 1 && parser->rd == 0)
+        return (false);
+    return (true);
+}
+
+void *opcode_handler_Itype(extractor32_t *extracted)
 { 
     struct opcode_Itype *parser = (struct opcode_Itype *)extracted;
     for (int i = 0; opcodeI.funct3[i][0] != -1; i++) {
         for (int j = 0; opcodeI.funct3[i][j] != -1; j++) {
             if (isOpcodeInIndex(ITYPE_OPCODE_IDX, i, parser->opcode) &&
             opcodeI.funct3[i][j] == (int)parser->funct3) {
-                opcodeI.handler[i][j](parser);
-                return (true);
+                if (!checkItypeConstraints(i, j, parser))
+                    return (NULL);
+                return (opcodeI.handler[i][j]);
             }
         }
     }
-    return (false);
+    return (NULL);
 }

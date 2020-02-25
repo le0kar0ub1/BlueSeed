@@ -22,17 +22,16 @@ static struct opcodeUhandler opcodeU =
     } 
 };
 
-bool opcode_handler_Utype(extractor32_t *extracted)
+void *opcode_handler_Utype(extractor32_t *extracted)
 { 
     struct opcode_Utype *parser = (struct opcode_Utype *)extracted;
     for (int i = 0; opcodeU.opcode[i][0] != -1; i++) {
         for (int j = 0; opcodeU.opcode[i][j] != -1; j++) {
             if (isOpcodeInIndex(UTYPE_OPCODE_IDX, i, parser->opcode) &&
             opcodeU.opcode[i][j] == (int)parser->opcode) {
-                opcodeU.handler[i][j](parser);
-                return (true);
+                return (opcodeU.handler[i][j]);
             }
         }
     }
-    return (false);
+    return (NULL);
 }

@@ -16,6 +16,8 @@ struct opcodeIhandler
     void (*handler[8][10])(struct opcode_Itype *);
 };
 
+bool checkItypeConstraints(int, int, struct opcode_Itype *);
+
 void rv32i_lb(struct opcode_Itype *);
 void rv32i_lh(struct opcode_Itype *);
 void rv32i_lw(struct opcode_Itype *);

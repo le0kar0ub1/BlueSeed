@@ -16,14 +16,13 @@ static struct opcodePseudohandler opcodePseudo =
     } 
 };
 
-bool opcode_handler_pseudo(extractor32_t *extracted)
+void *opcode_handler_pseudo(extractor32_t *extracted)
 { 
     int parser = (int)*extracted;
     for (int i = 0; opcodePseudo.opcode[i] != -1; i++) {
         if (opcodePseudo.opcode[i] == parser) {
-            opcodePseudo.handler[i](parser);
-            return (true);
+            return (opcodePseudo.handler[i]);
         }
     }
-    return (false);
+    return (NULL);
 }

@@ -118,10 +118,9 @@ static inline void compressed_lwsp(int *opcode __unused)
 {
     printf("INSTR UNHANDLED: compressed_lwsp\n");
 }
-static inline void compressed_ldsp(int *opcode __unused)
-{
-    printf("INSTR UNHANDLED: compressed_ldsp\n");
-}
+
+void compressed_ldsp(struct opcode_CItype *);
+
 static inline void compressed_jr(int *opcode __unused)
 {
     printf("INSTR UNHANDLED: compressed_jr\n");
