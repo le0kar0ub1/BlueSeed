@@ -46,4 +46,7 @@ void rv32i_csrrci(struct opcode_Itype *);
 
 void rv32i_jalr(struct opcode_Itype *);
 
+
+void rv64i_ld(struct opcode_Itype *);
+
 #endif

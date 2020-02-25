@@ -6,6 +6,13 @@
 void *compressedHandlerGetZero(int opcode)
 {
     uint8 func  = getFuncFromCompressedCL(&opcode);
+    uint8 ciw   = getFuncFromCompressedCIW(&opcode);
+    switch (ciw) {
+        case CADDISPN_FUNC:
+            return (compressed_addi4sp);
+        default:
+            break;
+    }
     switch (func) {
         case CFLD_FUNC:
              return (compressed_fld);
@@ -141,7 +148,6 @@ void *compressedHandlerGetTwo(int opcode __unused)
 
 void *getCompressedHandlerFromOpcode(int opcode)
 {
-    printf("COMPRESSED: %x\n", opcode);
     switch (COMPRESSED_OPMASK(opcode)) {
         case COMPRESSED_OP0:
             return (compressedHandlerGetZero(opcode));

@@ -20,6 +20,11 @@ void *compressedHandlerGetZero(int);
 void *compressedHandlerGetOne(int);
 void *compressedHandlerGetTwo(int);
 
+uint rvcRegisterToNorm(uint);
+uint normToRvcRegister(uint);
+
+void compressed_addi4sp(struct opcode_CIWtype *);
+
 static inline void compressed_fld(int *opcode __unused)
 {
     printf("INSTR UNHANDLED: compressed_fld\n");

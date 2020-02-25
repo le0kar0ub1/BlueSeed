@@ -70,7 +70,6 @@ static inline int getFuncFromCompressedCSS(int *opcode)
     return (((struct opcode_CSStype *)opcode)->funct3);
 }
 
-
 struct opcode_CIWtype
 {
     uint opcode : 2;

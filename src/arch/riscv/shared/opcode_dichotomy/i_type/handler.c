@@ -7,7 +7,7 @@
 static struct opcodeIhandler opcodeI =
 {
     .funct3 = {
-        {0b000,    0b001,    0b010,    0b100,     0b101, -1},
+        {0b000,    0b001,    0b010,    0b100,     0b101,     0b011, -1},
 
         {0b000,      0b010,      0b011,       0b100,      0b110,     0b111, -1},
 
@@ -24,7 +24,7 @@ static struct opcodeIhandler opcodeI =
         {-1}
     },
     .handler = {
-        {rv32i_lb, rv32i_lh, rv32i_lw, rv32i_lbu, rv32i_lhu}, /* IDX 0 in opcodeHandler (I) */
+        {rv32i_lb, rv32i_lh, rv32i_lw, rv32i_lbu, rv32i_lhu, rv64i_ld}, /* IDX 0 in opcodeHandler (I) */
 
         {rv32i_addi, rv32i_slti, rv32i_sltiu, rv32i_xori, rv32i_ori, rv32i_andi}, /* IDX 1 in opcodeHandler (I) */
 

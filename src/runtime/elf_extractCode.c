@@ -10,8 +10,8 @@ uint8 extractCode(void)
 {
     virtaddr_t vpc = (virtaddr_t)processor_get_pc();
     /* If running out of RX data then fault */
-    if (vpc > environnement->virtual.end || vpc < environnement->virtual.entry)
-        RAISE(ERR_SEGFAULT_NUM);
+    // if (vpc > environnement->virtual.end || vpc < environnement->virtual.entry)
+        // RAISE(ERR_SEGFAULT_NUM);
     uint8 *loc = (uint8 *)virtToHost(vpc);
     processor_set_pc((reg_t)ADD_TO_PTR(vpc, 0x1));
     return (*loc);
