@@ -141,6 +141,7 @@ void *compressedHandlerGetTwo(int opcode __unused)
 
 void *getCompressedHandlerFromOpcode(int opcode)
 {
+    printf("COMPRESSED\n");
     switch (COMPRESSED_OPMASK(opcode)) {
         case COMPRESSED_OP0:
             return (compressedHandlerGetZero(opcode));

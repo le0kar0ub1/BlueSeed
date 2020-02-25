@@ -19,12 +19,16 @@ void arch_exec(void)
     verbose_log("Starting execution...\n");
     /* Program main loop */
     while (1) {
+        /* If running in debug mode */
         if (IS_RUN_DEBUG)
             debugger();
+        /* Extract 4 byte from the current PC */
         *instr = extractCodeD();
+        /* Get the instruction handler */
         handler = getHandlerFromOpcode(*instr);
         if (!handler)
             RAISE(ERR_OPCODE_NUM);
+        /* Then Exec this instruction */
         handler(instr);
     }
     free(instr);
