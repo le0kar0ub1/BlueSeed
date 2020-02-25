@@ -14,13 +14,24 @@ struct opcode_CRtype
 
 static inline int getFuncFromCompressedCR(int *opcode)
 {
-    ((struct opcode_CRtype *)opcode)->funct4;
+    return (((struct opcode_CRtype *)opcode)->funct4);
 }
+
+static inline int getRS2FromCompressedCR(int *opcode)
+{
+    return (((struct opcode_CRtype *)opcode)->rs2);
+}
+
+static inline int getRxFromCompressedCR(int *opcode)
+{
+    return (((struct opcode_CRtype *)opcode)->rx);
+}
+
 
 struct opcode_CItype
 {
     uint opcode : 2;
-    uint imm    : 5;
+    uint imm1   : 5;
     uint rx     : 5;
     uint imm2   : 1;
     uint funct3 : 3;
@@ -28,7 +39,22 @@ struct opcode_CItype
 
 static inline int getFuncFromCompressedCI(int *opcode)
 {
-    ((struct opcode_CItype *)opcode)->funct3;
+    return (((struct opcode_CItype *)opcode)->funct3);
+}
+
+static inline int getRxFromCompressedCI(int *opcode)
+{
+    return (((struct opcode_CItype *)opcode)->rx);
+}
+
+static inline int getImm1FromCompressedCI(int *opcode)
+{
+    return (((struct opcode_CItype *)opcode)->imm1);
+}
+
+static inline int getImm2FromCompressedCI(int *opcode)
+{
+    return (((struct opcode_CItype *)opcode)->imm2);
 }
 
 struct opcode_CSStype
@@ -41,7 +67,7 @@ struct opcode_CSStype
 
 static inline int getFuncFromCompressedCSS(int *opcode)
 {
-    ((struct opcode_CSStype *)opcode)->funct3;
+    return (((struct opcode_CSStype *)opcode)->funct3);
 }
 
 
@@ -55,7 +81,7 @@ struct opcode_CIWtype
 
 static inline int getFuncFromCompressedCIW(int *opcode)
 {
-    ((struct opcode_CIWtype *)opcode)->funct3;
+    return (((struct opcode_CIWtype *)opcode)->funct3);
 }
 
 struct opcode_CLtype
@@ -70,7 +96,7 @@ struct opcode_CLtype
 
 static inline int getFuncFromCompressedCL(int *opcode)
 {
-    ((struct opcode_CLtype *)opcode)->funct3;
+    return (((struct opcode_CLtype *)opcode)->funct3);
 }
 
 struct opcode_CStype
@@ -85,9 +111,8 @@ struct opcode_CStype
 
 static inline int getFuncFromCompressedCS(int *opcode)
 {
-    ((struct opcode_CStype *)opcode)->funct3;
+    return (((struct opcode_CStype *)opcode)->funct3);
 }
-
 
 struct opcode_CAtype
 {
@@ -100,7 +125,12 @@ struct opcode_CAtype
 
 static inline int getFuncFromCompressedCA(int *opcode)
 {
-    ((struct opcode_CAtype *)opcode)->funct6;
+    return (((struct opcode_CAtype *)opcode)->funct6);
+}
+
+static inline int getImmFromCompressedCA(int *opcode)
+{
+    return (((struct opcode_CAtype *)opcode)->imm1);
 }
 
 struct opcode_CBtype
@@ -114,7 +144,7 @@ struct opcode_CBtype
 
 static inline int getFuncFromCompressedCB(int *opcode)
 {
-    ((struct opcode_CBtype *)opcode)->funct3;
+    return (((struct opcode_CBtype *)opcode)->funct3);
 }
 
 struct opcode_CJtype
@@ -126,7 +156,7 @@ struct opcode_CJtype
 
 static inline int getFuncFromCompressedCJ(int *opcode)
 {
-    ((struct opcode_CJtype *)opcode)->funct3;
+    return (((struct opcode_CJtype *)opcode)->funct3);
 }
 
 #endif
