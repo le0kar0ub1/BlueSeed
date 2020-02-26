@@ -28,10 +28,13 @@ void *elftool_getSectionContentFromName(char const *name)
 {
     if (!shdr || !ehdr)
         RAISE(ERR_UNKNOW_SEC_NUM);
-    for (uint i = 0; i < ehdr->e_shnum; i++) {
-        if (!strcmp(name, (char *)&(shdrtab[shdr[i].sh_name])))
-            return (ADD_TO_PTR(ehdr, shdr[i].sh_addr));
-    }
+    for (uint i = 0; i < ehdr->e_shnum; i++)
+        if (!strcmp(name, (char *)&(shdrtab[shdr[i].sh_name]))) {
+            if (shdr[i].sh_addr != 0)
+                return (ADD_TO_PTR(ehdr, shdr[i].sh_addr));
+            else
+                return (ADD_TO_PTR(ehdr, shdr[i].sh_offset));
+        }
     RAISE(ERR_UNKNOW_SYM_NUM);
     return (NULL);
 }
@@ -78,9 +81,8 @@ char const *elftool_getSymFromAddr(virtaddr_t addr)
     if (!symtab || !strtab)
         RAISE(ERR_UNKNOW_SYM_NUM);
     for (uint i = 0; i < symtab_entries; i++)
-        if (symtab[i].st_value == (uintptr)addr)
+        if ((symtab[i].st_value == (archuval_t)addr) && ((symtab[i].st_info & (1 << STT_NOTYPE)) == 0))
             return ((char *)ADD_TO_PTR(strtab, symtab[i].st_name));
     RAISE(ERR_UNKNOW_SEC_NUM);
     return (NULL);
 }
-
