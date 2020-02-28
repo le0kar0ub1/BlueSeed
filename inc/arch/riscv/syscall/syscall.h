@@ -1,5 +1,5 @@
-#ifndef _SYSCALL_TABLE_H_
-#define _SYSCALL_TABLE_H_
+#ifndef _RISCV64_SYSCALL_TABLE_H_
+#define _RISCV64_SYSCALL_TABLE_H_
 
 #include "def/typedef.h"
 #include "def/keyword.h"
@@ -9,12 +9,11 @@
 ** By the way we will implement some accepted syscall.
 */
 
-struct syscallHandler
+struct syscallmap
 {
-    int  x86_64[100];
+    int  host[100];
     int  riscv[100];
     void (*handler[100])(uint);
-    int8 args[100];
 } __packed;
 
 void exec_syscall(void);

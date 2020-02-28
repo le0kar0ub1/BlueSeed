@@ -14,4 +14,6 @@ char const *elftool_getSymFromAddr(virtaddr_t);
 
 virtaddr_t elf_getSymbolOffsetFromAddr(virtaddr_t sym);
 
+char *elf_getRunningSymbol(virtaddr_t virt);
+
 #endif

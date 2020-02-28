@@ -3,6 +3,8 @@ tools/
 dev.sh
 sample/
 inc/assembly
+mktoolchain/toolchain
+mktoolchain/properties
 .vscode
 build/
 

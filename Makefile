@@ -3,18 +3,20 @@
  #
 
 # Toolchain Builder
-ROOT_TOOLCHAIN	:= 	mktoolchain
-MKTOOLCHAIN		:=	mktoolchain
+ROOT_TOOLCHAIN		:=	$(shell realpath mktoolchain)
+MKTOOLCHAIN			:=	mktoolchain
+TOOLCHAIN			:=	toolchain
+BUILD_PROPERTIES	:=	build-properties
 
-# TODO: gcc cross-compiler
-export CC		:=	gcc
+# Toolchain variable depend
+export CC
+export ARCH_HOST
 
-export PROJECT			:=	BlueSeed
 export REALPATH_PROJECT	:=	$(realpath .)
-export ARCH_HOST		:=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+export PROJECT			:=	BlueSeed
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
-export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
+export BINARY			=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
 
 export BUILDIR	:=	$(realpath .)/build
 
@@ -106,7 +108,7 @@ TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
 .PHONY: all build fclean debug clean $(BINARY)
 
-all:	build	$(BINARY)
+all:	toolchain	build	$(BINARY)
 
 build:
 	@make -C $(ROOT_SRC_DIR) --no-print-directory
@@ -120,7 +122,7 @@ clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* 
+	@$(RM) $(PROJECT)_*.bin 
 	@$(RM) vgcore.*
 	@$(RM) $(shell $(realpath $(find . -name dep.d)))
 
@@ -141,4 +143,10 @@ help:
 	@echo -e "make TARGET=riscvx"
 
 toolchain:
-	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)
+ifeq ($(shell test -f $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) && echo -n built), built)
+	$(eval CC			=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) | grep CC | cut -d = -f 2))
+	$(eval ARCH_HOST	=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) | grep ARCH_HOST | cut -d = -f 2))
+else
+	$(eval CC			=	gcc)
+	$(eval ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs))
+endif

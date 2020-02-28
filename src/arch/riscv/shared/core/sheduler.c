@@ -4,6 +4,7 @@
 #include "shared/memory/stack.h"
 #include "shared/processor/processor.h"
 #include "shared/runtime/extractor.h"
+#include "shared/runtime/elftool.h"
 #include "opcode.h"
 #include "shared/runtime/dump.h"
 #include "instructionBase.h"
@@ -11,6 +12,18 @@
 #include "debugger/debugger.h"
 
 extern bool IS_RUN_DEBUG;
+extern bool IS_RUN_EXPLICIT;
+
+void displayRunningSymbol(void);
+void displayRunningSymbol(void)
+{
+    static char *symrun = NULL, *newsym = NULL;
+    if (IS_RUN_EXPLICIT || IS_RUN_DEBUG)
+    if ((newsym = elf_getRunningSymbol((virtaddr_t)processor_get_pc())) != symrun && newsym) {
+        symrun = newsym;
+        printf("\n[\e[0;34m%s\e[0m:%lx]\n", symrun, (archuval_t)processor_get_pc());
+    }
+}
 
 void arch_exec(void)
 {
@@ -19,6 +32,8 @@ void arch_exec(void)
     verbose_log("Starting execution...\n");
     /* Program main loop */
     while (1) {
+        /* Current symbol */
+        displayRunningSymbol();
         /* If running in debug mode */
         if (IS_RUN_DEBUG)
             debugger();

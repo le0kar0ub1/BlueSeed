@@ -20,6 +20,7 @@ SHARED_SOURCE_DIR	:=	$(ARCH_SHARED)									\
 								processor								\
 								syscall									\
 								register								\
+								core									\
 								$(addprefix opcode_dichotomy/,			\
 										$(RISCV_INSTRUCTION_TYPE)		\
 								)										\

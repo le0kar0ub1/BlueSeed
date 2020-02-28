@@ -11,7 +11,7 @@ void debug_log_instr(char const *fmt, ...)
 {
     if (!IS_RUN_EXPLICIT && !IS_RUN_DEBUG)
         return;
-    printf("[\e[0;32mEXEC\e[0m] \e[0;31m");
+    printf("    \e[0;32m\e[0m \e[0;31m");
     va_list ap;
 
     va_start(ap, fmt);

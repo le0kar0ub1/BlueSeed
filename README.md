@@ -11,7 +11,10 @@
 
 _BlueSeed have a dependencies installer_
 
-`make toolchain TARGET=$HOST_ARCH` | `./mktoolchain/mktoolchain $HOST_ARCH`
+`./mktoolchain/mktoolchain $TARGET`
+
+If no toolchain target is given then defaulting to the host machine.
+
 
 ## BUILD
 
