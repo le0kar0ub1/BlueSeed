@@ -32,9 +32,9 @@ _BlueSeed have a dependencies installer_
 
 ## ROADMAP
 
-- [ ] toolchain
-  - [ ] cross-plateform build
-  - [ ] build system independant
+- [X] toolchain
+  - [X] cross-plateform build
+  - [X] build system independant
 - [ ] instruction set
   - [ ] RV32I Base Instruction Set
   - [ ] RV64I Base Instruction Set
