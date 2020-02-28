@@ -8,11 +8,12 @@ MKTOOLCHAIN			:=	mktoolchain
 TOOLCHAIN			:=	toolchain
 BUILD_PROPERTIES	:=	build-properties
 
+# Toolchain variable depend
 export CC
 export ARCH_HOST
 
-export PROJECT			:=	BlueSeed
 export REALPATH_PROJECT	:=	$(realpath .)
+export PROJECT			:=	BlueSeed
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
 export BINARY			=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
@@ -121,7 +122,7 @@ clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(PROJECT)_$(ARCH_HOST)-$(VERSION)* 
+	@$(RM) $(PROJECT)_*.bin 
 	@$(RM) vgcore.*
 	@$(RM) $(shell $(realpath $(find . -name dep.d)))
 
