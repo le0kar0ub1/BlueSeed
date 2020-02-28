@@ -78,5 +78,9 @@ cd gcc-build
 make all-gcc && make all-target-libgcc && make install-gcc && make install-target-libgcc || exit 1
 cd ..
 
+### Build the config file ######################################################
+echo "ARCH_HOST=$TARGET" > build-properties
+echo "CC=$(realpath toolchain)/bin/$TARGET-elf-gcc" >> build-properties
+
 ### We're done! ################################################################
 printf "[\e[91;1mN\e[93mI\e[92mC\e[94mE\e[0m] Toolchain built!\n"

@@ -3,18 +3,19 @@
  #
 
 # Toolchain Builder
-ROOT_TOOLCHAIN	:=	$(shell realpath mktoolchain)
-MKTOOLCHAIN		:=	mktoolchain
-TOOLCHAIN		:=	toolchain
+ROOT_TOOLCHAIN		:=	$(shell realpath mktoolchain)
+MKTOOLCHAIN			:=	mktoolchain
+TOOLCHAIN			:=	toolchain
+BUILD_PROPERTIES	:=	build-properties
 
-export CC		=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/properties | grep CC | cut -d = -f 2)
+export CC
+export ARCH_HOST
 
 export PROJECT			:=	BlueSeed
 export REALPATH_PROJECT	:=	$(realpath .)
-export ARCH_HOST		=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/properties | grep CC | cut -d = -f 2)
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
-export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
+export BINARY			=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
 
 export BUILDIR	:=	$(realpath .)/build
 
@@ -141,10 +142,10 @@ help:
 	@echo -e "make TARGET=riscvx"
 
 toolchain:
-ifeq ($(CC),)
-	CC	=	gcc
-endif
-
-ifeq ($(ARCH_HOST),)
-	ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+ifeq ($(shell test -f $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) && echo -n built), built)
+	$(eval CC			=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) | grep CC | cut -d = -f 2))
+	$(eval ARCH_HOST	=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/$(BUILD_PROPERTIES) | grep ARCH_HOST | cut -d = -f 2))
+else
+	$(eval CC			=	gcc)
+	$(eval ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs))
 endif
