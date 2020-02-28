@@ -1,0 +1,5 @@
+#include "syscall/syscall.h"
+
+struct syscallmap sysmap =
+{
+    .host  = {
