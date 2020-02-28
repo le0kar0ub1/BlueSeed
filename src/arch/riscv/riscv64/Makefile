@@ -2,12 +2,7 @@
 # Makefile Compiling object for RISCV64 target
  #
 
-RISCV64_SOURCE_DIR		:=	core 		\
-							isa			\
-							memory		\
-							processor	\
-							syscall		\
-							register	\
+RISCV64_SOURCE_DIR		:=	isa			\
 							.
 
 RISCV64_PREFIX_BUILD	:=	$(shell realpath --relative-to $(REALPATH_PROJECT)/$(ROOT_SRC_DIR) .)

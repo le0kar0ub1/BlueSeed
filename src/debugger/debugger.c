@@ -9,6 +9,7 @@ static char const *debugCommandAllowed[10] =
 {
     "help",
     "dump",
+    "exit",
     NULL
 };
 
@@ -18,6 +19,7 @@ static void (*debugHandler[10])(char const *) =
 {
     debugger_handle_help,
     debugger_handle_dump,
+    debugger_handle_exit,
     NULL
 };
 
