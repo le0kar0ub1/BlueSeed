@@ -16,7 +16,7 @@ export SCRIPT="$SOURCE/mktoolchain"
 
 if [ -z "$TARGET" ]; then
 	TARGET=$(lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
-	printf "[\e[34;1mINFO\e[0m] TARGET unset, default %s\n" $TARGET
+	printf "[\e[34;1mINFO\e[0m] TARGET unset, defaulting to %s\n" $TARGET
 else
 	printf "[\e[34;1mINFO\e[0m] TARGET set to %s\n" $TARGET
 fi
@@ -73,7 +73,7 @@ cd ..
 mkdir gcc-build || exit 1
 cd gcc-build
 
-../gcc-$GCC_VERSION/configure --target=$TARGET-elf --prefix="$PREFIX" --disable-nls --enable-languages=c --without-headers || cleanup 1
+../gcc-$GCC_VERSION/configure --target=$TARGET-elf --prefix="$PREFIX" --disable-nls --enable-languages=c || cleanup 1
 
 make all-gcc && make all-target-libgcc && make install-gcc && make install-target-libgcc || exit 1
 cd ..

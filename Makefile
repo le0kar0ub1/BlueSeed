@@ -3,15 +3,15 @@
  #
 
 # Toolchain Builder
-ROOT_TOOLCHAIN	:= 	mktoolchain
+ROOT_TOOLCHAIN	:=	$(shell realpath mktoolchain)
 MKTOOLCHAIN		:=	mktoolchain
+TOOLCHAIN		:=	toolchain
 
-# TODO: gcc cross-compiler
-export CC		:=	gcc
+export CC		=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/properties | grep CC | cut -d = -f 2)
 
 export PROJECT			:=	BlueSeed
 export REALPATH_PROJECT	:=	$(realpath .)
-export ARCH_HOST		:=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+export ARCH_HOST		=	$(ROOT_TOOLCHAIN)/$(shell cat $(ROOT_TOOLCHAIN)/properties | grep CC | cut -d = -f 2)
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
 export BINARY			:=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
@@ -106,7 +106,7 @@ TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
 .PHONY: all build fclean debug clean $(BINARY)
 
-all:	build	$(BINARY)
+all:	toolchain	build	$(BINARY)
 
 build:
 	@make -C $(ROOT_SRC_DIR) --no-print-directory
@@ -141,4 +141,10 @@ help:
 	@echo -e "make TARGET=riscvx"
 
 toolchain:
-	@./$(ROOT_TOOLCHAIN)/$(MKTOOLCHAIN) $(TARGET)
+ifeq ($(CC),)
+	CC	=	gcc
+endif
+
+ifeq ($(ARCH_HOST),)
+	ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs)
+endif
