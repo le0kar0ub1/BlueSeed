@@ -1,5 +1,8 @@
-ARCH=$1
-FILEPATH=$2
+#!/bin/sh
+
+ARCHREALPATH=$(realpath arch)
+TARGETSYSCAL=$1
+FILEPATH=$(realpath $2)
 FILEHEAD=filehead
 FILETAIL=filetail
 
@@ -7,14 +10,14 @@ rm -f $FILEPATH
 
 cat $FILEHEAD > $FILEPATH
 
-if [ ! -f $ARCH ]; then
+if [ ! -f $ARCHREALPATH/$TARGETSYSCAL ]; then
     echo "Unhandle syscall for the targeted architecture...."
-    source ./arch/unhandle
+    source $ARCHREALPATH/unhandle
 else
-    source ./arch/$ARCH
+    source $ARCHREALPATH/$TARGETSYSCAL
 fi
 
 
-echo -e "$MAPPED" >> $FILEPATH
+echo -e "\n$MAPPED" >> $FILEPATH
 
 cat $FILETAIL >> $FILEPATH

@@ -12,6 +12,8 @@ void exec_syscall(void)
     uint syscall = (uint)processor_get_a7();
     for (uint i = 0; sysmap.riscv[i] != -1; i++)
         if (sysmap.riscv[i] == (int)syscall) {
+            if (sysmap.host[i] < 0)
+                break;
             sysmap.handler[i](sysmap.host[i]);
             return;
         }

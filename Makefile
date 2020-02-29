@@ -108,7 +108,7 @@ TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
 .PHONY: all build fclean debug clean $(BINARY)
 
-all:	toolchain	build	$(BINARY)
+all:	toolchain	prebuild	build	$(BINARY)
 
 build:
 	@make -C $(ROOT_SRC_DIR) --no-print-directory
@@ -150,3 +150,7 @@ else
 	$(eval CC			=	gcc)
 	$(eval ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs))
 endif
+
+
+prebuild:
+	script/syscall/syscallgen.sh arm testsys
