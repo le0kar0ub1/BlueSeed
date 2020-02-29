@@ -108,7 +108,7 @@ TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
 .PHONY: all build fclean debug clean $(BINARY)
 
-all:	toolchain	prebuild	build	$(BINARY)
+all:	toolchain	syscallgen	build	$(BINARY)
 
 build:
 	@make -C $(ROOT_SRC_DIR) --no-print-directory
@@ -152,5 +152,5 @@ else
 endif
 
 
-prebuild:
-	script/syscall/syscallgen.sh arm testsys
+syscallgen:
+	# sh script/syscall/syscallgen.sh $(ARCH_HOST) $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR)/$(TARGET_BASE)/shared/syscall/mapping.c
