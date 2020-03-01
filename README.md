@@ -40,10 +40,10 @@ _If no toolchain TARGET is given then defaulting to the host machine._
 - [X] toolchain
   - [X] cross-plateform build
   - [X] build system independant
-- [.] instruction set
-  - [.] RV32I Base Instruction Set
-  - [.] RV64I Base Instruction Set
-  - [.] Compressed Instruction Set (Introduced recently)
+- [ ] instruction set
+  - [X] RV32I Base Instruction Set
+  - [X] RV64I Base Instruction Set
+  - [X] Compressed Instruction Set (Introduced recently)
   - [ ] RV32M Standard Extension ?
   - [ ] RV64M Standard Extension ?
   - [ ] RV32A Standard Extension ?
@@ -54,7 +54,7 @@ _If no toolchain TARGET is given then defaulting to the host machine._
   - [ ] RV64D Standard Extension ?
 - [ ] target arch
   - [ ] riscv32
-  - [.] riscv64
+  - [X] riscv64
 - [X] emulation
   - [X] elf loader (no dynamic linkage)
   - [X] virtual processor

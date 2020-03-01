@@ -2,6 +2,8 @@
 
 BlueSeed is a little project without ambition that explore the world of RISC-V.
 
+This Documentation is short and write with MarkDown syntax for a better integration.
+
 ## RISC-V A blurry world
 
 [RISC-V](https://riscv.org) is an open source hardware [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) (Instruction Set Architecture) type [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer) (Reduce Instruction Set Computer).
@@ -29,6 +31,8 @@ BlueSeed does NOT handle all Instruction Set and the emulation environnement is 
 The project can be built for a lot of plateform thanks to his toolchain builder which allows cross-compiling.
 
 `./mktoolchain/mktoolchain $TARGET`
+
+Where TARGET is the host machine architecture which will run BlueSeed.
 
 If no toolchain TARGET is given then defaulting to the host machine.
 
@@ -58,6 +62,7 @@ Options list:
 
 The system calls are interfaced with the host machine, there is no self emulator interface. 
 Software interrupts are interfaced only for x86, x64 and ARM host machine.
+Their are Generating during the build for the particular host machine.
 
 BlueSeed handle only the [ELF](https://refspecs.linuxbase.org/elf/elf.pdf) binary format.
 
