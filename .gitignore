@@ -7,6 +7,7 @@ mktoolchain/toolchain
 mktoolchain/properties
 .vscode
 build/
+.~*
 
 ### C gitignore for gitignore.io ###
 

@@ -5,10 +5,14 @@
 
 void help(void)
 {
-    printf("%s is a cross-plateform RISCV processor emulator\n", PROJECT_NAME);
-    printf("USAGE:\n");
-    printf("    ./%s $EXEC\n", PROJECT_NAME);
-    printf("Supported arch:\n    %s\n", SUPPORTED_ARCH);
+    printf("%s is a cross-plateform RISCV emulator\n", PROJECT_NAME);
+    printf("Built here for emulating %s target and running on %s machine\n", TARGETED_ARCH, ARCH_HOST);
+    printf("\nUSAGE:\n");
+    printf("    ./%s $EXEC [...options]\n", PROJECT_NAME);
+    printf("\nOPTIONS:\n");
+    printf("    - `--verbose`   : display information during environnement init\n");
+    printf("    - `--explicit`  : display the current executed instruction\n");
+    printf("    - `--debug`     : debug environnement (CLI)\n");
     exit(0);
 }
 

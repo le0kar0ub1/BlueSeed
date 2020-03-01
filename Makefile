@@ -81,7 +81,8 @@ export  CFLAGS	=	$(INCLUDE_DIR)						\
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D SUPPORTED_ARCH="$(ALLOWED_ARCH)"'	\
 				'-D INSTRUCTION_SET="$(HANDLE_IS)"'		\
-				'-D TARGETED_ARCH="$(TARGET)"'
+				'-D TARGETED_ARCH="$(TARGET)"'			\
+				'-D ARCH_HOST="$(ARCH_HOST)"'			\
 
 # System target adressing size
 ifeq ($(TARGET), riscv64)
