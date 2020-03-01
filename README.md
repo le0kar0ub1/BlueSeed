@@ -1,6 +1,6 @@
 # Project
 
-*_BlueSeed is a `BASIC` multi-plateform RISC-V emulator wroten in C_*
+*_BlueSeed is a `BASIC` cross-plateform RISC-V emulator wroten in C (and a well hidden assembly file)_*
 
 ## DEPENDENCIES
 
@@ -9,11 +9,11 @@
 
 ## INSTALL
 
-_BlueSeed have a dependencies installer_
+_BlueSeed have a dependencies installer for cross-compiling._
 
 `./mktoolchain/mktoolchain $TARGET`
 
-If no toolchain target is given then defaulting to the host machine.
+_If no toolchain TARGET is given then defaulting to the host machine._
 
 
 ## BUILD
@@ -23,9 +23,9 @@ If no toolchain target is given then defaulting to the host machine.
 
 ## RUN
 
-`./BlueSeedXXX $BINARY [..options]`
+`./BlueSeedXXX $BINARY [...options]`
 
-*flag list:*
+*Options list:*
   - `--verbose`   : display information during environnement init
 
   - `--explicit`  : display the current executed instruction
@@ -54,7 +54,7 @@ If no toolchain target is given then defaulting to the host machine.
   - [ ] riscv32
   - [ ] riscv64
 - [ ] emulation
-  - [X] elf loader
+  - [X] elf loader (no dynamic linkage)
   - [X] virtual processor
   - [X] program exec
   - [X] syscall host interface (limited)
@@ -67,10 +67,11 @@ If no toolchain target is given then defaulting to the host machine.
 
 ## SPECIFITY
 
-The only binary format accepted is [ELF](https://refspecs.linuxbase.org/LSB_3.0.0/LSB-PDA/LSB-PDA/generic-elf.html)
+The only binary format accepted is [ELF](https://refspecs.linuxbase.org/elf/elf.pdf)
 
 Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html)
 
+The BlueSeed ELF loader does not handle dynamic linkage etc... You can't execute GCC binary so far.
 
 ## EPILOGUE
 
@@ -78,4 +79,4 @@ _BlueSeed is in developpment_
 
 RISC-V is a young architecture. There is yet a quantity of lacks & implementation problems.
 
-[RISCV official spec](https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf)
+[RISC-V official spec](https://content.riscv.org/wp-content/uploads/2019/06/riscv-spec.pdf)

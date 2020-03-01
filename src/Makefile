@@ -28,7 +28,7 @@ ifeq ($(TARGET),)
 	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mNo TARGET architecture given, processus stopped\e[0m\n"
 	@exit 1
 else ifeq ($(filter $(TARGET),$(ALLOWED_ARCH)),)
-	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mThe given TARGET isn't allowed ($(ALLOWED_ARCH))\e[0m\n"
+	@echo -e "[\e[91;1mFAIL\e[0m] \e[31mThe given TARGET $(TARGET) isn't allowed (must be $(ALLOWED_ARCH))\e[0m\n"
 	@exit 1
 else
 	@echo -e "\n *"

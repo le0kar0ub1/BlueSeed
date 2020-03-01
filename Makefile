@@ -16,12 +16,12 @@ export REALPATH_PROJECT	:=	$(realpath .)
 export PROJECT			:=	BlueSeed
 export VERSION			:=	0.1.0
 export BIN_EXTENSION	:=	bin
-export BINARY			=	$(PROJECT)_$(ARCH_HOST)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
+export BINARY			:=	$(PROJECT)-$(VERSION)-$(TARGET).$(BIN_EXTENSION)
 
 export BUILDIR	:=	$(realpath .)/build
 
 export ALLOWED_ARCH	:= riscv32 riscv64
-export HANDLE_IS	:= rv32i rv64i rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d compressed
+export HANDLE_IS	:= rv32i rv64i compressed #rv32m rv64m rv32a rv64a rv32f rv64f rv32d rv64d
 
 export EXTENSION_SRC	:=	.c
 export EXTENSION_OBJ	:=	.o
@@ -75,7 +75,7 @@ export  CFLAGS	=	$(INCLUDE_DIR)						\
 					-Wstrict-prototypes					\
 					-Wpointer-arith						\
 					-lm									\
-					# -Werror
+					-Werror
 
 # Compile-time Macro
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
@@ -83,6 +83,12 @@ CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\
 				'-D INSTRUCTION_SET="$(HANDLE_IS)"'		\
 				'-D TARGETED_ARCH="$(TARGET)"'
 
+# System target adressing size
+ifeq ($(TARGET), riscv64)
+	CFLAGS +=	-D SYSTEMSZ=64
+else
+	CFLAGS +=	-D SYSTEMSZ=32
+endif
 
 # Debug mode
 export 	CFLAGSDEBUG	= 	-D DEBUG \
@@ -95,15 +101,8 @@ endif
 
 export	RM	=	rm -rf
 
-# System target adressing size
-ifeq ($(TARGET), riscv64)
-	CFLAGS +=	-D SYSTEMSZ=64
-else
-	CFLAGS +=	-D SYSTEMSZ=32
-endif
-
-.SECONDEXPANSION:
 # Savage method
+.SECONDEXPANSION:
 TARGET_BUILT_OBJECT	= 	$(shell find $(BUILDIR) -name '*$(EXTENSION_OBJ)')
 
 .PHONY: all build fclean debug clean $(BINARY)
@@ -122,7 +121,7 @@ clean:
 	@$(RM) $(BUILDIR)
 
 fclean:	clean
-	@$(RM) $(PROJECT)_*.bin 
+	@$(RM) $(PROJECT)*.bin 
 	@$(RM) vgcore.*
 	@$(RM) $(shell $(realpath $(find . -name dep.d)))
 
@@ -151,6 +150,5 @@ else
 	$(eval ARCH_HOST	=	$(shell lscpu | head -n 1 | cut -d ' ' -f 2- | xargs))
 endif
 
-
 syscallgen:
-	# sh script/syscall/syscallgen.sh $(ARCH_HOST) $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR)/$(TARGET_BASE)/shared/syscall/mapping.c
+	#@sh script/syscall/syscallgen.sh $(ARCH_HOST) $(ROOT_SRC_DIR)/$(ROOT_ARC_DIR)/$(TARGET_BASE)/shared/syscall/mapping.c

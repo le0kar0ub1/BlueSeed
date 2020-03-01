@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "opt/opt.h"
 #include "prototypes.h"
+#include "control/config.h"
+#include "processor/processor.h"
 
 extern bool IS_RUN_EXPLICIT;
 extern bool IS_RUN_DEBUG;
@@ -11,7 +13,8 @@ void debug_log_instr(char const *fmt, ...)
 {
     if (!IS_RUN_EXPLICIT && !IS_RUN_DEBUG)
         return;
-    printf("    \e[0;32m\e[0m \e[0;31m");
+    archuval_t pc = processor_get_pc() - 4;
+    printf("    %016lx \e[0;32m", pc);
     va_list ap;
 
     va_start(ap, fmt);
