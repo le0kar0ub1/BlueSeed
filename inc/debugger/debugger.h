@@ -10,11 +10,12 @@
 void debugger(void);
 void debugger_handle_dump(char const *);
 void debugger_dump_register(char const *);
-void debugger_handle_next(void);
+uint debugger_handle_next(char const *);
 void debugger_handle_help(char const *);
 void debugger_handle_exit(char const *);
+void debugger_handle_jump(char const *);
+void debugger_handle_set(char const *);
 
-#define CMD_NEXT_SHORT "n"
 #define CMD_NEXT_LONG  "next"
 
 #endif

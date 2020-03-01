@@ -1,8 +1,8 @@
 # Project
 
-*_BlueSeed is a `BASIC` cross-plateform RISC-V emulator wroten in C (and a well hidden assembly file)_*
+*_BlueSeed is a `BASIC` cross-plateform RISC-V emulator._*
 
-[Project Documentation (incomplete)](doc/project.md)
+[Project Documentation (incomplete).](doc/project.md)
 
 ## DEPENDENCIES
 
@@ -63,8 +63,8 @@ _If no toolchain TARGET is given then defaulting to the host machine._
   - [ ] Debug
     - [X] Display the running instruction
     - [X] Dump the processor state
-    - [ ] Runtime register set
-    - [ ] Runtime jump/break over symbols
+    - [X] Runtime register set
+    - [X] Runtime jump
     - [ ] Breakpoints ?
 
 ## SPECIFITY

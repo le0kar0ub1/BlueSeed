@@ -75,7 +75,7 @@ export  CFLAGS	=	$(INCLUDE_DIR)						\
 					-Wstrict-prototypes					\
 					-Wpointer-arith						\
 					-lm									\
-					-Werror
+					# -Werror
 
 # Compile-time Macro
 CFLAGS		+=	'-D PROJECT_NAME="$(PROJECT)"'			\

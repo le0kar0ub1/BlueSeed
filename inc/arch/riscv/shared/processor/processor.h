@@ -16,6 +16,7 @@ void processor_dump_register(char const *);
 void processor_dump(void);
 void processor_udump(void);
 
+void registerSetFromName(char const *, archuval_t);
 char const *getRegisterName(uint);
 archival_t getRegisterFromName(char const *);
 uint getRegisterIdxFromName(char const *);

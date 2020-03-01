@@ -156,3 +156,8 @@ void registerUSetQ(uint reg, archuval_t val)
 {
     registerUSet(reg, val);
 }
+
+void registerSetFromName(char const *name, archuval_t val)
+{
+    registerSet(getRegisterIdxFromName(name), val);
+}
