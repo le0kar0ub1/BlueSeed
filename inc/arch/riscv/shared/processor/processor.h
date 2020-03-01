@@ -27,23 +27,23 @@ bool isRegisterExistant(uint);
 #define REGISTER_CLEAR_DWORD(x) ((uint32)(x & ((((uint64)1 << 32)) - 1)))
 #define REGISTER_CLEAR_QWORD(x) ((uint64)(x & ((((uint64)1 << 64)) - 1)))
 
-int64  registerGet(uint);
-int8   registerGetB(uint);
-int16  registerGetW(uint);
-int32  registerGetD(uint);
-int64  registerGetQ(uint);
-uint64 registerUGet(uint);
-uint8  registerUGetB(uint);
-uint16 registerUGetW(uint);
-uint32 registerUGetD(uint);
-uint64 registerUGetQ(uint);
+archival_t  registerGet(uint);
+int8        registerGetB(uint);
+int16       registerGetW(uint);
+int32       registerGetD(uint);
+int64       registerGetQ(uint);
+archuval_t  registerUGet(uint);
+uint8       registerUGetB(uint);
+uint16      registerUGetW(uint);
+uint32      registerUGetD(uint);
+uint64      registerUGetQ(uint);
 
-void registerSet(uint,   int64);
+void registerSet(uint,   archival_t);
 void registerSetB(uint,  int8);
 void registerSetW(uint,  int16);
 void registerSetD(uint,  int32);
 void registerSetQ(uint,  int64);
-void registerUSet(uint,  uint64);
+void registerUSet(uint,  archuval_t);
 void registerUSetB(uint, uint8);
 void registerUSetW(uint, uint16);
 void registerUSetD(uint, uint32);

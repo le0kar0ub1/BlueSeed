@@ -5,11 +5,13 @@ BlueSeed is a little project without ambition that explore the world of RISC-V.
 ## RISC-V A blurry world
 
 [RISC-V](https://riscv.org) is an open source hardware [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) (Instruction Set Architecture) type [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer) (Reduce Instruction Set Computer).
+
 This ISA is not much used to date but has potential to exploit.
 
 The problem is that, there is a lot of lacks in tools used for RISC-V developpement.
 
 Advanced in this world is so complicated and there are few information and precedent on the subject.
+
 By the way, we will try for the best.
 
 ## BlueSeed
@@ -39,16 +41,18 @@ The repository architecture is made to easily accommodate new architectures if n
 
 Where TARGET_ARCH is the target to emulate.
 
+So, your build define the target to emulate, if you want emulate an another you must re-build.
+
 ### Run
 
 `./BlueSeedXXX $BINARY [...options]`
 
 Options list:
-  - --verbose   : display information during environnement init
+  * --verbose   : display information during environnement init
 
-  - --explicit  : display the current executed instruction
+  * --explicit  : display the current executed instruction
 
-  - --debug`    : debug environnement (CLI), "help" for help
+  * --debug`    : debug environnement (CLI), "help" for help
 
 ### About
 
@@ -58,14 +62,15 @@ Software interrupts are interfaced only for x86, x64 and ARM host machine.
 BlueSeed handle only the [ELF](https://refspecs.linuxbase.org/elf/elf.pdf) binary format.
 
 The handled instruction set are:
-    - rv32i (standard Instruction Set)
-    - rv64i (standard Instruction Set)
-    - compressed (32/64)
+  * rv32i (standard Instruction Set)
+  * rv64i (standard Instruction Set)
+  * compressed (32/64)
 
 The ELF loader is very basic and does not allow dynamic linkage with shared object, etc...
 Unfortunately GCC needs this to work.
 
-BlueSeed own a basic runtime debugger. 
+BlueSeed own a basic runtime debugger.
+You can get/set registers values and jump over address in the program.
 
 ## Epilogue
 

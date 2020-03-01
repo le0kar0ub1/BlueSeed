@@ -109,7 +109,7 @@ void registerSetD(uint reg, int32 val)
     setreg[reg](REGISTER_CLEAR_DWORD(registerGet(reg)) + val);
 }
 
-void registerSetQ(uint reg, archival_t val)
+void registerSetQ(uint reg, int64 val)
 {
     registerSet(reg, val);
 }
@@ -152,7 +152,7 @@ void registerUSetD(uint reg, uint32 val)
     setUreg[reg](REGISTER_CLEAR_DWORD(registerGet(reg)) + val);
 }
 
-void registerUSetQ(uint reg, archuval_t val)
+void registerUSetQ(uint reg, uint64 val)
 {
     registerUSet(reg, val);
 }

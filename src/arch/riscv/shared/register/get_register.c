@@ -109,7 +109,7 @@ int32 registerGetD(uint reg)
     return ((int32)getreg[reg]());
 }
 
-archival_t registerGetQ(uint reg)
+int64 registerGetQ(uint reg)
 {
     return (registerGet(reg));
 }
@@ -150,7 +150,7 @@ uint32 registerUGetD(uint reg)
     return ((uint32)getUreg[reg]());
 }
 
-archuval_t registerUGetQ(uint reg)
+uint64 registerUGetQ(uint reg)
 {
     return (registerUGet(reg));
 }
