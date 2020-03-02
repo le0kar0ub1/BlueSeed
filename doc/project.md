@@ -38,6 +38,8 @@ Where TARGET is the host machine architecture which will run BlueSeed.
 
 If no toolchain TARGET is given then defaulting to the host machine.
 
+If you want use your host compiler, then just don't use the mktoolchain and skip this.
+
 ### Build
 
 The idea is that the TARGET architecture to emulate is selected in compile-time.
@@ -58,7 +60,7 @@ Options list:
 
   * --explicit  : display the current executed instruction
 
-  * --debug`    : debug environnement (CLI), "help" for help
+  * --debug     : debug environnement (CLI), "help" for help
 
 ![Basic run](base.png)
 
@@ -75,7 +77,7 @@ The handled instruction set are:
   * rv64i (standard Instruction Set)
   * compressed (32/64)
 
-The ELF loader is very basic and does not allow dynamic linkage with shared object, etc...
+The ELF loader is very basic and does not allow dynamic linkage with shared objects, etc...
 Unfortunately GCC needs this to work.
 
 BlueSeed own a basic runtime debugger.

@@ -1,6 +1,6 @@
 # Project
 
-*_BlueSeed is a `BASIC` cross-plateform RISC-V emulator._*
+*_BlueSeed is a `BASIC` RISC-V emulator._*
 
 [Project Documentation.](doc/project.md)
 
@@ -17,7 +17,7 @@ _BlueSeed have a dependencies installer for cross-compiling._
 
 If no toolchain TARGET is given then defaulting to the host machine.
 
-If you don't want cross-compiling, then just don't use the mktoolchain and skip this.
+If you want use your host compiler, then just don't use the mktoolchain and skip this.
 
 ## BUILD
 
@@ -69,15 +69,13 @@ If you don't want cross-compiling, then just don't use the mktoolchain and skip 
 
 ## SPECIFITY
 
-The only binary format accepted is [ELF](https://refspecs.linuxbase.org/elf/elf.pdf)
+The only binary format accepted is [ELF](https://refspecs.linuxbase.org/elf/elf.pdf).
 
-Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html)
-
-The BlueSeed ELF loader does not handle dynamic linkage etc... You can't execute GCC binary so far.
+Software interrupts are interfaced with the host machine and based on [RV8 project](https://rv8.io/syscalls.html).
 
 ## EPILOGUE
 
-_BlueSeed is in developpment_
+_BlueSeed is in developpment._
 
 RISC-V is a young architecture. There is yet a quantity of lacks & implementation problems.
 
