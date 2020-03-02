@@ -6,7 +6,7 @@ This Documentation is short and write with MarkDown syntax for a better integrat
 
 ## RISC-V A blurry world
 
-![RISC-V](logo.jped)
+![RISC-V](logo.jpeg)
 
 [RISC-V](https://riscv.org) is an open source hardware [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) (Instruction Set Architecture) type [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer) (Reduce Instruction Set Computer).
 
