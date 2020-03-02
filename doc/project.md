@@ -60,8 +60,6 @@ Options list:
 
 ![Basic run](base.png)
 
-![Debug mode overview](debug.png)
-
 ### About
 
 The system calls are interfaced with the host machine, there is no self emulator interface. 
@@ -80,6 +78,9 @@ Unfortunately GCC needs this to work.
 
 BlueSeed own a basic runtime debugger.
 You can get/set registers values and jump over address in the program.
+
+![Debug mode overview](debug.png)
+
 
 ## Epilogue
 
