@@ -2,7 +2,7 @@
 
 *_BlueSeed is a `BASIC` cross-plateform RISC-V emulator._*
 
-[Project Documentation (incomplete).](doc/project.md)
+[Project Documentation.](doc/project.md)
 
 ## DEPENDENCIES
 
@@ -15,8 +15,9 @@ _BlueSeed have a dependencies installer for cross-compiling._
 
 `./mktoolchain/mktoolchain $TARGET`
 
-_If no toolchain TARGET is given then defaulting to the host machine._
+If no toolchain TARGET is given then defaulting to the host machine.
 
+If you don't want cross-compiling, then just don't use the mktoolchain and skip this.
 
 ## BUILD
 

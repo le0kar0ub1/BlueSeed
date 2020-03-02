@@ -41,9 +41,9 @@ If no toolchain TARGET is given then defaulting to the host machine.
 The idea is that the TARGET architecture to emulate is selected in compile-time.
 The repository architecture is made to easily accommodate new architectures if needed (scalability).
 
-`make TARGET=$TARGET_ARCH`
+`make TARGET=$TARGET`
 
-Where TARGET_ARCH is the target to emulate.
+Where TARGET is the target to emulate.
 
 So, your build define the target to emulate, if you want emulate an another you must re-build.
 
@@ -57,6 +57,10 @@ Options list:
   * --explicit  : display the current executed instruction
 
   * --debug`    : debug environnement (CLI), "help" for help
+
+![Basic run](base.png)
+
+![Debug mode overview](debug.png)
 
 ### About
 
