@@ -6,6 +6,8 @@ This Documentation is short and write with MarkDown syntax for a better integrat
 
 ## RISC-V A blurry world
 
+![RISC-V](logo.jped)
+
 [RISC-V](https://riscv.org) is an open source hardware [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) (Instruction Set Architecture) type [RISC](https://en.wikipedia.org/wiki/Reduced_instruction_set_computer) (Reduce Instruction Set Computer).
 
 This ISA is not much used to date but has potential to exploit.
@@ -43,7 +45,7 @@ The repository architecture is made to easily accommodate new architectures if n
 
 `make TARGET=$TARGET`
 
-Where TARGET is the target to emulate.
+Where TARGET is (riscv32 | riscv64) the target to emulate.
 
 So, your build define the target to emulate, if you want emulate an another you must re-build.
 
