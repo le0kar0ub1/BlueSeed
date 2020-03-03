@@ -51,6 +51,10 @@ Where TARGET is (riscv32 | riscv64) the target to emulate.
 
 So, your build define the target to emulate, if you want emulate an another you must re-build.
 
+Build workflow Below.
+
+![Build Workflow](build_workflow.png)
+
 ### Run
 
 `./BlueSeedXXX $BINARY [...options]`
