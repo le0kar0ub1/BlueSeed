@@ -23,6 +23,10 @@ If you want use your host compiler, then just don't use the mktoolchain and skip
 
 `make TARGET=$TARGET_ARCH`
 
+Allowed TARGET_ARCH:
+  - riscv32
+  - riscv64
+
 
 ## RUN
 
