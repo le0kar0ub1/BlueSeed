@@ -51,7 +51,7 @@ Where TARGET is (riscv32 | riscv64) the target to emulate.
 
 So, your build define the target to emulate, if you want emulate an another you must re-build.
 
-Build workflow below ordered from the most shared to the less shared when build the emulator.
+Build workflow below ordered from the most shared to the least shared when build the emulator.
 
 ![Build Workflow](build_workflow.png)
 
