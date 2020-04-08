@@ -75,6 +75,8 @@ export  CFLAGS	=	$(INCLUDE_DIR)						\
 					-Wstrict-prototypes					\
 					-Wpointer-arith						\
 					-lm									\
+					-Wno-int-to-pointer-cast			\
+					-Wno-pointer-to-int-cast			\
 					-Werror
 
 # Compile-time Macro

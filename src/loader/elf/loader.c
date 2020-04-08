@@ -21,9 +21,6 @@ static inline uint get_loadsize(archElf_Shdr *shdr, uint entries)
 
 static inline uint get_execsize(archElf_Shdr *shdr, char *shdrtab, uint entries)
 {
-    // for (uint i = 0; i < entries; i++)
-    //     if (shdr[i].sh_flags == (SHF_EXECINSTR | SHF_ALLOC))
-    //         return (shdr[i].sh_size);
     for (uint i = 0; i < entries; i++)
         if (!strcmp(".text", (char *)&(shdrtab[shdr[i].sh_name])))
             return (shdr[i].sh_size);

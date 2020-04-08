@@ -9,7 +9,11 @@ void processor_dump_register(char const *name)
     if (!isRegisterExistant(getRegisterIdxFromName(name)))
         printf("Invalid Register...\n");
     else
+    #if SYSTEMSZ == 64
         printf("\e[0;31m%s    \e[0m: \e[0;34m%016lx \e[0m\n", name, getRegisterFromName(name));
+    #else
+        printf("\e[0;31m%s    \e[0m: \e[0;34m%016x \e[0m\n", name, getRegisterFromName(name));
+    #endif
 }
 
 #if SYSTEMSZ == 64
