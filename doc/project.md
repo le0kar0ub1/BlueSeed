@@ -2,7 +2,7 @@
 
 BlueSeed is a little project without ambition that explore the world of RISC-V.
 
-This Documentation is short and write with MarkDown syntax for a better integration.
+[Project tree](tree.md)
 
 ## RISC-V A blurry world
 

@@ -19,19 +19,19 @@ void displayRunningSymbol(void)
 {
     static char *symrun = NULL, *newsym = NULL;
     if (IS_RUN_EXPLICIT || IS_RUN_DEBUG)
-    if ((newsym = elf_getRunningSymbol((virtaddr_t)processor_get_pc())) != symrun && newsym) {
-        symrun = newsym;
-    #if SYSTEMSZ == 64
-        printf("\n[\e[0;34m%s\e[0m:\e[0;31m0x%lx\e[0m]\n", symrun, (archuval_t)processor_get_pc());
-    #else
-        printf("\n[\e[0;34m%s\e[0m:\e[0;31m0x%x\e[0m]\n", symrun, (archuval_t)processor_get_pc());
-    #endif
-    }
+        if ((newsym = elf_getRunningSymbol((virtaddr_t)processor_get_pc())) != symrun && newsym) {
+            symrun = newsym;
+        #if SYSTEMSZ == 64
+            printf("\n[\e[0;34m%s\e[0m:\e[0;31m0x%lx\e[0m]\n", symrun, (archuval_t)processor_get_pc());
+        #else
+            printf("\n[\e[0;34m%s\e[0m:\e[0;31m0x%x\e[0m]\n", symrun, (archuval_t)processor_get_pc());
+        #endif
+        }
 }
 
 void arch_exec(void)
 {
-    extractor32_t *instr = malloc(sizeof(extractor32_t));
+    extractor32_t *instr = vmalloc(sizeof(extractor32_t));
     void (*handler)(extractor32_t *);
     verbose_log("Starting execution...\n");
     /* Program main loop */
